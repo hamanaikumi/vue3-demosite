@@ -5,7 +5,7 @@
       <div class="news-content">
         <img
           class="news-image"
-          src="../../assets/images/news1.jpeg"
+          src="../../../assets/images/news1.jpeg"
           alt="ニュース写真"
         />
         <p>
@@ -16,7 +16,7 @@
       <div class="news-content">
         <img
           class="news-image"
-          src="../../assets/images/news1.jpeg"
+          src="../../../assets/images/news1.jpeg"
           alt="ニュース写真"
         />
         <p>
@@ -27,7 +27,7 @@
       <div class="news-content">
         <img
           class="news-image"
-          src="../../assets/images/news1.jpeg"
+          src="../../../assets/images/news1.jpeg"
           alt="ニュース写真"
         />
         <p>

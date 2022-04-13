@@ -43,8 +43,8 @@ export default defineComponent({
 .header {
   height: 120px;
   display: flex;
-  justify-items: space-between;
-  padding: 0 20px;
+  justify-content: space-between;
+
   &-logo {
     font-size: 2rem;
     font-weight: bold;

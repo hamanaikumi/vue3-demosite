@@ -19,7 +19,7 @@ export default defineComponent({
 
 <style lang="scss">
 #app {
-  font-family: "Lato";
+  font-family: "Noto Sans JP";
   // 表示される文字がなめらかになる
   // -webkit-font-smoothing: antialiased;
   // -webkit-にantialiasedと指定した時のみgrayscaleを指定すると、ブラウザ間での見え方の差が小さくすむ

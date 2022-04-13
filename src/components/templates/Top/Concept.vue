@@ -4,7 +4,7 @@
     <div class="concept-first">
       <img
         class="concept-image"
-        src="../../assets/images/hotcake2.jpeg"
+        src="../../../assets/images/hotcake2.jpeg"
         alt="コンセプト写真"
       />
       <p>
@@ -19,7 +19,7 @@
     <div class="concept-second">
       <img
         class="concept-image"
-        src="../../assets/images/berry.jpeg"
+        src="../../../assets/images/berry.jpeg"
         alt="コンセプト写真"
       />
       <p>

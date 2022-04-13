@@ -5,7 +5,7 @@
       <div class="shop-content">
         <img
           class="shop-image"
-          src="../../assets/images/shop1.jpeg"
+          src="../../../assets/images/shop1.jpeg"
           alt="ショップ写真"
         />
         <p>秋葉原店</p>
@@ -13,7 +13,7 @@
       <div class="shop-content">
         <img
           class="shop-image"
-          src="../../assets/images/shop1.jpeg"
+          src="../../../assets/images/shop1.jpeg"
           alt="ショップ写真"
         />
         <p>新宿店</p>
@@ -21,7 +21,7 @@
       <div class="shop-content">
         <img
           class="shop-image"
-          src="../../assets/images/shop1.jpeg"
+          src="../../../assets/images/shop1.jpeg"
           alt="ショップ写真"
         />
         <p>横浜店</p>
