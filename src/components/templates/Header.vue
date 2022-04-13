@@ -2,9 +2,10 @@
   <div class="header">
     <p class="header-logo">Sample Cafe</p>
     <div class="header-menu__tab">
-      <p>Menu</p>
-      <p>Shops</p>
-      <p>Recruit</p>
+      <router-link class="router-link" to="/"> <p>Menu</p></router-link>
+      <router-link class="router-link" to="/"> <p>Shops</p></router-link>
+      <router-link class="router-link" to="/"> <p>Recruit</p></router-link>
+
       <div class="header-icon">
         <img src="../../assets/images/twitter.svg" alt="twitterアイコン" />
         <img src="../../assets/images/instagram.svg" alt="instagramアイコン" />
@@ -24,7 +25,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import Modal from "../Molecules/Modal.vue";
+import Modal from "./Top/Modal.vue";
 
 export default defineComponent({
   components: { Modal },
@@ -40,6 +41,9 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+.router-link {
+  text-decoration: none;
+}
 .header {
   height: 120px;
   display: flex;
@@ -65,6 +69,20 @@ export default defineComponent({
 
     p {
       margin-left: 60px;
+
+      &::after {
+        border-bottom: solid 2px #3333;
+        bottom: 0;
+        content: "";
+        display: block;
+        transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        width: 0;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
     }
   }
 

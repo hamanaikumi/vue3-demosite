@@ -1,7 +1,12 @@
 <template>
-  <img src="../../assets/images/hotcake.jpeg" class="slideshow" />
-  <img src="../../assets/images/hotcake2.jpeg" class="slideshow fadeout" />
-  <img src="../../assets/images/hotcake3.jpeg" class="slideshow fadeout" />
+  <div class="slideImage-image">
+    <img src="../../../assets/images/hotcake.jpeg" class="slideshow" />
+    <img src="../../../assets/images/hotcake2.jpeg" class="slideshow fadeout" />
+    <img src="../../../assets/images/hotcake3.jpeg" class="slideshow fadeout" />
+  </div>
+  <div class="slideImage-text">
+    <p>make every day special</p>
+  </div>
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
@@ -13,16 +18,19 @@ export default defineComponent({
     });
     onMounted(() => {
       const images = document.getElementsByClassName("slideshow");
-      console.log(images);
 
       slideshow(images);
       setInterval(() => {
         state.value.index =
+          // indexが最後まで行ったら0に戻る
           state.value.index < images.length - 1 ? state.value.index + 1 : 0;
         slideshow(images);
       }, 3000);
     });
 
+    /**
+     * 画像の切り替えを行う.参考：https://qiita.com/ryo511/items/4c65caffb01ba13fb89b
+     */
     const slideshow = (images: any) => {
       const current = images[state.value.index];
       const prev = images[state.value.index - 1]
@@ -40,7 +48,7 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped>
+<style lang="scss" scoped>
 img {
   width: 100%;
   height: 720px;
@@ -48,15 +56,35 @@ img {
 }
 .fadein {
   opacity: 1;
-  transition: opacity 0.8s;
+  transition: opacity 1s;
 }
 
 .fadeout {
   opacity: 0;
-  transition: opacity 0.8s;
+  transition: opacity 1s;
 }
 
 .slideshow {
   position: absolute;
+}
+
+.slideImage-text {
+  widows: 100vw;
+  p {
+    font-size: 100px;
+    font-weight: 400;
+    color: #fff;
+    white-space: nowrap;
+    animation: loop-text 60s linear infinite;
+  }
+}
+
+@keyframes loop-text {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 </style>

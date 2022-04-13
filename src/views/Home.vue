@@ -1,10 +1,9 @@
 <template>
   <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
-
     <div class="home-image">
       <slide-image />
     </div>
+
     <div class="box" ref="componentRef1">
       <concept />
     </div>
@@ -18,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import SlideImage from "@/components/Atoms/SlideImage.vue";
+import SlideImage from "@/components/templates/Top/SlideImage.vue";
 import Concept from "@/components/templates/Top/Concept.vue";
 import News from "@/components/templates/Top/News.vue";
 import Shop from "@/components/templates/Top/Shop.vue";
@@ -87,11 +86,13 @@ export default defineComponent({
 
 .box {
   opacity: 0;
-  transform: translateY(100px);
-  transition: 0.5s ease;
+  // transform: translateY(100px);
+  transition: opacity 1s ease;
 }
 .box.show {
-  transform: translateY(0);
+  // transform: translateY(0);
   opacity: 1;
+  transition: opacity 1s ease;
+  transition-delay: 500ms;
 }
 </style>

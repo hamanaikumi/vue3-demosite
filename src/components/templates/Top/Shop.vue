@@ -47,16 +47,17 @@ export default defineComponent({
   }
   &-content {
     padding: 12px;
-    // padding: 12px;
+    text-align: center;
     width: 30%;
+    p {
+      @include defaultText;
+      line-height: 200%;
+    }
   }
   &-image {
     width: 100%;
     height: 300px;
     object-fit: cover;
-  }
-  p {
-    // padding: 20px 0;
   }
 
   @include sp {

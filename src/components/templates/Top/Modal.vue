@@ -19,7 +19,7 @@ export default defineComponent({
 .header-modal {
   @include menuText;
   position: relative;
-
+  z-index: 1;
   &__container {
     position: absolute;
     top: 0;

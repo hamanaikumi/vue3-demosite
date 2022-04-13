@@ -31,8 +31,4 @@ export default defineComponent({
   text-align: center;
   padding: 1rem 0;
 }
-p {
-  @include defaultText;
-  line-height: 200%;
-}
 </style>

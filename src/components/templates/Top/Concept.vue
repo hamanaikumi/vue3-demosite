@@ -49,12 +49,16 @@ export default defineComponent({
     display: flex;
     p {
       padding: 20px;
+      @include defaultText;
+      line-height: 200%;
     }
   }
   &-second {
     display: flex;
     flex-direction: row-reverse;
     p {
+      @include defaultText;
+      line-height: 200%;
       padding: 20px;
     }
   }
