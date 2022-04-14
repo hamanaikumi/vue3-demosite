@@ -7,14 +7,16 @@
         src="../../../assets/images/hotcake2.jpeg"
         alt="コンセプト写真"
       />
-      <p>
-        「おいしいものは人を笑顔にできる。」
-        この思いをカタチにしたのが『幸せのパンケーキ』です。
-        世界一ふわふわでしっとり感のあるパンケーキに
-        濃厚でクリーミーなニュージーランドの高級マヌカハニーと
-        発酵バターをブレンドしたホイップバターを絡めると
-        これまでになかった驚きと感動に包まれます。
-      </p>
+      <div>
+        <p>
+          「おいしいものは人を笑顔にできる。」
+          この思いをカタチにしたのが『幸せのパンケーキ』です。
+          世界一ふわふわでしっとり感のあるパンケーキに
+          濃厚でクリーミーなニュージーランドの高級マヌカハニーと
+          発酵バターをブレンドしたホイップバターを絡めると
+          これまでになかった驚きと感動に包まれます。
+        </p>
+      </div>
     </div>
     <div class="concept-second">
       <img
@@ -48,8 +50,8 @@ export default defineComponent({
   &-first {
     display: flex;
     p {
-      padding: 20px;
       @include defaultText;
+      padding: 20px;
       line-height: 200%;
     }
   }
@@ -72,10 +74,20 @@ export default defineComponent({
     &-first {
       display: flex;
       flex-direction: column;
+      p {
+        padding: 20px;
+        @include defaultText;
+        line-height: 200%;
+      }
     }
     &-second {
       display: flex;
       flex-direction: column;
+      p {
+        padding: 20px;
+        @include defaultText;
+        line-height: 200%;
+      }
     }
     &-image {
       max-width: 100%;

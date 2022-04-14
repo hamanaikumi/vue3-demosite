@@ -31,4 +31,7 @@ export default defineComponent({
   text-align: center;
   padding: 1rem 0;
 }
+.router-link {
+  text-decoration: none;
+}
 </style>

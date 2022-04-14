@@ -5,7 +5,9 @@
     <img src="../../../assets/images/hotcake3.jpeg" class="slideshow fadeout" />
   </div>
   <div class="slideImage-text">
-    <p>make every day special</p>
+    <p>
+      make every day special. make every day special. make every day special.
+    </p>
   </div>
 </template>
 <script lang="ts">
@@ -69,10 +71,12 @@ img {
 }
 
 .slideImage-text {
-  widows: 100vw;
+  width: 100%;
+  overflow: hidden;
+
   p {
     font-size: 100px;
-    font-weight: 400;
+    font-weight: 600;
     color: #fff;
     white-space: nowrap;
     animation: loop-text 60s linear infinite;

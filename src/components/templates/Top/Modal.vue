@@ -1,9 +1,9 @@
 <template>
   <div class="header-modal">
     <div class="header-modal__container">
-      <p>Menu</p>
-      <p>Shops</p>
-      <p>Recruit</p>
+      <router-link class="router-link" to="/"> <p>Menu</p></router-link>
+      <router-link class="router-link" to="/"> <p>Shops</p></router-link>
+      <router-link class="router-link" to="/"> <p>Recruit</p></router-link>
     </div>
   </div>
 </template>
@@ -30,6 +30,21 @@ export default defineComponent({
     background-color: #ffff;
     p {
       padding: 8px 0;
+      &::after {
+        border-bottom: solid 2px #3333;
+        bottom: 0;
+        content: "";
+        display: block;
+        transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        width: 0;
+      }
+      &:hover {
+        color: #808080;
+        &::after {
+          width: 60%;
+        }
+      }
     }
   }
 }

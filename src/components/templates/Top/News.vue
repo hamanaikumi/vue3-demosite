@@ -3,37 +3,12 @@
     <p class="title">News</p>
     <div class="news-wrapper">
       <div class="news-content">
-        <img
-          class="news-image"
-          src="../../../assets/images/news1.jpeg"
-          alt="ニュース写真"
-        />
-        <p>
-          「おいしいものは人を笑顔にできる。」
-          この思いをカタチにしたのが『幸せのパンケーキ』です。
-        </p>
-      </div>
-      <div class="news-content">
-        <img
-          class="news-image"
-          src="../../../assets/images/news1.jpeg"
-          alt="ニュース写真"
-        />
-        <p>
-          「おいしいものは人を笑顔にできる。」
-          この思いをカタチにしたのが『幸せのパンケーキ』です。
-        </p>
-      </div>
-      <div class="news-content">
-        <img
-          class="news-image"
-          src="../../../assets/images/news1.jpeg"
-          alt="ニュース写真"
-        />
-        <p>
-          「おいしいものは人を笑顔にできる。」
-          この思いをカタチにしたのが『幸せのパンケーキ』です。
-        </p>
+        <router-link to="/news">
+          <div class="news-image">
+            <img src="../../../assets/images/news1.jpeg" alt="ニュース写真" />
+          </div>
+          <p>2022.04.01 「hanako」に掲載されました</p>
+        </router-link>
       </div>
     </div>
   </div>
@@ -43,9 +18,6 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "News",
-  // setup() {
-
-  // },
 });
 </script>
 
@@ -61,9 +33,43 @@ export default defineComponent({
     line-height: 200%;
   }
   &-image {
-    width: 100%;
     height: 300px;
-    object-fit: cover;
+    width: 300px;
+    // hover時に画像サイズを固定するため
+    overflow: hidden;
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &::after {
+      content: "Read More";
+      font-size: 16px;
+      letter-spacing: 0.2em;
+      text-align: center;
+      padding-top: 41%;
+      color: #fff;
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: rgba(0, 0, 0, 0.4);
+      transition: 0.8s;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+
+    &:hover {
+      img {
+        transition: all 0.5s ease;
+        transform: scale(1.05);
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
   }
 
   @include sp {

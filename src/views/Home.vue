@@ -4,13 +4,13 @@
       <slide-image />
     </div>
 
-    <div class="box" ref="componentRef1">
+    <div class="home-component" ref="componentRef1">
       <concept />
     </div>
-    <div class="box" ref="componentRef2">
+    <div class="home-component" ref="componentRef2">
       <news />
     </div>
-    <div class="box" ref="componentRef3">
+    <div class="home-component" ref="componentRef3">
       <shop />
     </div>
   </div>
@@ -31,9 +31,9 @@ export default defineComponent({
       refArray: Array<any>(),
     });
 
-    const componentRef1 = ref(); // 1: 型を指定
-    const componentRef2 = ref(); // 1: 型を指定
-    const componentRef3 = ref(); // 1: 型を指定
+    const componentRef1 = ref();
+    const componentRef2 = ref();
+    const componentRef3 = ref();
     onMounted(() => {
       // 型から undefined をなくす
       if (!componentRef1.value) return;
@@ -82,17 +82,17 @@ export default defineComponent({
   &-image {
     height: 45rem;
   }
-}
 
-.box {
-  opacity: 0;
-  // transform: translateY(100px);
-  transition: opacity 1s ease;
-}
-.box.show {
-  // transform: translateY(0);
-  opacity: 1;
-  transition: opacity 1s ease;
-  transition-delay: 500ms;
+  &-component {
+    opacity: 0;
+    // transform: translateY(100px);
+    transition: opacity 1s ease;
+  }
+  .show {
+    // transform: translateY(0);
+    opacity: 1;
+    transition: opacity 1s ease;
+    transition-delay: 500ms;
+  }
 }
 </style>
