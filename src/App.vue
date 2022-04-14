@@ -1,30 +1,37 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+  <Header />
   <router-view />
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+import Header from "@/components/templates/Header.vue";
+
+export default defineComponent({
+  components: {
+    Header,
+  },
+  // setup() {
+
+  // },
+});
+</script>
+
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  font-family: "Noto Sans JP";
+  // 表示される文字がなめらかになる
+  // -webkit-font-smoothing: antialiased;
+  // -webkit-にantialiasedと指定した時のみgrayscaleを指定すると、ブラウザ間での見え方の差が小さくすむ
+  // -moz-osx-font-smoothing: grayscale;
+  color: #333333;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.title {
+  @include titleText;
+  text-align: center;
+  padding: 1rem 0;
+}
+.router-link {
+  text-decoration: none;
 }
 </style>
