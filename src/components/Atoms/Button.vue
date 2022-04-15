@@ -49,6 +49,9 @@ export default defineComponent({
   background: $light-gray;
   border: none;
   color: $white;
+  &:hover {
+    background: $dark-gray;
+  }
 }
 
 // .button-secondary {

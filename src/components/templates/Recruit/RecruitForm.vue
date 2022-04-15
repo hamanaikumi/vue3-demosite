@@ -1,37 +1,56 @@
 <template>
   <title-text :text="props.text" />
-  <div class="recruitForm">
-    <div class="recruitForm-content">
-      <Form :title="state.name" :size="state.large" />
-    </div>
-    <div class="recruitForm-content">
-      <Form :title="state.furigana" :size="state.large" />
-    </div>
-    <div class="recruitForm-content">
-      <Form :title="state.phone" :size="state.large" />
-    </div>
-    <div class="recruitForm-content">
-      <Form :title="state.email" :size="state.large" />
-    </div>
-  </div>
+  <table>
+    <tr class="recruitForm">
+      <th class="recruitForm-title">
+        <p>{{ props.name }}</p>
+      </th>
+      <td class="recruitForm-content"><Form :size="props.large" /></td>
+    </tr>
+    <tr class="recruitForm">
+      <th class="recruitForm-title">
+        <p class="recruitForm-content">{{ props.furigana }}</p>
+      </th>
+      <td><Form :size="props.large" /></td>
+    </tr>
+    <tr class="recruitForm">
+      <th class="recruitForm-title">
+        <p class="recruitForm-content">{{ props.phone }}</p>
+      </th>
+      <td><Form :size="props.large" /></td>
+    </tr>
+    <tr class="recruitForm" v>
+      <th class="recruitForm-title">
+        <p class="recruitForm-content">{{ props.email }}</p>
+      </th>
+      <td><Form :size="props.large" /></td>
+    </tr>
+    <tr class="recruitForm">
+      <th class="recruitForm-title">
+        <p class="recruitForm-content">{{ props.gender }}</p>
+      </th>
+      <td>
+        <SelectBox :options="props.genderOptions" :value="props.genderValue" />
+      </td>
+    </tr>
+  </table>
   <div class="recruitForm-button">
-    <Button :label="state.submit" />
+    <Button :label="props.submit" />
   </div>
 </template>
 <script lang="ts">
 import Button from "@/components/Atoms/Button.vue";
 import Form from "@/components/Atoms/Form.vue";
+import SelectBox from "@/components/Atoms/SelectBox.vue";
 import TitleText from "@/components/Atoms/TitleText.vue";
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  components: { TitleText, Form, Button },
+  components: { TitleText, Form, Button, SelectBox },
   name: "RecruitForm",
   setup() {
     const props = {
       text: "Form",
-    };
-    const state = ref({
       medium: "medium",
       small: "small",
       large: "large",
@@ -40,28 +59,41 @@ export default defineComponent({
       phone: "電話番号",
       email: "メールアドレス",
       submit: "送信",
-    });
+      gender: "性別",
+      genderValue: "性別を選択",
+      genderOptions: [
+        {
+          name: "男",
+        },
+        {
+          name: "女",
+        },
+      ],
+    };
 
     return {
       props,
-      state,
     };
   },
 });
 </script>
 
 <style lang="scss" scoped>
+table {
+  border-spacing: 20px;
+}
 .recruitForm {
-  &-content {
-    display: flex;
-    margin: auto;
-    margin-bottom: 12px;
+  &-title {
+    p {
+      font-size: 0.875rem;
+      width: 150px;
+      font-weight: bold;
+    }
   }
-
   &-button {
     display: flex;
     justify-content: center;
-    margin: 12px 0;
+    margin: 18px 0;
   }
 }
 </style>

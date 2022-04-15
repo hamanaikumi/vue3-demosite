@@ -1,7 +1,6 @@
 <template>
   <div class="form">
     <div class="form-content">
-      <p>{{ title }}</p>
       <input
         :class="classes"
         :placeholder="InputPlaceholder"
@@ -18,10 +17,6 @@ import { reactive, computed, defineComponent } from "vue";
 export default defineComponent({
   name: "Form",
   props: {
-    title: {
-      type: String,
-      default: "タイトル",
-    },
     // size
     size: {
       type: String,
@@ -70,17 +65,14 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .form {
-  display: flex;
+  // display: flex;
+  // width: 360px;
   &-content {
     margin-left: 0;
     display: flex;
     text-align: left;
   }
-  p {
-    font-size: 0.875rem;
-    width: 180px;
-    font-weight: bold;
-  }
+
   input {
     box-sizing: border-box;
   }
