@@ -2,27 +2,36 @@
   <div class="recruit">
     <breadcrmb />
     <div class="recruit-spacial" ref="componentRef1">
-      <special />
+      <recruit-top />
     </div>
     <div class="recruit-component" ref="componentRef2">
-      <Form :size="medium" />
+      <recruit-form />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
-import Special from "@/components/templates/Menu/Special.vue";
 import Breadcrmb from "@/components/templates/Breadcrmb.vue";
 import Form from "@/components/Atoms/Form.vue";
+import RecruitTop from "@/components/templates/Recruit/RecruitTop.vue";
+import RecruitForm from "@/components/templates/Recruit/RecruitForm.vue";
 
 export default defineComponent({
   name: "Recruit",
-  components: { Special, Breadcrmb, Form },
+  components: { Breadcrmb, RecruitTop, RecruitForm },
 
   setup() {
     const state = ref({
       refArray: Array<Element>(),
+
+      medium: "medium",
+      small: "small",
+      large: "large",
+      name: "氏名",
+      furigana: "ふりがな",
+      phone: "電話番号",
+      email: "メールアドレス",
     });
 
     const componentRef1 = ref();
@@ -74,7 +83,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .recruit {
   &-component {
-    opacity: 0;
+    width: 400px;
+    // opacity: 0;
     // transform: translateY(100px);
     transition: opacity 1s ease;
   }

@@ -1,10 +1,15 @@
 <template>
-  <input
-    :class="classes"
-    :placeholder="InputPlaceholder"
-    :value="inputValue"
-    @input="emitInput"
-  />
+  <div class="form">
+    <div class="form-content">
+      <p>{{ title }}</p>
+      <input
+        :class="classes"
+        :placeholder="InputPlaceholder"
+        :value="inputValue"
+        @input="emitInput"
+      />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -13,6 +18,10 @@ import { reactive, computed, defineComponent } from "vue";
 export default defineComponent({
   name: "Form",
   props: {
+    title: {
+      type: String,
+      default: "タイトル",
+    },
     // size
     size: {
       type: String,
@@ -59,33 +68,49 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-input {
-  box-sizing: border-box;
-}
-.input-large {
-  width: 100%;
-  /* border: 1px solid #a9a9a9; */
-  padding: 8px;
-}
-.input-large:focus {
-  outline: none;
-}
+<style lang="scss" scoped>
+.form {
+  display: flex;
+  &-content {
+    margin-left: 0;
+    display: flex;
+    text-align: left;
+  }
+  p {
+    font-size: 0.875rem;
+    width: 180px;
+    font-weight: bold;
+  }
+  input {
+    box-sizing: border-box;
+  }
+  .input-large {
+    width: 100%;
+    border: 2px solid $light-gray;
+    padding: 8px 20px;
+    border-radius: 20px;
+  }
+  .input-large:focus {
+    outline: none;
+  }
 
-.input-medium {
-  width: 50%;
-  border: 1px solid #a9a9a9;
-  padding: 8px;
-}
-.input-medium:focus {
-  outline: none;
-}
-.input-small {
-  width: 100px;
-  border: 1px solid #a9a9a9;
-  padding: 8px;
-}
-.input-small {
-  outline: none;
+  .input-medium {
+    width: 120px;
+    border: 2px solid $light-gray;
+    padding: 8px 20px;
+    border-radius: 20px;
+  }
+  .input-medium:focus {
+    outline: none;
+  }
+  .input-small {
+    width: 60px;
+    border: 2px solid $light-gray;
+    padding: 8px 20px;
+    border-radius: 20px;
+  }
+  .input-small {
+    outline: none;
+  }
 }
 </style>
