@@ -13,9 +13,9 @@
     <div class="recruitForm-content">
       <Form :title="state.email" :size="state.large" />
     </div>
-    <div class="recruitForm-button">
-      <Button :label="state.submit" />
-    </div>
+  </div>
+  <div class="recruitForm-button">
+    <Button :label="state.submit" />
   </div>
 </template>
 <script lang="ts">
@@ -54,22 +54,14 @@ export default defineComponent({
 .recruitForm {
   &-content {
     display: flex;
-    div {
-      margin: 12px 0;
-    }
+    margin: auto;
+    margin-bottom: 12px;
   }
 
   &-button {
     display: flex;
     justify-content: center;
     margin: 12px 0;
-  }
-
-  @include sp {
-    &-content {
-      display: flex;
-      flex-direction: column;
-    }
   }
 }
 </style>
