@@ -1,30 +1,24 @@
 <template>
-  <div class="home">
-    <div class="home-image">
-      <slide-image />
+  <div class="recruit">
+    <breadcrmb />
+    <div class="recruit-spacial" ref="componentRef1">
+      <special />
     </div>
-    <div class="home-component" ref="componentRef1">
-      <concept />
-    </div>
-    <div class="home-component" ref="componentRef2">
-      <news />
-    </div>
-    <div class="home-component" ref="componentRef3">
-      <shop />
+    <div class="recruit-component" ref="componentRef2">
+      <Form :size="medium" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import SlideImage from "@/components/templates/Top/SlideImage.vue";
-import Concept from "@/components/templates/Top/Concept.vue";
-import News from "@/components/templates/Top/News.vue";
-import Shop from "@/components/templates/Top/Shop.vue";
 import { defineComponent, onMounted, ref } from "vue";
+import Special from "@/components/templates/Menu/Special.vue";
+import Breadcrmb from "@/components/templates/Breadcrmb.vue";
+import Form from "@/components/Atoms/Form.vue";
 
 export default defineComponent({
-  name: "Home",
-  components: { Concept, News, Shop, SlideImage },
+  name: "Recruit",
+  components: { Special, Breadcrmb, Form },
 
   setup() {
     const state = ref({
@@ -78,11 +72,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.home {
-  &-image {
-    height: 45rem;
-  }
-
+.recruit {
   &-component {
     opacity: 0;
     // transform: translateY(100px);

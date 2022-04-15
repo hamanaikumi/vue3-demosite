@@ -1,7 +1,23 @@
 <template>
   <div class="news">
-    <p class="title">News</p>
+    <title-text :text="props.text" />
     <div class="news-wrapper">
+      <div class="news-content">
+        <router-link to="/news">
+          <div class="news-image">
+            <img src="../../../assets/images/news1.jpeg" alt="ニュース写真" />
+          </div>
+          <p>2022.04.01 「hanako」に掲載されました</p>
+        </router-link>
+      </div>
+      <div class="news-content">
+        <router-link to="/news">
+          <div class="news-image">
+            <img src="../../../assets/images/news1.jpeg" alt="ニュース写真" />
+          </div>
+          <p>2022.04.01 「hanako」に掲載されました</p>
+        </router-link>
+      </div>
       <div class="news-content">
         <router-link to="/news">
           <div class="news-image">
@@ -14,10 +30,20 @@
   </div>
 </template>
 <script lang="ts">
+import TitleText from "@/components/Atoms/TitleText.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
+  components: { TitleText },
   name: "News",
+  setup() {
+    const props = {
+      text: "News",
+    };
+    return {
+      props,
+    };
+  },
 });
 </script>
 

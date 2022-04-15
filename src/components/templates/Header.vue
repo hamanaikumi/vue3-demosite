@@ -1,11 +1,12 @@
 <template>
   <div class="header">
-    <p class="header-logo">Sample Cafe</p>
+    <router-link class="router-link" to="/">
+      <h1 class="header-logo">Sample Cafe</h1>
+    </router-link>
     <div class="header-menu__tab">
-      <router-link class="router-link" to="/"> <p>Menu</p></router-link>
-      <router-link class="router-link" to="/"> <p>Shops</p></router-link>
-      <router-link class="router-link" to="/"> <p>Recruit</p></router-link>
-
+      <div v-for="(menu, i) of props" :key="i">
+        <menu-text :link="menu.link" :text="menu.text" />
+      </div>
       <div class="header-icon">
         <svg
           class="svg"
@@ -51,18 +52,37 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import Modal from "./Top/Modal.vue";
+import MenuText from "../Atoms/MenuText.vue";
+import Modal from "./Modal.vue";
 
 export default defineComponent({
-  components: { Modal },
+  components: { Modal, MenuText },
   setup() {
     const state = ref({
       isActive: false,
     });
+    const props = [
+      {
+        link: "/Menu",
+        text: "Menu",
+      },
+      {
+        link: "/Shop",
+        text: "Shop",
+      },
+      {
+        link: "/Recruit",
+        text: "Recruit",
+      },
+    ];
+    /**
+     * モバイルの際のモーダル表示を切り替える.
+     */
     const menuSwitch = () => {
       state.value.isActive = !state.value.isActive;
     };
-    return { state, menuSwitch };
+
+    return { state, props, menuSwitch };
   },
 });
 </script>
@@ -79,7 +99,7 @@ export default defineComponent({
   &-icon {
     display: flex;
     .svg {
-      margin-left: 60px;
+      margin: 0 30px;
       width: 40px;
       &:hover {
         fill: #808080;
@@ -89,32 +109,13 @@ export default defineComponent({
       }
     }
   }
+
   &-menu__tab {
     @include menuText;
     @include tab {
       display: none;
     }
     display: flex;
-
-    p {
-      margin-left: 60px;
-
-      &::after {
-        border-bottom: solid 2px #3333;
-        bottom: 0;
-        content: "";
-        display: block;
-        transition: all 0.3s ease;
-        -webkit-transition: all 0.3s ease;
-        width: 0;
-      }
-      &:hover {
-        color: #808080;
-        &::after {
-          width: 100%;
-        }
-      }
-    }
   }
 
   @include tab {
@@ -122,11 +123,9 @@ export default defineComponent({
       transition: all 0.4s;
       box-sizing: border-box;
       position: relative;
-
       width: 40px;
       height: 40px;
       border: none;
-      // appearance: none;
       cursor: pointer;
 
       span {

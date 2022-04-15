@@ -33,15 +33,18 @@ export default defineComponent({
     /**
      * 画像の切り替えを行う.参考：https://qiita.com/ryo511/items/4c65caffb01ba13fb89b
      */
-    const slideshow = (images: any) => {
+    const slideshow = (images: HTMLCollection) => {
       const current = images[state.value.index];
+
       const prev = images[state.value.index - 1]
         ? images[state.value.index - 1]
         : images[images.length - 1];
-      current.classList.add("fadein");
-      current.classList.remove("fadeout");
-      prev.classList.remove("fadein");
-      prev.classList.add("fadeout");
+      if (current) {
+        current.classList.add("fadein");
+        current.classList.remove("fadeout");
+        prev.classList.remove("fadein");
+        prev.classList.add("fadeout");
+      }
     };
     return {
       state,
