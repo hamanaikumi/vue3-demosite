@@ -1,7 +1,23 @@
 <template>
   <div class="shop">
-    <p class="title">Shop</p>
+    <title-text :text="props.text" />
     <div class="shop-wrapper">
+      <div class="shop-content">
+        <router-link to="/news">
+          <div class="shop-image">
+            <img src="../../../assets/images/shop1.jpeg" alt="ショップ写真" />
+          </div>
+          <p>秋葉原店</p>
+        </router-link>
+      </div>
+      <div class="shop-content">
+        <router-link to="/news">
+          <div class="shop-image">
+            <img src="../../../assets/images/shop1.jpeg" alt="ショップ写真" />
+          </div>
+          <p>秋葉原店</p>
+        </router-link>
+      </div>
       <div class="shop-content">
         <router-link to="/news">
           <div class="shop-image">
@@ -14,10 +30,20 @@
   </div>
 </template>
 <script lang="ts">
+import TitleText from "@/components/Atoms/TitleText.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
+  components: { TitleText },
   name: "Shop",
+  setup() {
+    const props = {
+      text: "Shops",
+    };
+    return {
+      props,
+    };
+  },
 });
 </script>
 

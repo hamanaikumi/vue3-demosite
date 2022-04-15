@@ -1,30 +1,25 @@
 <template>
-  <div class="home">
-    <div class="home-image">
-      <slide-image />
+  <div class="shop">
+    <breadcrmb />
+    <div class="shop-spacial" ref="componentRef1">
+      <shop-concept />
     </div>
-    <div class="home-component" ref="componentRef1">
-      <concept />
-    </div>
-    <div class="home-component" ref="componentRef2">
-      <news />
-    </div>
-    <div class="home-component" ref="componentRef3">
-      <shop />
+    <div class="shop-component" ref="componentRef2">
+      <shop-detail />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import SlideImage from "@/components/templates/Top/SlideImage.vue";
-import Concept from "@/components/templates/Top/Concept.vue";
-import News from "@/components/templates/Top/News.vue";
-import Shop from "@/components/templates/Top/Shop.vue";
 import { defineComponent, onMounted, ref } from "vue";
 
+import Breadcrmb from "@/components/templates/Breadcrmb.vue";
+import ShopConcept from "@/components/templates/Shop/ShopConcept.vue";
+import ShopDetail from "@/components/templates/Shop/ShopDetail.vue";
+
 export default defineComponent({
-  name: "Home",
-  components: { Concept, News, Shop, SlideImage },
+  name: "Shop",
+  components: { Breadcrmb, ShopConcept, ShopDetail },
 
   setup() {
     const state = ref({
@@ -33,18 +28,13 @@ export default defineComponent({
 
     const componentRef1 = ref();
     const componentRef2 = ref();
-    const componentRef3 = ref();
+
     onMounted(() => {
       // 型から undefined をなくす
       if (!componentRef1.value) return;
       if (!componentRef2.value) return;
-      if (!componentRef3.value) return;
 
-      state.value.refArray.push(
-        componentRef1.value,
-        componentRef2.value,
-        componentRef3.value
-      );
+      state.value.refArray.push(componentRef1.value, componentRef2.value);
     });
 
     const checkBoxes = () => {
@@ -72,17 +62,12 @@ export default defineComponent({
       checkBoxes,
       componentRef1,
       componentRef2,
-      componentRef3,
     };
   },
 });
 </script>
 <style lang="scss" scoped>
-.home {
-  &-image {
-    height: 45rem;
-  }
-
+.shop {
   &-component {
     opacity: 0;
     // transform: translateY(100px);

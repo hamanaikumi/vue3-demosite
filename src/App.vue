@@ -1,19 +1,19 @@
 <template>
   <Header />
   <router-view />
+  <Footer />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import Header from "@/components/templates/Header.vue";
+import Footer from "./components/templates/Footer.vue";
 
 export default defineComponent({
   components: {
     Header,
+    Footer,
   },
-  // setup() {
-
-  // },
 });
 </script>
 
@@ -24,14 +24,10 @@ export default defineComponent({
   // -webkit-font-smoothing: antialiased;
   // -webkit-にantialiasedと指定した時のみgrayscaleを指定すると、ブラウザ間での見え方の差が小さくすむ
   // -moz-osx-font-smoothing: grayscale;
-  color: #333333;
 }
-.title {
-  @include titleText;
-  text-align: center;
-  padding: 1rem 0;
-}
+
 .router-link {
   text-decoration: none;
+  color: #333333;
 }
 </style>
