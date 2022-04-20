@@ -8,13 +8,16 @@
         state.selectedCategory === state.drink
       "
     >
-      <NewFood :category="state.selectedCategory" />
-    </div>
-    <div v-show="state.selectedCategory === state.news">
-      <NewNews
+      <NewFood
         :category="state.selectedCategory"
         :imageFile="state.imageFile"
       />
+    </div>
+    <div v-show="state.selectedCategory === state.news">
+      <NewNews :imageFile="state.imageFile" />
+    </div>
+    <div v-show="state.selectedCategory === state.shop">
+      <NewShop :imageFile="state.imageFile" />
     </div>
   </div>
 </template>
@@ -25,9 +28,10 @@ import SelectCategory from "@/components/Templates/Edit/SelectCategory.vue";
 import NewFood from "@/components/Templates/Edit/NewFood.vue";
 import NewNews from "@/components/Templates/Edit/NewNews.vue";
 import AddImage from "@/components/Templates/Edit/AddImage.vue";
+import NewShop from "@/components/Templates/Edit/NewShop.vue";
 
 export default defineComponent({
-  components: { SelectCategory, NewFood, NewNews, AddImage },
+  components: { SelectCategory, NewFood, NewNews, AddImage, NewShop },
   name: "Edit",
 
   setup() {
@@ -37,6 +41,7 @@ export default defineComponent({
       food: "新商品（フード）",
       drink: "新商品（ドリンク）",
       news: "ニュース",
+      shop: "店舗",
       // 添付された画像ファイル
       imageFile: {},
     });

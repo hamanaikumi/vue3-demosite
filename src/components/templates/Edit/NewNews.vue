@@ -34,9 +34,6 @@ export default defineComponent({
   components: { Form, Button, TextArea },
   name: "NewNews",
   props: {
-    category: {
-      type: String,
-    },
     imageFile: {},
   },
   setup(props) {
@@ -90,13 +87,11 @@ export default defineComponent({
     const upload = async () => {
       await accessS3();
       // mongodbに保管
-      if (props.category === "ニュース") {
-        axios.post("http://localhost:3000/news", {
-          title: state.value.titleValue,
-          detail: state.value.detailValue,
-          image: state.value.imageUrl,
-        });
-      }
+      axios.post("http://localhost:3000/news", {
+        title: state.value.titleValue,
+        detail: state.value.detailValue,
+        image: state.value.imageUrl,
+      });
     };
 
     return {
