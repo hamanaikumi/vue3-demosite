@@ -5,7 +5,7 @@
         <p>{{ propsValue.name }}</p>
       </div>
       <div class="newsForm-content">
-        <Form :size="propsValue.large" @onInput="setName" />
+        <Form :size="propsValue.large" @onInput="setTitle" />
       </div>
     </div>
     <div class="newsForm">
@@ -16,37 +16,18 @@
         <TextArea :rows="6" @onInput="setDetail" />
       </div>
     </div>
-
-    <!-- file -->
-    <div class="newsForm-fileUpload">
-      <label for="file-upload">
-        <p>画像を選択</p>
-        <input
-          id="file-upload"
-          name="file-upload"
-          type="file"
-          accept="image/jpeg, image/jpg, image/png"
-          @change="fileSelected"
-        />
-      </label>
-      <div>
-        {{ state.errorimage }}
-        <div v-show="!state.imageSrc" class="imageBox"></div>
-        <img v-show="state.imageSrc" :src="state.imageSrc" />
-      </div>
-    </div>
     <!-- button -->
     <div class="newsForm-button">
       <Button :label="propsValue.submit" @emitClick="upload" />
     </div>
   </div>
+  {{ props }}
 </template>
 <script lang="ts">
 import Button from "@/components/Atoms/Button.vue";
 import Form from "@/components/Atoms/Form.vue";
 import { defineComponent, reactive, ref } from "vue";
 import axios from "axios";
-import imageCompression from "browser-image-compression";
 import TextArea from "@/components/Atoms/TextArea.vue";
 
 export default defineComponent({
@@ -56,6 +37,7 @@ export default defineComponent({
     category: {
       type: String,
     },
+    imageFile: {},
   },
   setup(props) {
     props = reactive(props);
@@ -68,52 +50,19 @@ export default defineComponent({
       submit: "送信",
     };
     const state = ref({
-      // 画像のURL
-      imageSrc: "",
-      // 画像エラー文
-      errorimage: "",
-      // S3に送信する画像ファイル
-      imageFile: {},
-      // アップロード用画像URL
-      imageUrl: "",
       // アップロード用記事タイトル
       titleValue: "",
       // アップロード用記事詳細
       detailValue: "",
+      // アップロード用画像URL
+      imageUrl: "",
     });
 
-    const setName = (inputValue: string) => {
+    const setTitle = (inputValue: string) => {
       state.value.titleValue = inputValue;
     };
     const setDetail = (inputValue: string) => {
       state.value.detailValue = inputValue;
-    };
-
-    /**
-     * 新しい画像画像に入れ替える.
-     * @param e - 添付ファイル
-     */
-    const fileSelected = async (e: any) => {
-      state.value.errorimage = "";
-      const file = e.target.files[0];
-      if (file) {
-        // 制限サイズ(5MB)
-        const sizeLimit = 1024 * 1024 * 5;
-        // ファイルサイズが制限以上の場合のエラー
-        if (file.size > sizeLimit) {
-          state.value.errorimage = "ファイルサイズは5MB以下にしてください";
-          return;
-        }
-        state.value.imageSrc = window.URL.createObjectURL(file);
-        // Fileオブジェクトを圧縮
-        const options = {
-          maxSizeMB: 0.1,
-          maxWidthOrHeight: 1200,
-          useWebWorker: true,
-        };
-        const compFile = await imageCompression(file, options);
-        state.value.imageFile = compFile;
-      }
     };
 
     /**
@@ -130,11 +79,10 @@ export default defineComponent({
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        body: state.value.imageFile as any,
+        body: props.imageFile as any,
       });
       state.value.imageUrl = url.split("?")[0];
     };
-    console.log(props.category);
 
     /**
      * 製品名、値段、画像URLをmongoDBに保管する.
@@ -154,10 +102,9 @@ export default defineComponent({
     return {
       propsValue,
       state,
-      fileSelected,
       accessS3,
       upload,
-      setName,
+      setTitle,
       setDetail,
     };
   },
