@@ -39,7 +39,7 @@ export default defineComponent({
   margin: 0;
   /* 円の回転 */
   transform: rotate(-80deg);
-  animation: r1 20s linear infinite;
+  animation: r1 30s linear infinite;
 }
 @keyframes r1 {
   0% {
@@ -62,7 +62,8 @@ export default defineComponent({
   /* 回転の基準点 */
   transform-origin: center bottom;
   /* border: solid 1px; */
-  color: #ffc0cb;
+  color: #f5deb3;
+  filter: blur(2px);
 }
 
 .circle-text span:nth-child(1) {

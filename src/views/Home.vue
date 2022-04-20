@@ -16,10 +16,10 @@
 </template>
 
 <script lang="ts">
-import SlideImage from "@/components/templates/Top/SlideImage.vue";
-import Concept from "@/components/templates/Top/Concept.vue";
-import News from "@/components/templates/Top/News.vue";
-import Shop from "@/components/templates/Top/Shop.vue";
+import SlideImage from "@/components/Templates/Top/SlideImage.vue";
+import Concept from "@/components/Templates/Top/Concept.vue";
+import News from "@/components/Templates/Top/News.vue";
+import Shop from "@/components/Templates/Top/Shop.vue";
 import { defineComponent, onMounted, ref } from "vue";
 
 export default defineComponent({

@@ -13,9 +13,9 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
 
-import Breadcrmb from "@/components/templates/Breadcrmb.vue";
-import ShopConcept from "@/components/templates/Shop/ShopConcept.vue";
-import ShopDetail from "@/components/templates/Shop/ShopDetail.vue";
+import Breadcrmb from "@/components/Templates/Breadcrmb.vue";
+import ShopConcept from "@/components/Templates/Shop/ShopConcept.vue";
+import ShopDetail from "@/components/Templates/Shop/ShopDetail.vue";
 
 export default defineComponent({
   name: "Shop",

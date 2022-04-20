@@ -12,9 +12,9 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import Breadcrmb from "@/components/templates/Breadcrmb.vue";
-import RecruitTop from "@/components/templates/Recruit/RecruitTop.vue";
-import RecruitForm from "@/components/templates/Recruit/RecruitForm.vue";
+import Breadcrmb from "@/components/Templates/Breadcrmb.vue";
+import RecruitTop from "@/components/Templates/Recruit/RecruitTop.vue";
+import RecruitForm from "@/components/Templates/Recruit/RecruitForm.vue";
 
 export default defineComponent({
   name: "Recruit",

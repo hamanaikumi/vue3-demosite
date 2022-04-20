@@ -15,10 +15,10 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
-import Special from "@/components/templates/Menu/Special.vue";
-import Drink from "@/components/templates/Menu/Drink.vue";
-import Food from "@/components/templates/Menu/Food.vue";
-import Breadcrmb from "@/components/templates/Breadcrmb.vue";
+import Special from "@/components/Templates/Menu/Special.vue";
+import Drink from "@/components/Templates/Menu/Drink.vue";
+import Food from "@/components/Templates/Menu/Food.vue";
+import Breadcrmb from "@/components/Templates/Breadcrmb.vue";
 
 export default defineComponent({
   name: "menu",

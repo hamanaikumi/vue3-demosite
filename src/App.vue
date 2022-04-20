@@ -9,8 +9,8 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import Header from "@/components/templates/Header.vue";
-import Footer from "./components/templates/Footer.vue";
+import Header from "@/components/Templates/Header.vue";
+import Footer from "./components/Templates/Footer.vue";
 import ScrollButton from "./components/Atoms/ScrollButton.vue";
 
 export default defineComponent({
@@ -48,7 +48,7 @@ export default defineComponent({
 
 <style lang="scss">
 #app {
-  font-family: "Lato", sans-serif;
+  font-family: "Poppins", sans-serif;
   // 表示される文字がなめらかになる
   // -webkit-font-smoothing: antialiased;
   // -webkit-にantialiasedと指定した時のみgrayscaleを指定すると、ブラウザ間での見え方の差が小さくすむ

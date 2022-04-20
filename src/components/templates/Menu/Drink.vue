@@ -2,50 +2,48 @@
   <div class="drink-item">
     <title-text :text="props.text" />
     <div class="drink-item-wrapper">
-      <div class="drink-item-content">
+      <div
+        class="drink-item-content"
+        v-for="drink of state.drinkMenu"
+        :key="drink.id"
+      >
         <div class="drink-item-image">
-          <img src="../../../assets/images/cofee.jpeg" alt="ショップ写真" />
+          <img :src="drink.image" alt="ドリンク写真" />
         </div>
-        <p>プレンドコーヒー</p>
-        <p>400円（税込440円）</p>
-      </div>
-      <div class="drink-item-content">
-        <div class="drink-item-image">
-          <img src="../../../assets/images/cafelatte.jpeg" alt="ショップ写真" />
-        </div>
-        <p>カフェラテ</p>
-        <p>400円（税込440円）</p>
-      </div>
-      <div class="drink-item-content">
-        <div class="drink-item-image">
-          <img src="../../../assets/images/cofee.jpeg" alt="ショップ写真" />
-        </div>
-        <p>プレンドコーヒー</p>
-        <p>400円（税込440円）</p>
-      </div>
-      <div class="drink-item-content">
-        <div class="drink-item-image">
-          <img src="../../../assets/images/cofee.jpeg" alt="ショップ写真" />
-        </div>
-        <p>プレンドコーヒー</p>
-        <p>400円（税込440円）</p>
+        <p>{{ drink.name }}</p>
+        <span>{{ drink.price }}円</span>
+        <span>（税込{{ drink.includeTaxPrice }}円）</span>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
 import TitleText from "@/components/Atoms/TitleText.vue";
-import { defineComponent } from "vue";
+import { defineComponent, onBeforeMount, ref } from "vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   components: { TitleText },
-  name: "drink",
+  name: "Drink",
   setup() {
+    const store = useStore();
     const props = {
-      text: "drink",
+      text: "Drink",
     };
+    const state = ref({
+      drinkMenu: [],
+    });
+    const getDrinkMenu = async () => {
+      await store.dispatch("getDrink");
+      state.value.drinkMenu = store.getters.getAllDrink;
+    };
+    onBeforeMount(() => {
+      getDrinkMenu();
+    });
     return {
       props,
+      state,
+      getDrinkMenu,
     };
   },
 });
@@ -55,27 +53,43 @@ export default defineComponent({
 .drink-item {
   &-wrapper {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
   }
   &-content {
-    padding: 12px;
+    padding: 4px;
     text-align: center;
-    width: 25%;
+    width: 23%;
+    span,
     p {
       @include defaultText;
       line-height: 200%;
     }
   }
   &-image {
+    position: relative;
     width: 100%;
+    height: 100%;
+
     // hover時に画像サイズを固定するため
     overflow: hidden;
+    &::before {
+      content: "";
+      width: 100%;
+      display: block;
+      padding-top: 100%;
+    }
 
     p {
       @include defaultText;
       line-height: 200%;
     }
     img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;

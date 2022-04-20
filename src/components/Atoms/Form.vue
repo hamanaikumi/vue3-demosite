@@ -65,8 +65,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .form {
-  // display: flex;
-  // width: 360px;
   &-content {
     margin-left: 0;
     display: flex;

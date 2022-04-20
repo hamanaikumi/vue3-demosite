@@ -1,8 +1,8 @@
 <template>
   <div class="select">
     <div class="select-content">
-      <div class="select-icon"></div>
-      <select :disabled="disabled" @change="handleChange">
+      <!-- <div class="select-icon"></div> -->
+      <select :disabled="disabled" @change="handleChange" :class="classes">
         <option disabled value="" selected>{{ value }}</option>
         <option
           v-for="option of options"
@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, defineComponent, PropType } from "vue";
+import { reactive, defineComponent, PropType, computed } from "vue";
 export default defineComponent({
   name: "SelectBox",
   props: {
@@ -33,6 +33,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    size: {
+      type: String,
+      // バリデーションはアロー関数にする
+      validator: (value: string) => {
+        // 配列の中から値を探して、見つからない場合は−1を返す
+        return ["small", "medium", "large"].indexOf(value) !== -1;
+      },
+    },
   },
   setup(props, context) {
     const handleChange = (event: Event) => {
@@ -42,6 +50,9 @@ export default defineComponent({
     props = reactive(props);
     return {
       handleChange,
+      classes: computed(() => ({
+        [`select-${props.size || "medium"}`]: true,
+      })),
     };
   },
 });
@@ -52,7 +63,6 @@ select {
   padding: 8px 20px;
   border: 2px solid $light-gray;
   border-radius: 20px;
-  width: 120px;
   &:focus {
     outline: none;
   }
@@ -65,6 +75,12 @@ option {
   display: flex;
   position: relative;
 
+  &-medium {
+    width: 120px;
+  }
+  &-large {
+    width: 200px;
+  }
   &-content {
     display: flex;
     text-align: left;
