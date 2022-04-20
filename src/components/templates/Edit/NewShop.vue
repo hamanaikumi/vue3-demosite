@@ -202,10 +202,5 @@ export default defineComponent({
     justify-content: center;
     margin: 18px 0;
   }
-  &-fileUpload {
-    display: flex;
-    flex-direction: column;
-    // justify-items: center;
-  }
 }
 </style>

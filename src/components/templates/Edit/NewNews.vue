@@ -122,41 +122,6 @@ export default defineComponent({
       justify-content: center;
       margin: 18px 0;
     }
-    &-fileUpload {
-      display: flex;
-      flex-direction: column;
-      // justify-items: center;
-      input[type="file"] {
-        display: none;
-      }
-      p {
-        font-size: 0.875rem;
-        text-align: center;
-        cursor: pointer;
-        border-radius: 20px;
-        width: 150px;
-        height: 40px;
-        // 中央揃えにするためheightと同じ数値
-        line-height: 40px;
-        background: $light-gray;
-        border: none;
-        color: $white;
-        margin-bottom: 24px;
-        &:hover {
-          background: $dark-gray;
-        }
-      }
-      .imageBox {
-        height: 300px;
-        width: 300px;
-        background-color: $light-gray;
-      }
-      img {
-        height: 300px;
-        width: 300px;
-        object-fit: cover;
-      }
-    }
   }
 }
 </style>

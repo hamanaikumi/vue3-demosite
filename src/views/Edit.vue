@@ -37,7 +37,8 @@ export default defineComponent({
   setup() {
     const state = ref({
       // 選択されたカテゴリー
-      selectedCategory: "新商品（フード）",
+      selectedCategory: "",
+      // カテゴリー
       food: "新商品（フード）",
       drink: "新商品（ドリンク）",
       news: "ニュース",
