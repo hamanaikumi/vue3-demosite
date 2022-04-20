@@ -2,9 +2,6 @@
   <div class="selectCategory">
     <title-text :text="props.text" />
     <div class="categoryForm">
-      <div class="categoryForm-title">
-        <p>{{ props.category }}</p>
-      </div>
       <div class="categoryForm-content">
         <select-box
           :options="props.categoryOptions"
@@ -27,7 +24,7 @@ export default defineComponent({
     const props = ref({
       text: "Edit",
       size: "large",
-      category: "カテゴリー",
+
       categoryValue: "カテゴリーを選択",
       categoryOptions: [
         { name: "新商品（フード）" },
@@ -48,15 +45,19 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .selectCategory {
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   .categoryForm {
     display: flex;
+    justify-content: start;
     &-title {
+      width: 30%;
       p {
         font-size: 0.875rem;
-        width: 150px;
         font-weight: bold;
       }
+    }
+    &-content {
+      width: 70%;
     }
   }
 }

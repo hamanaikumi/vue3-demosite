@@ -1,7 +1,6 @@
 <template>
   <div class="select">
     <div class="select-content">
-      <!-- <div class="select-icon"></div> -->
       <select :disabled="disabled" @change="handleChange" :class="classes">
         <option disabled value="" selected>{{ value }}</option>
         <option
@@ -79,26 +78,11 @@ option {
     width: 120px;
   }
   &-large {
-    width: 200px;
+    width: 100%px;
   }
   &-content {
     display: flex;
     text-align: left;
-  }
-
-  &-icon {
-    position: absolute;
-    border-color: $light-gray transparent transparent;
-    border-style: solid;
-    border-width: 0.45em 0.3em;
-    content: "";
-    display: block;
-    height: 0;
-    margin-top: -0.2em;
-    left: 70%;
-    top: 50%;
-    width: 0;
-    z-index: 1;
   }
 }
 </style>

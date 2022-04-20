@@ -70,7 +70,7 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .addImage {
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   input[type="file"] {
     display: none;
   }

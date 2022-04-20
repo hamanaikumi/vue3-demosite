@@ -1,23 +1,26 @@
 <template>
   <div class="edit">
-    <select-category @onChange="setValue" />
-    <AddImage @emitImageFile="setImageFile" />
-    <div
-      v-show="
-        state.selectedCategory === state.food ||
-        state.selectedCategory === state.drink
-      "
-    >
-      <NewFood
-        :category="state.selectedCategory"
-        :imageFile="state.imageFile"
-      />
-    </div>
-    <div v-show="state.selectedCategory === state.news">
-      <NewNews :imageFile="state.imageFile" />
-    </div>
-    <div v-show="state.selectedCategory === state.shop">
-      <NewShop :imageFile="state.imageFile" />
+    <Breadcrmb />
+    <div class="edit-wrapper">
+      <SelectCategory @onChange="setValue" />
+      <AddImage @emitImageFile="setImageFile" />
+      <div
+        v-show="
+          state.selectedCategory === state.food ||
+          state.selectedCategory === state.drink
+        "
+      >
+        <NewFood
+          :category="state.selectedCategory"
+          :imageFile="state.imageFile"
+        />
+      </div>
+      <div v-show="state.selectedCategory === state.news">
+        <NewNews :imageFile="state.imageFile" />
+      </div>
+      <div v-show="state.selectedCategory === state.shop">
+        <NewShop :imageFile="state.imageFile" />
+      </div>
     </div>
   </div>
 </template>
@@ -29,9 +32,17 @@ import NewFood from "@/components/Templates/Edit/NewFood.vue";
 import NewNews from "@/components/Templates/Edit/NewNews.vue";
 import AddImage from "@/components/Templates/Edit/AddImage.vue";
 import NewShop from "@/components/Templates/Edit/NewShop.vue";
+import Breadcrmb from "@/components/Templates/Breadcrmb.vue";
 
 export default defineComponent({
-  components: { SelectCategory, NewFood, NewNews, AddImage, NewShop },
+  components: {
+    SelectCategory,
+    NewFood,
+    NewNews,
+    AddImage,
+    NewShop,
+    Breadcrmb,
+  },
   name: "Edit",
 
   setup() {
@@ -59,9 +70,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.edit {
-  display: flex;
-  flex-direction: column;
-}
-</style>
+<style lang="scss" scoped></style>

@@ -189,19 +189,27 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .shopForm {
+  max-width: 50%;
   display: flex;
   margin-bottom: 12px;
   &-title {
+    width: 30%;
     p {
       font-size: 0.875rem;
       width: 150px;
       font-weight: bold;
     }
   }
+  &-content {
+    width: 70%;
+  }
   &-button {
     display: flex;
     justify-content: center;
     margin: 18px 0;
+  }
+  @include sp {
+    max-width: 90%;
   }
 }
 </style>
