@@ -28,6 +28,10 @@ export default defineComponent({
         link: "/Recruit",
         text: "Recruit",
       },
+      {
+        link: "/Edit",
+        text: "Edit",
+      },
     ];
     return { props };
   },

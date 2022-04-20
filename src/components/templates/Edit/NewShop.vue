@@ -168,6 +168,7 @@ export default defineComponent({
         seats: state.value.seatsValue,
         image: state.value.imageUrl,
       });
+      console.log("post!");
     };
 
     return {

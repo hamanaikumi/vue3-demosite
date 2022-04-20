@@ -1,55 +1,57 @@
 <template>
   <div class="shop">
     <title-text :text="props.text" />
-
-    <div class="shop-content">
+    <div class="shop-content" v-for="shop of state.shopArray" :key="shop.id">
       <div class="shop-image">
-        <img src="../../../assets/images/shop2.jpeg" alt="ショップ写真" />
+        <img :src="shop.image" alt="ショップ写真" />
       </div>
       <div class="shop-description">
-        <p>秋葉原店</p>
-        <p>〒150-0041</p>
-        <p>東京都渋谷区神南1丁目21−3 渋谷モディB1F</p>
-        <p>営業時間</p>
-        <p>11:00～18:00</p>
-        <p>ラストオーダー</p>
-        <p>17:45</p>
-        <p>定休日</p>
-        <p>渋谷モディ営業日に準ずる</p>
-        <p>客席数：32席</p>
-        <p>WiFiあり、コンセントあり、現金のみ</p>
-      </div>
-    </div>
-    <div class="shop-content">
-      <div class="shop-image">
-        <img src="../../../assets/images/shop4.jpeg" alt="ショップ写真" />
-      </div>
-      <div class="shop-description">
-        <p>秋葉原店</p>
-        <p>〒150-0041</p>
-        <p>東京都渋谷区神南1丁目21−3 渋谷モディB1F</p>
-        <p>営業時間 11:00～18:00</p>
-        <p>ラストオーダー 17:45</p>
-        <p>定休日 渋谷モディ営業日に準ずる</p>
-        <p>客席数：32席</p>
-        <p>WiFiあり、コンセントあり、現金のみ</p>
+        <p>{{ shop.name }}</p>
+        <p>〒{{ shop.postCode }}</p>
+        <p>{{ shop.address }}</p>
+        <div class="shop-description__container">
+          <span>営業時間：</span>
+          <span>{{ shop.open }}</span>
+        </div>
+        <div class="shop-description__container">
+          <span>定休日：</span>
+          <span>{{ shop.holiday }}</span>
+        </div>
+        <div class="shop-description__container">
+          <span>客席数：</span>
+          <span>{{ shop.seats }}席</span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
 import TitleText from "@/components/Atoms/TitleText.vue";
-import { defineComponent } from "vue";
+import { defineComponent, onBeforeMount, ref } from "vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   components: { TitleText },
   name: "ShopDetail",
   setup() {
+    const store = useStore();
     const props = {
       text: "Shop",
     };
+    const state = ref({
+      shopArray: [],
+    });
+    const getShop = async () => {
+      await store.dispatch("getShop");
+      state.value.shopArray = store.getters.getAllShop;
+    };
+    onBeforeMount(() => {
+      getShop();
+    });
     return {
       props,
+      state,
+      getShop,
     };
   },
 });
@@ -79,9 +81,13 @@ export default defineComponent({
   &-description {
     width: 50%;
     padding: 12px;
-    p {
+    p,
+    span {
       @include defaultText;
       line-height: 200%;
+    }
+    span {
+      margin-right: 4px;
     }
   }
 

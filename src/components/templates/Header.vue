@@ -74,6 +74,10 @@ export default defineComponent({
         link: "/Recruit",
         text: "Recruit",
       },
+      {
+        link: "/Edit",
+        text: "Edit",
+      },
     ];
     /**
      * モバイルの際のモーダル表示を切り替える.
