@@ -32,6 +32,7 @@ export default defineComponent({
 textarea {
   box-sizing: border-box;
   width: 100%;
+  resize: none;
   border: 2px solid $light-gray;
   padding: 8px 20px;
   border-radius: 20px;

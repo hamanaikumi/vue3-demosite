@@ -1,5 +1,6 @@
 import Drink from "@/models/drink";
 import Food from "@/models/food";
+import News from "@/models/news";
 import Shop from "@/models/shop";
 import axios from "axios";
 import { createStore } from "vuex";
@@ -9,6 +10,7 @@ export default createStore({
     drink: new Array<Drink>(),
     food: new Array<Food>(),
     shop: new Array<Shop>(),
+    news: new Array<News>(),
   },
   mutations: {
     setDrink(state, drinkArray) {
@@ -58,6 +60,24 @@ export default createStore({
         });
       }
     },
+    setNews(state, newsArray) {
+      // 初期化
+      state.news = [];
+      for (const obj of newsArray) {
+        const newDate = new Date(obj.date);
+        const year = newDate.getFullYear();
+        const month = newDate.getMonth();
+        const date = newDate.getDate();
+
+        state.news.push({
+          id: obj.id,
+          date: `${year}/${month}/${date}`,
+          title: obj.title,
+          detail: obj.detail,
+          image: obj.image,
+        });
+      }
+    },
   },
   actions: {
     async getDrink(context) {
@@ -72,20 +92,24 @@ export default createStore({
       const res = await axios.get("http://localhost:3000/shop");
       context.commit("setShop", res.data);
     },
+    async getNews(context) {
+      const res = await axios.get("http://localhost:3000/news");
+      context.commit("setNews", res.data);
+    },
   },
   modules: {},
   getters: {
     getAllDrink(state: any) {
-      console.log(state.drink);
       return state.drink;
     },
     getAllFood(state: any) {
-      console.log(state.food);
       return state.food;
     },
     getAllShop(state: any) {
-      console.log(state.shop);
       return state.shop;
+    },
+    getAllNews(state: any) {
+      return state.news;
     },
   },
 });

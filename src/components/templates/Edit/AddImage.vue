@@ -10,9 +10,9 @@
         @change="fileSelected"
       />
     </label>
-    <div>
+    <div class="addImage-container">
       {{ state.errorimage }}
-      <div v-show="!state.imageSrc" class="imageBox"></div>
+      <div v-show="!state.imageSrc" class="addImage-imageBox"></div>
       <img v-show="state.imageSrc" :src="state.imageSrc" />
     </div>
   </div>
@@ -91,8 +91,11 @@ export default defineComponent({
       background: $dark-gray;
     }
   }
+  &-container {
+    display: flex;
+  }
   // 画像添付前のイメージ
-  .imageBox {
+  &-imageBox {
     height: 300px;
     width: 300px;
     background-color: $light-gray;

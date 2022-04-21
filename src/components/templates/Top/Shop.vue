@@ -2,28 +2,12 @@
   <div class="shop">
     <title-text :text="props.text" />
     <div class="shop-wrapper">
-      <div class="shop-content">
-        <router-link to="/news">
+      <div class="shop-content" v-for="shop of state.shopArray" :key="shop.id">
+        <router-link class="router-link" to="/Shop">
           <div class="shop-image">
-            <img src="../../../assets/images/shop1.jpeg" alt="ショップ写真" />
+            <img :src="shop.image" alt="ショップ写真" />
           </div>
-          <p>秋葉原店</p>
-        </router-link>
-      </div>
-      <div class="shop-content">
-        <router-link to="/news">
-          <div class="shop-image">
-            <img src="../../../assets/images/shop1.jpeg" alt="ショップ写真" />
-          </div>
-          <p>秋葉原店</p>
-        </router-link>
-      </div>
-      <div class="shop-content">
-        <router-link to="/news">
-          <div class="shop-image">
-            <img src="../../../assets/images/shop1.jpeg" alt="ショップ写真" />
-          </div>
-          <p>秋葉原店</p>
+          <p>{{ shop.name }}</p>
         </router-link>
       </div>
     </div>
@@ -31,17 +15,31 @@
 </template>
 <script lang="ts">
 import TitleText from "@/components/Atoms/TitleText.vue";
-import { defineComponent } from "vue";
+import { defineComponent, onBeforeMount, ref } from "vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   components: { TitleText },
   name: "Shop",
   setup() {
+    const store = useStore();
     const props = {
       text: "Shops",
     };
+    const state = ref({
+      shopArray: [],
+    });
+    const getShop = async () => {
+      await store.dispatch("getShop");
+      state.value.shopArray = store.getters.getAllShop;
+    };
+    onBeforeMount(() => {
+      getShop();
+    });
     return {
       props,
+      state,
+      getShop,
     };
   },
 });

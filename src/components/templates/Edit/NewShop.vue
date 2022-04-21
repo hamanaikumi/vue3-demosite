@@ -153,7 +153,7 @@ export default defineComponent({
     };
 
     /**
-     * 製品名、値段、画像URLをmongoDBに保管する.
+     * 入力した情報をmongoDBに保管する.
      */
     const upload = async () => {
       await accessS3();

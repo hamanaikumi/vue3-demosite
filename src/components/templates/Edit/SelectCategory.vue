@@ -48,7 +48,7 @@ export default defineComponent({
   margin-bottom: 24px;
   .categoryForm {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     &-title {
       width: 30%;
       p {

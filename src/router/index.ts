@@ -39,9 +39,13 @@ const routes: Array<RouteRecordRaw> = [
   },
 ];
 
+const scrollBehavior = () => {
+  return { el: "#app" };
+};
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior, //追加
 });
 
 export default router;

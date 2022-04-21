@@ -43,7 +43,7 @@ export default defineComponent({
       medium: "medium",
       small: "small",
       large: "large",
-      name: "製品名",
+      name: "商品名",
       price: "値段（税抜）",
       submit: "送信",
     };
@@ -83,7 +83,7 @@ export default defineComponent({
     };
 
     /**
-     * 製品名、値段、画像URLをmongoDBに保管する.
+     * 商品名、値段、画像URLをmongoDBに保管する.
      */
     const upload = async () => {
       await accessS3();

@@ -2,30 +2,15 @@
   <div class="news">
     <title-text :text="props.text" />
     <div class="news-wrapper">
-      <div class="news-content">
-        <router-link to="/news">
+      <div class="news-content" v-for="news of state.newsArray" :key="news.id">
+        <router-link class="router-link" to="/News">
           <div class="news-image">
-            <img src="../../../assets/images/news1.jpeg" alt="ニュース写真" />
+            <img :src="news.image" alt="ニュース写真" />
           </div>
           <div class="news-text">
-            <p>2022.04.01 「hanako」に掲載されました。うれしー</p>
+            <p>{{ news.date }}</p>
+            <p>{{ news.title }}</p>
           </div>
-        </router-link>
-      </div>
-      <div class="news-content">
-        <router-link to="/news">
-          <div class="news-image">
-            <img src="../../../assets/images/news1.jpeg" alt="ニュース写真" />
-          </div>
-          <p>2022.04.01 「hanako」に掲載されました</p>
-        </router-link>
-      </div>
-      <div class="news-content">
-        <router-link to="/news">
-          <div class="news-image">
-            <img src="../../../assets/images/news1.jpeg" alt="ニュース写真" />
-          </div>
-          <p>2022.04.01 「hanako」に掲載されました</p>
         </router-link>
       </div>
     </div>
@@ -33,17 +18,31 @@
 </template>
 <script lang="ts">
 import TitleText from "@/components/Atoms/TitleText.vue";
-import { defineComponent } from "vue";
+import { defineComponent, onBeforeMount, ref } from "vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   components: { TitleText },
   name: "News",
   setup() {
+    const store = useStore();
     const props = {
       text: "News",
     };
+    const state = ref({
+      newsArray: [],
+    });
+    const getNews = async () => {
+      await store.dispatch("getNews");
+      state.value.newsArray = store.getters.getAllNews;
+    };
+    onBeforeMount(() => {
+      getNews();
+    });
     return {
       props,
+      state,
+      getNews,
     };
   },
 });

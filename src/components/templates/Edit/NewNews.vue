@@ -21,7 +21,6 @@
       <Button :label="propsValue.submit" @emitClick="upload" />
     </div>
   </div>
-  {{ props }}
 </template>
 <script lang="ts">
 import Button from "@/components/Atoms/Button.vue";
@@ -82,12 +81,13 @@ export default defineComponent({
     };
 
     /**
-     * 製品名、値段、画像URLをmongoDBに保管する.
+     * 入力した情報をmongoDBに保管する.
      */
     const upload = async () => {
       await accessS3();
       // mongodbに保管
       axios.post("http://localhost:3000/news", {
+        date: new Date(),
         title: state.value.titleValue,
         detail: state.value.detailValue,
         image: state.value.imageUrl,
@@ -127,9 +127,9 @@ export default defineComponent({
       justify-content: center;
       margin: 18px 0;
     }
-  }
-  @include sp {
-    max-width: 90%;
+    @include sp {
+      max-width: 90%;
+    }
   }
 }
 </style>
