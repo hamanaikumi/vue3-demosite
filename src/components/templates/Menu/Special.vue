@@ -23,7 +23,7 @@ export default defineComponent({
   name: "special",
   setup() {
     const props = {
-      text: "special",
+      text: "Special",
     };
     return {
       props,
@@ -37,7 +37,6 @@ export default defineComponent({
   &-special-content {
     display: flex;
     p {
-      text-align: center;
       @include defaultText;
       padding: 20px;
       line-height: 200%;

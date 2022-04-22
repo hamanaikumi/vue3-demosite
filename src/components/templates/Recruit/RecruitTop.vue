@@ -38,7 +38,6 @@ export default defineComponent({
   &-special-content {
     display: flex;
     p {
-      text-align: center;
       @include defaultText;
       padding: 20px;
       line-height: 200%;

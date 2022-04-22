@@ -1,7 +1,7 @@
 <template>
   <div class="breadcrumb">
     <div>
-      <p><router-link class="router-link" to="/">ホーム</router-link></p>
+      <p><router-link class="router-link" to="/">Home</router-link></p>
       <p>></p>
       <p>{{ id }}</p>
     </div>

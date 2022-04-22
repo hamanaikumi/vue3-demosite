@@ -1,12 +1,10 @@
 <template>
   <title-text :text="props.text" />
   <div class="news-content">
-    <img
-      class="news-image"
-      :src="state.displayNews.image"
-      alt="コンセプト写真"
-    />
-    <div>
+    <div class="news-image">
+      <img :src="state.displayNews.image" alt="コンセプト写真" />
+    </div>
+    <div class="news-text">
       <p>
         {{ state.displayNews.date }}
       </p>
@@ -60,32 +58,40 @@ export default defineComponent({
 .news {
   &-content {
     display: flex;
+  }
+
+  &-image {
+    height: 400px;
+    width: 40%;
+    // hover時に画像サイズを固定するため
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-text {
+    width: 60%;
     p {
       @include defaultText;
       padding: 20px;
       line-height: 200%;
+      white-space: pre-line;
     }
   }
-
-  &-image {
-    max-width: 600px;
-    height: 400px;
-    object-fit: cover;
-  }
-
   @include sp {
     &-content {
       display: flex;
       flex-direction: column;
-      p {
-        padding: 20px;
-        @include defaultText;
-        line-height: 200%;
-      }
     }
 
     &-image {
-      max-width: 100%;
+      width: 100%;
+    }
+    &-text {
+      width: 100%;
     }
   }
 }

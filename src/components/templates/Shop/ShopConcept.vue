@@ -8,7 +8,8 @@
     />
     <div>
       <p>
-        何気ない毎日の中で、心安らぐひと時を。 SAMPLE CAFE
+        何気ない毎日の中で、心安らぐひと時を。<br />
+        SAMPLE CAFE
         はお客様ひとりひとりに寄り添う、心地よい空間とお食事を提供する憩いの場です。
         ともだちと語らうランチ、1人でゆっくり過ごすアフタヌーン。
         少し特別でささやかな幸せを感じられるあなただけの時間をお過ごしください。
@@ -39,7 +40,6 @@ export default defineComponent({
   &-special-content {
     display: flex;
     p {
-      text-align: center;
       @include defaultText;
       padding: 20px;
       line-height: 200%;
