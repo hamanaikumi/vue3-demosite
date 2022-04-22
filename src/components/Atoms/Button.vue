@@ -53,11 +53,4 @@ export default defineComponent({
     background: $dark-gray;
   }
 }
-
-// .button-secondary {
-//   background: #e2e4e5;
-//   border: none;
-//   border: solid 1px #c2c7cb;
-//   color: $white;
-// }
 </style>

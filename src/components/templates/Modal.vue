@@ -50,7 +50,7 @@ export default defineComponent({
     padding: 0 12px;
     width: 100%;
     text-align: center;
-    background-color: #ffff;
+    background-color: $white;
   }
 
   &__content {

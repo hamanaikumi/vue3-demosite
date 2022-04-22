@@ -25,10 +25,10 @@ export default defineComponent({
 <style lang="scss" scoped>
 p {
   @include menuText;
-  margin: 0 30px;
+  margin: 0 24px;
 
   &::after {
-    border-bottom: solid 2px #3333;
+    border-bottom: solid 2px $light-gray;
     bottom: 0;
     content: "";
     display: block;
@@ -38,7 +38,7 @@ p {
   }
 
   &:hover {
-    color: #808080;
+    color: $light-gray;
     &::after {
       width: 100%;
     }

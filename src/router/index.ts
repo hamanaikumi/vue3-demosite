@@ -44,13 +44,15 @@ const routes: Array<RouteRecordRaw> = [
   },
 ];
 
+// ページ上部に戻る
 const scrollBehavior = () => {
   return { el: "#app" };
 };
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-  scrollBehavior, //追加
+  //追加
+  scrollBehavior,
 });
 
 export default router;

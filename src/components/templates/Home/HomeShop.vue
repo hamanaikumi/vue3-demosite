@@ -81,7 +81,7 @@ export default defineComponent({
       letter-spacing: 0.2em;
       text-align: center;
       padding-top: 41%;
-      color: #fff;
+      color: $white;
       width: 100%;
       height: 100%;
       display: block;

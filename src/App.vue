@@ -56,7 +56,7 @@ export default defineComponent({
 }
 .router-link {
   text-decoration: none;
-  color: #333333;
+  color: $dark-gray;
 }
 /* アクティブ時 */
 .v-leave-active,
