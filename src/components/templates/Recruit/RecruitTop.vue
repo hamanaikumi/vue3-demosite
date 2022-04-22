@@ -1,8 +1,8 @@
 <template>
   <title-text :text="props.text" />
-  <div class="menu-special-content">
+  <div class="recruit-top__content">
     <img
-      class="menu-image"
+      class="recruit-top__image"
       src="@/assets/images/staff.jpeg"
       alt="コンセプト写真"
     />
@@ -34,8 +34,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.menu {
-  &-special-content {
+.recruit-top {
+  &__content {
     display: flex;
     p {
       @include defaultText;
@@ -44,14 +44,14 @@ export default defineComponent({
     }
   }
 
-  &-image {
+  &__image {
     max-width: 600px;
     height: 400px;
     object-fit: cover;
   }
 
   @include sp {
-    &-special-content {
+    &__content {
       display: flex;
       flex-direction: column;
       p {
@@ -61,7 +61,7 @@ export default defineComponent({
       }
     }
 
-    &-image {
+    &__image {
       max-width: 100%;
     }
   }

@@ -78,7 +78,6 @@ export default defineComponent({
       @include defaultText;
       padding: 20px;
       line-height: 200%;
-      white-space: pre-line;
     }
   }
   @include sp {

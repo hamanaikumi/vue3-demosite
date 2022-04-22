@@ -1,40 +1,40 @@
 <template>
   <title-text :text="props.text" />
   <table>
-    <tr class="recruitForm">
-      <th class="recruitForm-title">
+    <tr class="recruit-form__container">
+      <th class="recruit-form__title">
         <p>{{ props.name }}</p>
       </th>
-      <td class="recruitForm-content"><Form :size="props.large" /></td>
+      <td class="recruit-form__content"><Form :size="props.large" /></td>
     </tr>
-    <tr class="recruitForm">
-      <th class="recruitForm-title">
-        <p class="recruitForm-content">{{ props.furigana }}</p>
+    <tr class="recruit-form__container">
+      <th class="recruit-form__title">
+        <p class="recruit-form__content">{{ props.furigana }}</p>
       </th>
       <td><Form :size="props.large" /></td>
     </tr>
-    <tr class="recruitForm">
-      <th class="recruitForm-title">
-        <p class="recruitForm-content">{{ props.phone }}</p>
+    <tr class="recruit-form__container">
+      <th class="recruit-form__title">
+        <p class="recruit-form__content">{{ props.phone }}</p>
       </th>
       <td><Form :size="props.large" /></td>
     </tr>
-    <tr class="recruitForm" v>
-      <th class="recruitForm-title">
-        <p class="recruitForm-content">{{ props.email }}</p>
+    <tr class="recruit-form__container">
+      <th class="recruit-form__title">
+        <p class="recruit-form__content">{{ props.email }}</p>
       </th>
       <td><Form :size="props.large" /></td>
     </tr>
-    <tr class="recruitForm">
-      <th class="recruitForm-title">
-        <p class="recruitForm-content">{{ props.gender }}</p>
+    <tr class="recruit-form__container">
+      <th class="recruit-form__title">
+        <p class="recruit-form__content">{{ props.gender }}</p>
       </th>
       <td>
         <SelectBox :options="props.genderOptions" :value="props.genderValue" />
       </td>
     </tr>
   </table>
-  <div class="recruitForm-button">
+  <div class="recruit-form__button">
     <Button :label="props.submit" />
   </div>
 </template>
@@ -82,15 +82,15 @@ export default defineComponent({
 table {
   border-spacing: 20px;
 }
-.recruitForm {
-  &-title {
+.recruit-form {
+  &__title {
     p {
       font-size: 0.875rem;
       width: 150px;
       font-weight: bold;
     }
   }
-  &-button {
+  &__button {
     display: flex;
     justify-content: center;
     margin: 18px 0;

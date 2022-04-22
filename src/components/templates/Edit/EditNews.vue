@@ -1,23 +1,22 @@
 <template>
-  <div class="newNews">
-    <div class="newsForm">
-      <div class="newsForm-title">
+  <div class="edit-news">
+    <div class="edit-news__form">
+      <div class="edit-news__title">
         <p>{{ propsValue.name }}</p>
       </div>
-      <div class="newsForm-content">
+      <div class="edit-news__content">
         <Form :size="propsValue.large" @onInput="setTitle" />
       </div>
     </div>
-    <div class="newsForm">
-      <div class="newsForm-title">
+    <div class="edit-news__form">
+      <div class="edit-news__title">
         <p>{{ propsValue.detail }}</p>
       </div>
-      <div class="newsForm-content">
+      <div class="edit-news__content">
         <TextArea :rows="6" @onInput="setDetail" />
       </div>
     </div>
-    <!-- button -->
-    <div class="newsForm-button">
+    <div class="edit-news__button">
       <Button :label="propsValue.submit" @emitClick="upload" />
     </div>
   </div>
@@ -106,30 +105,33 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.newNews {
-  .newsForm {
-    max-width: 50%;
+.edit-news {
+  &__form {
+    width: 50%;
     display: flex;
     margin-bottom: 12px;
-    &-title {
-      width: 30%;
-      p {
-        font-size: 0.875rem;
-        width: 150px;
-        font-weight: bold;
-      }
+    @include sp {
+      width: 100%;
+      flex-direction: column;
     }
-    &-content {
-      width: 70%;
-    }
-    &-button {
-      display: flex;
-      justify-content: center;
-      margin: 18px 0;
+  }
+  &__title {
+    width: 20%;
+    p {
+      @include defaultText;
     }
     @include sp {
-      max-width: 90%;
+      width: 100%;
+      margin-left: 15%;
     }
+  }
+  &__content {
+    width: 80%;
+  }
+  &__button {
+    display: flex;
+    justify-content: center;
+    margin: 18px 0;
   }
 }
 </style>

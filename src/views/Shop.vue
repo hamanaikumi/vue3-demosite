@@ -1,11 +1,11 @@
 <template>
   <div class="shop">
     <breadcrmb />
-    <div class="shop-spacial" ref="componentRef1">
-      <shop-concept />
+    <div class="shop-concept" ref="componentRef1">
+      <ShopConcept />
     </div>
     <div class="shop-component" ref="componentRef2">
-      <shop-detail />
+      <ShopDetail />
     </div>
   </div>
 </template>

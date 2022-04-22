@@ -1,23 +1,27 @@
 <template>
-  <div class="shop">
+  <div class="shop-detail">
     <title-text :text="props.text" />
-    <div class="shop-content" v-for="shop of state.shopArray" :key="shop.id">
-      <div class="shop-image">
+    <div
+      class="shop-detail__content"
+      v-for="shop of state.shopArray"
+      :key="shop.id"
+    >
+      <div class="shop-detail__image">
         <img :src="shop.image" alt="ショップ写真" />
       </div>
-      <div class="shop-description">
+      <div class="shop-detail__description">
         <p>{{ shop.name }}</p>
         <p>〒{{ shop.postCode }}</p>
         <p>{{ shop.address }}</p>
-        <div class="shop-description__container">
+        <div>
           <span>営業時間：</span>
           <span>{{ shop.open }}</span>
         </div>
-        <div class="shop-description__container">
+        <div>
           <span>定休日：</span>
           <span>{{ shop.holiday }}</span>
         </div>
-        <div class="shop-description__container">
+        <div>
           <span>客席数：</span>
           <span>{{ shop.seats }}席</span>
         </div>
@@ -58,13 +62,13 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.shop {
-  &-content {
+.shop-detail {
+  &__content {
     display: flex;
     padding: 12px;
     width: 100%;
   }
-  &-image {
+  &__image {
     width: 50%;
     // hover時に画像サイズを固定するため
     overflow: hidden;
@@ -78,7 +82,7 @@ export default defineComponent({
       }
     }
   }
-  &-description {
+  &__description {
     width: 50%;
     padding: 12px;
     p,
@@ -92,16 +96,12 @@ export default defineComponent({
   }
 
   @include sp {
-    &-wrapper {
-      display: flex;
-      flex-direction: column;
-    }
-    &-content {
+    &__content {
       display: flex;
       flex-direction: column;
       width: 80%;
     }
-    &-image {
+    &__image {
       width: 100%;
       // hover時に画像サイズを固定するため
       overflow: hidden;
@@ -115,7 +115,7 @@ export default defineComponent({
         }
       }
     }
-    &-description {
+    &__description {
       width: 100%;
       padding: 12px;
       p {

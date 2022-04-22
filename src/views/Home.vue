@@ -4,31 +4,32 @@
       <SlideImage />
     </div>
     <div class="home-component" ref="componentRef1">
-      <Concept />
+      <HomeConcept />
     </div>
     <div class="home-component" ref="componentRef2">
-      <TopNews />
+      <HomeNews />
     </div>
     <div class="home-component" ref="componentRef3">
-      <TopShop />
+      <HomeShop />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import SlideImage from "@/components/Templates/Top/SlideImage.vue";
-import Concept from "@/components/Templates/Top/Concept.vue";
-import TopNews from "@/components/Templates/Top/TopNews.vue";
-import TopShop from "@/components/Templates/Top/TopShop.vue";
+import SlideImage from "@/components/Templates/Home/SlideImage.vue";
+import HomeConcept from "@/components/Templates/Home/HomeConcept.vue";
+import HomeNews from "@/components/Templates/Home/HomeNews.vue";
+import HomeShop from "@/components/Templates/Home/HomeShop.vue";
 import { defineComponent, onMounted, ref } from "vue";
 
 export default defineComponent({
   name: "Home",
-  components: { Concept, TopNews, TopShop, SlideImage },
+  components: { HomeConcept, HomeNews, HomeShop, SlideImage },
 
   setup() {
     const state = ref({
       refArray: Array<Element>(),
+      appearance: Array<boolean>(),
     });
 
     const componentRef1 = ref();

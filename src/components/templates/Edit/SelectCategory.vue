@@ -1,16 +1,12 @@
 <template>
-  <div class="selectCategory">
+  <div class="edit-category">
     <title-text :text="props.text" />
-    <div class="categoryForm">
-      <div class="categoryForm-content">
-        <select-box
-          :options="props.categoryOptions"
-          :value="props.categoryValue"
-          :size="props.size"
-          @onChange="emitChange"
-        />
-      </div>
-    </div>
+    <select-box
+      :options="props.categoryOptions"
+      :value="props.categoryValue"
+      :size="props.size"
+      @onChange="emitChange"
+    />
   </div>
 </template>
 <script lang="ts">
@@ -44,21 +40,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.selectCategory {
+.edit-category {
   margin-bottom: 24px;
-  .categoryForm {
-    display: flex;
-    justify-content: flex-start;
-    &-title {
-      width: 30%;
-      p {
-        font-size: 0.875rem;
-        font-weight: bold;
-      }
-    }
-    &-content {
-      width: 70%;
-    }
-  }
 }
 </style>

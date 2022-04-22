@@ -1,8 +1,8 @@
 <template>
   <title-text :text="props.text" />
-  <div class="menu-special-content">
+  <div class="menu-special__content">
     <img
-      class="menu-image"
+      class="menu-special__image"
       src="@/assets/images/hotcake3.jpeg"
       alt="コンセプト写真"
     />
@@ -33,8 +33,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.menu {
-  &-special-content {
+.menu-special {
+  &__content {
     display: flex;
     p {
       @include defaultText;
@@ -43,14 +43,14 @@ export default defineComponent({
     }
   }
 
-  &-image {
+  &__image {
     max-width: 600px;
     height: 400px;
     object-fit: cover;
   }
 
   @include sp {
-    &-special-content {
+    &__content {
       display: flex;
       flex-direction: column;
       p {
@@ -60,7 +60,7 @@ export default defineComponent({
       }
     }
 
-    &-image {
+    &__image {
       max-width: 100%;
     }
   }

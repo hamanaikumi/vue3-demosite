@@ -2,13 +2,13 @@
   <div class="menu">
     <breadcrmb />
     <div class="menu-spacial" ref="componentRef1">
-      <special />
+      <Special />
     </div>
     <div class="menu-component" ref="componentRef2">
-      <drink />
+      <Drink />
     </div>
     <div class="menu-component" ref="componentRef3">
-      <food />
+      <Food />
     </div>
   </div>
 </template>

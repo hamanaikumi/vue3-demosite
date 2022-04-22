@@ -1,11 +1,11 @@
 <template>
   <div class="recruit">
     <breadcrmb />
-    <div class="recruit-spacial">
-      <recruit-top />
+    <div class="recruit-top">
+      <RecruitTop />
     </div>
     <div class="recruit-component">
-      <recruit-form />
+      <RecruitForm />
     </div>
   </div>
 </template>

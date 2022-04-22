@@ -1,23 +1,22 @@
 <template>
-  <div class="newFood">
-    <div class="foodForm">
-      <div class="foodForm-title">
+  <div class="edit-food">
+    <div class="edit-food__form">
+      <div class="edit-food__title">
         <p>{{ propsValue.name }}</p>
       </div>
-      <div class="foodForm-content">
+      <div class="edit-food__content">
         <Form :size="propsValue.large" @onInput="setName" />
       </div>
     </div>
-    <div class="foodForm">
-      <div class="foodForm-title">
+    <div class="edit-food__form">
+      <div class="edit-food__title">
         <p>{{ propsValue.price }}</p>
       </div>
-      <div class="foodForm-content">
+      <div class="edit-food__content">
         <Form :size="propsValue.large" @onInput="setPrice" />
       </div>
     </div>
-    <!-- button -->
-    <div class="foodForm-button">
+    <div class="edit-food__button">
       <Button :label="propsValue.submit" @emitClick="upload" />
     </div>
   </div>
@@ -30,7 +29,7 @@ import axios from "axios";
 
 export default defineComponent({
   components: { Form, Button },
-  name: "NewFood",
+  name: "EditFood",
   props: {
     category: {
       type: String,
@@ -115,28 +114,33 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.foodForm {
-  max-width: 50%;
-  display: flex;
-  margin-bottom: 12px;
-  &-title {
-    width: 30%;
-    p {
-      font-size: 0.875rem;
-      font-weight: bold;
+.edit-food {
+  &__form {
+    width: 50%;
+    display: flex;
+    margin-bottom: 12px;
+    @include sp {
+      width: 100%;
+      flex-direction: column;
     }
   }
-  &-content {
-    width: 70%;
+  &__title {
+    width: 20%;
+    p {
+      @include defaultText;
+    }
+    @include sp {
+      width: 100%;
+      margin-left: 15%;
+    }
   }
-  &-button {
+  &__content {
+    width: 80%;
+  }
+  &__button {
     display: flex;
     justify-content: center;
     margin: 18px 0;
-  }
-
-  @include sp {
-    max-width: 90%;
   }
 }
 </style>

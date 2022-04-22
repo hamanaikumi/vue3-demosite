@@ -1,13 +1,13 @@
 <template>
-  <div class="drink-item">
+  <div class="menu-drink">
     <title-text :text="props.text" />
-    <div class="drink-item-wrapper">
+    <div class="menu-drink__wrapper">
       <div
-        class="drink-item-content"
+        class="menu-drink__content"
         v-for="drink of state.drinkMenu"
         :key="drink.id"
       >
-        <div class="drink-item-image">
+        <div class="menu-drink__image">
           <img :src="drink.image" alt="ドリンク写真" />
         </div>
         <p>{{ drink.name }}</p>
@@ -50,13 +50,13 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.drink-item {
-  &-wrapper {
+.menu-drink {
+  &__wrapper {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
   }
-  &-content {
+  &__content {
     padding: 4px;
     text-align: center;
     width: 23%;
@@ -66,7 +66,7 @@ export default defineComponent({
       line-height: 200%;
     }
   }
-  &-image {
+  &__image {
     position: relative;
     width: 100%;
     height: 100%;
@@ -104,11 +104,11 @@ export default defineComponent({
   }
 
   @include sp {
-    &-wrapper {
+    &__wrapper {
       display: flex;
       flex-direction: column;
     }
-    &-content {
+    &__content {
       width: 80%;
     }
   }

@@ -1,16 +1,21 @@
 @mixin defaultText($fSize: 0.875rem) {
   font-size: $fSize;
+  color: $dark-gray;
+  line-height: 200%;
 }
 @mixin titleText($fSize: 2rem, $weight: bold) {
   font-size: $fSize;
   font-weight: $weight;
   text-shadow: -1px 4px 2px rgba(0, 0, 0, 0.2);
+  color: $black;
 }
 @mixin menuText($fSize: 1.5rem, $weight: bold) {
   font-size: $fSize;
   font-weight: $weight;
+  color: $black;
 }
 
-$dark-gray: #696969;
+$black: black;
+$dark-gray: #3c3c3c;
 $light-gray: #737373;
 $white: #ffffff;

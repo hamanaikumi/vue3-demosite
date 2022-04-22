@@ -1,8 +1,8 @@
 <template>
   <title-text :text="props.text" />
-  <div class="shop-special-content">
+  <div class="shop-concept__content">
     <img
-      class="shop-image"
+      class="shop-concept__image"
       src="@/assets/images/shop1.jpeg"
       alt="コンセプト写真"
     />
@@ -36,8 +36,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.shop {
-  &-special-content {
+.shop-concept {
+  &__content {
     display: flex;
     p {
       @include defaultText;
@@ -45,15 +45,14 @@ export default defineComponent({
       line-height: 200%;
     }
   }
-
-  &-image {
+  &__image {
     max-width: 600px;
     height: 400px;
     object-fit: cover;
   }
 
   @include sp {
-    &-special-content {
+    &__content {
       display: flex;
       flex-direction: column;
       p {
@@ -63,7 +62,7 @@ export default defineComponent({
       }
     }
 
-    &-image {
+    &__image {
       max-width: 100%;
     }
   }

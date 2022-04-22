@@ -1,13 +1,13 @@
 <template>
-  <div class="food-item">
+  <div class="menu-food">
     <title-text :text="props.text" />
-    <div class="food-item-wrapper">
+    <div class="menu-food__wrapper">
       <div
-        class="food-item-content"
+        class="menu-food__content"
         v-for="food of state.foodMenu"
         :key="food.id"
       >
-        <div class="food-item-image">
+        <div class="menu-food__image">
           <img :src="food.image" alt="フード写真" />
         </div>
         <p>{{ food.name }}</p>
@@ -50,13 +50,13 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.food-item {
-  &-wrapper {
+.menu-food {
+  &__wrapper {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
   }
-  &-content {
+  &__content {
     padding: 4px;
     text-align: center;
     width: 23%;
@@ -66,7 +66,7 @@ export default defineComponent({
       line-height: 200%;
     }
   }
-  &-image {
+  &__image {
     position: relative;
     width: 100%;
     height: 100%;
@@ -102,11 +102,11 @@ export default defineComponent({
   }
 
   @include sp {
-    &-wrapper {
+    &__wrapper {
       display: flex;
       flex-direction: column;
     }
-    &-content {
+    &__content {
       width: 80%;
     }
   }

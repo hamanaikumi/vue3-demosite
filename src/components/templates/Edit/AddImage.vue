@@ -75,7 +75,7 @@ export default defineComponent({
     display: none;
   }
   p {
-    font-size: 0.875rem;
+    @include defaultText;
     text-align: center;
     cursor: pointer;
     border-radius: 20px;

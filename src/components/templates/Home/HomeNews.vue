@@ -1,13 +1,20 @@
 <template>
-  <div class="shop">
+  <div class="home-news">
     <title-text :text="props.text" />
-    <div class="shop-wrapper">
-      <div class="shop-content" v-for="shop of state.shopArray" :key="shop.id">
-        <router-link class="router-link" to="/Shop">
-          <div class="shop-image">
-            <img :src="shop.image" alt="ショップ写真" />
+    <div class="home-news__wrapper">
+      <div
+        class="home-news__content"
+        v-for="news of state.newsArray"
+        :key="news.id"
+      >
+        <router-link class="router-link" :to="'/News/' + news.id">
+          <div class="home-news__image">
+            <img :src="news.image" alt="ニュース写真" />
           </div>
-          <p>{{ shop.name }}</p>
+          <div class="home-news__text">
+            <p>{{ news.date }}</p>
+            <p>{{ news.title }}</p>
+          </div>
         </router-link>
       </div>
     </div>
@@ -20,59 +27,55 @@ import { useStore } from "vuex";
 
 export default defineComponent({
   components: { TitleText },
-  name: "TopShop",
+  name: "TopNews",
   setup() {
     const store = useStore();
     const props = {
-      text: "Shops",
+      text: "News",
     };
     const state = ref({
-      shopArray: [],
+      newsArray: [],
     });
-    const getShop = async () => {
-      await store.dispatch("getShop");
-      state.value.shopArray = store.getters.getAllShop;
+    const getNews = async () => {
+      await store.dispatch("getNews");
+      state.value.newsArray = store.getters.getAllNews;
     };
     onBeforeMount(() => {
-      getShop();
+      getNews();
     });
     return {
       props,
       state,
-      getShop,
+      getNews,
     };
   },
 });
 </script>
 
 <style lang="scss" scoped>
-.shop {
-  &-wrapper {
+.home-news {
+  &__wrapper {
     display: flex;
   }
-  &-content {
+  &__content {
     padding: 12px;
-    text-align: center;
     width: 30%;
-    p {
-      @include defaultText;
-      line-height: 200%;
-    }
+    @include defaultText;
+    line-height: 200%;
   }
-  &-image {
+  &__image {
     height: 300px;
     width: 300px;
     // hover時に画像サイズを固定するため
     overflow: hidden;
     position: relative;
-
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
     &::after {
-      content: "Information";
+      content: "Read More";
       font-size: 16px;
       letter-spacing: 0.2em;
       text-align: center;
@@ -88,7 +91,6 @@ export default defineComponent({
       left: 0;
       opacity: 0;
     }
-
     &:hover {
       img {
         transition: all 0.5s ease;
@@ -100,13 +102,26 @@ export default defineComponent({
     }
   }
 
+  &__text {
+    overflow: hidden;
+    width: 100%;
+
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
   @include sp {
-    &-wrapper {
+    &__wrapper {
       display: flex;
       flex-direction: column;
     }
-    &-content {
+    &__content {
       width: 80%;
+      @include defaultText;
+      line-height: 200%;
     }
   }
 }

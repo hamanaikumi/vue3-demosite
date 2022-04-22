@@ -10,16 +10,16 @@
           state.selectedCategory === state.drink
         "
       >
-        <NewFood
+        <EditFood
           :category="state.selectedCategory"
           :imageFile="state.imageFile"
         />
       </div>
       <div v-show="state.selectedCategory === state.news">
-        <NewNews :imageFile="state.imageFile" />
+        <EditNews :imageFile="state.imageFile" />
       </div>
       <div v-show="state.selectedCategory === state.shop">
-        <NewShop :imageFile="state.imageFile" />
+        <EditShop :imageFile="state.imageFile" />
       </div>
     </div>
   </div>
@@ -28,19 +28,19 @@
 import { defineComponent, ref } from "vue";
 
 import SelectCategory from "@/components/Templates/Edit/SelectCategory.vue";
-import NewFood from "@/components/Templates/Edit/NewFood.vue";
-import NewNews from "@/components/Templates/Edit/NewNews.vue";
+import EditFood from "@/components/Templates/Edit/EditFood.vue";
+import EditNews from "@/components/Templates/Edit/EditNews.vue";
 import AddImage from "@/components/Templates/Edit/AddImage.vue";
-import NewShop from "@/components/Templates/Edit/NewShop.vue";
+import EditShop from "@/components/Templates/Edit/EditShop.vue";
 import Breadcrmb from "@/components/Templates/Breadcrmb.vue";
 
 export default defineComponent({
   components: {
     SelectCategory,
-    NewFood,
-    NewNews,
+    EditFood,
+    EditNews,
     AddImage,
-    NewShop,
+    EditShop,
     Breadcrmb,
   },
   name: "Edit",

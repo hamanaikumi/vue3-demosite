@@ -1,14 +1,14 @@
 <template>
-  <div class="concept">
+  <div class="home-concept">
     <title-text :text="props.text" />
-    <div class="concept-first">
+    <div class="home-concept__first">
       <img
-        class="concept-image"
+        class="home-concept__image"
         src="../../../assets/images/hotcake2.jpeg"
         alt="コンセプト写真"
       />
-      <div class="concept-text">
-        <ciecle />
+      <div class="home-concept__text">
+        <Circle />
         <p>
           「おいしいものは人を笑顔にできる。」
           世界一ふわふわでしっとり感のあるパンケーキに
@@ -18,14 +18,14 @@
         </p>
       </div>
     </div>
-    <div class="concept-second">
+    <div class="home-concept__second">
       <img
-        class="concept-image"
+        class="home-concept__image"
         src="../../../assets/images/berry.jpeg"
         alt="コンセプト写真"
       />
-      <div class="concept-text">
-        <ciecle />
+      <div class="home-concept__text">
+        <Circle />
         <p>
           デートや友人同士の御来店はもちろん
           年配のご夫婦から小さなお子様のいるファミリーまで、
@@ -37,12 +37,12 @@
   </div>
 </template>
 <script lang="ts">
-import Ciecle from "@/components/Atoms/Circle.vue";
+import Circle from "@/components/Atoms/Circle.vue";
 import TitleText from "@/components/Atoms/TitleText.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  components: { TitleText, Ciecle },
+  components: { TitleText, Circle },
   name: "Concept",
   setup() {
     const props = {
@@ -56,22 +56,22 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.concept {
+.home-concept {
   text-align: center;
 
-  &-first {
+  &__first {
     display: flex;
   }
-  &-second {
+  &__second {
     display: flex;
     flex-direction: row-reverse;
   }
-  &-image {
+  &__image {
     max-width: 480px;
     height: 320px;
     object-fit: cover;
   }
-  &-text {
+  &__text {
     width: 50%;
     position: relative;
     p {
@@ -89,18 +89,18 @@ export default defineComponent({
   }
 
   @include sp {
-    &-first {
+    &__first {
       display: flex;
       flex-direction: column;
     }
-    &-second {
+    &__second {
       display: flex;
       flex-direction: column;
     }
-    &-image {
+    &__image {
       max-width: 100%;
     }
-    &-text {
+    &__text {
       width: 100%;
       position: relative;
       margin: 12px 0;

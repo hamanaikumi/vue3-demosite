@@ -1,63 +1,63 @@
 <template>
-  <div class="newShop">
-    <div class="shopForm">
-      <div class="shopForm-title">
+  <div class="edit-shop">
+    <div class="edit-shop__form">
+      <div class="edit-shop__title">
         <p>{{ propsValue.name }}</p>
       </div>
-      <div class="shopForm-content">
+      <div class="edit-shop__content">
         <Form :size="propsValue.large" @onInput="setName" />
       </div>
     </div>
-    <div class="shopForm">
-      <div class="shopForm-title">
+    <div class="edit-shop__form">
+      <div class="edit-shop__title">
         <p>{{ propsValue.postCode }}</p>
       </div>
-      <div class="shopForm-content">
+      <div class="edit-shop__content">
         <Form :size="propsValue.large" @onInput="setPostCode" />
       </div>
     </div>
-    <div class="shopForm">
-      <div class="shopForm-title">
+    <div class="edit-shop__form">
+      <div class="edit-shop__title">
         <p>{{ propsValue.address }}</p>
       </div>
-      <div class="shopForm-content">
+      <div class="edit-shop__content">
         <Form :size="propsValue.large" @onInput="setAddress" />
       </div>
     </div>
-    <div class="shopForm">
-      <div class="shopForm-title">
+    <div class="edit-shop__form">
+      <div class="edit-shop__title">
         <p>{{ propsValue.holiday }}</p>
       </div>
-      <div class="shopForm-content">
+      <div class="edit-shop__content">
         <Form :size="propsValue.large" @onInput="setHoliday" />
       </div>
     </div>
-    <div class="shopForm">
-      <div class="shopForm-title">
+    <div class="edit-shop__form">
+      <div class="edit-shop__title">
         <p>{{ propsValue.tel }}</p>
       </div>
-      <div class="shopForm-content">
+      <div class="edit-shop__content">
         <Form :size="propsValue.large" @onInput="setTel" />
       </div>
     </div>
-    <div class="shopForm">
-      <div class="shopForm-title">
+    <div class="edit-shop__form">
+      <div class="edit-shop__title">
         <p>{{ propsValue.open }}</p>
       </div>
-      <div class="shopForm-content">
+      <div class="edit-shop__content">
         <Form :size="propsValue.large" @onInput="setOpen" />
       </div>
     </div>
-    <div class="shopForm">
-      <div class="shopForm-title">
+    <div class="edit-shop__form">
+      <div class="edit-shop__title">
         <p>{{ propsValue.seats }}</p>
       </div>
-      <div class="shopForm-content">
+      <div class="edit-shop__content">
         <Form :size="propsValue.large" @onInput="setSeats" />
       </div>
     </div>
     <!-- button -->
-    <div class="shopForm-button">
+    <div class="edit-shop__button">
       <Button :label="propsValue.submit" @emitClick="upload" />
     </div>
   </div>
@@ -188,28 +188,33 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.shopForm {
-  max-width: 50%;
-  display: flex;
-  margin-bottom: 12px;
-  &-title {
-    width: 30%;
-    p {
-      font-size: 0.875rem;
-      width: 150px;
-      font-weight: bold;
+.edit-shop {
+  &__form {
+    width: 50%;
+    display: flex;
+    margin-bottom: 12px;
+    @include sp {
+      width: 100%;
+      flex-direction: column;
     }
   }
-  &-content {
-    width: 70%;
+  &__title {
+    width: 20%;
+    p {
+      @include defaultText;
+    }
+    @include sp {
+      width: 100%;
+      margin-left: 15%;
+    }
   }
-  &-button {
+  &__content {
+    width: 80%;
+  }
+  &__button {
     display: flex;
     justify-content: center;
     margin: 18px 0;
-  }
-  @include sp {
-    max-width: 90%;
   }
 }
 </style>
