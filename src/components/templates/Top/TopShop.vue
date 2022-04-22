@@ -20,7 +20,7 @@ import { useStore } from "vuex";
 
 export default defineComponent({
   components: { TitleText },
-  name: "Shop",
+  name: "TopShop",
   setup() {
     const store = useStore();
     const props = {

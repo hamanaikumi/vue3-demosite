@@ -4,6 +4,7 @@ import News from "@/models/news";
 import Shop from "@/models/shop";
 import axios from "axios";
 import { createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
 export default createStore({
   state: {
@@ -11,6 +12,7 @@ export default createStore({
     food: new Array<Food>(),
     shop: new Array<Shop>(),
     news: new Array<News>(),
+    filteredNews: {} as News,
   },
   mutations: {
     setDrink(state, drinkArray) {
@@ -66,7 +68,8 @@ export default createStore({
       for (const obj of newsArray) {
         const newDate = new Date(obj.date);
         const year = newDate.getFullYear();
-        const month = newDate.getMonth();
+        // 1ヶ月調整
+        const month = newDate.getMonth() + 1;
         const date = newDate.getDate();
 
         state.news.push({
@@ -77,6 +80,9 @@ export default createStore({
           image: obj.image,
         });
       }
+    },
+    filterNews(state, id: number) {
+      state.filteredNews = state.news.filter((news: News) => news.id == id)[0];
     },
   },
   actions: {
@@ -111,5 +117,9 @@ export default createStore({
     getAllNews(state: any) {
       return state.news;
     },
+    getOneNews(state: any) {
+      return state.filteredNews;
+    },
   },
+  plugins: [createPersistedState()],
 });

@@ -3,7 +3,7 @@
     <title-text :text="props.text" />
     <div class="news-wrapper">
       <div class="news-content" v-for="news of state.newsArray" :key="news.id">
-        <router-link class="router-link" to="/News">
+        <router-link class="router-link" :to="'/News/' + news.id">
           <div class="news-image">
             <img :src="news.image" alt="ニュース写真" />
           </div>
@@ -23,7 +23,7 @@ import { useStore } from "vuex";
 
 export default defineComponent({
   components: { TitleText },
-  name: "News",
+  name: "TopNews",
   setup() {
     const store = useStore();
     const props = {

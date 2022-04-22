@@ -1,16 +1,16 @@
 <template>
   <div class="home">
     <div class="home-image">
-      <slide-image />
+      <SlideImage />
     </div>
     <div class="home-component" ref="componentRef1">
-      <concept />
+      <Concept />
     </div>
     <div class="home-component" ref="componentRef2">
-      <news />
+      <TopNews />
     </div>
     <div class="home-component" ref="componentRef3">
-      <shop />
+      <TopShop />
     </div>
   </div>
 </template>
@@ -18,13 +18,13 @@
 <script lang="ts">
 import SlideImage from "@/components/Templates/Top/SlideImage.vue";
 import Concept from "@/components/Templates/Top/Concept.vue";
-import News from "@/components/Templates/Top/News.vue";
-import Shop from "@/components/Templates/Top/Shop.vue";
+import TopNews from "@/components/Templates/Top/TopNews.vue";
+import TopShop from "@/components/Templates/Top/TopShop.vue";
 import { defineComponent, onMounted, ref } from "vue";
 
 export default defineComponent({
   name: "Home",
-  components: { Concept, News, Shop, SlideImage },
+  components: { Concept, TopNews, TopShop, SlideImage },
 
   setup() {
     const state = ref({
