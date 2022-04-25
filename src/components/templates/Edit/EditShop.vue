@@ -158,7 +158,7 @@ export default defineComponent({
     const upload = async () => {
       await accessS3();
       // mongodbに保管
-      axios.post("http://localhost:3000/shop", {
+      axios.post("https://vast-everglades-32808.herokuapp.com/shop", {
         name: state.value.nameValue,
         postCode: state.value.postCodeValue,
         address: state.value.addressValue,

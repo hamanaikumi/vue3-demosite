@@ -69,9 +69,9 @@ export default defineComponent({
      */
     const accessS3 = async () => {
       // S3からURLを取得
-      const { url } = await fetch("http://localhost:3000/s3Url").then((res) =>
-        res.json()
-      );
+      const { url } = await fetch(
+        "https://vast-everglades-32808.herokuapp.com/s3Url"
+      ).then((res) => res.json());
       // S3のバケットに写真をPOST
       await fetch(url, {
         method: "PUT",
@@ -90,13 +90,13 @@ export default defineComponent({
       await accessS3();
       // mongodbに保管
       if (props.category === "新商品（ドリンク）") {
-        await axios.post("http://localhost:3000/drink", {
+        await axios.post("https://vast-everglades-32808.herokuapp.com/drink", {
           name: state.value.nameValue,
           price: state.value.priceValue,
           image: state.value.imageUrl,
         });
       } else if (props.category === "新商品（フード）") {
-        await axios.post("http://localhost:3000/food", {
+        await axios.post("https://vast-everglades-32808.herokuapp.com/food", {
           name: state.value.nameValue,
           price: state.value.priceValue,
           image: state.value.imageUrl,

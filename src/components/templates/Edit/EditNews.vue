@@ -65,9 +65,9 @@ export default defineComponent({
      */
     const accessS3 = async () => {
       // S3からURLを取得
-      const { url } = await fetch("http://localhost:3000/s3Url").then((res) =>
-        res.json()
-      );
+      const { url } = await fetch(
+        "https://vast-everglades-32808.herokuapp.com/s3Url"
+      ).then((res) => res.json());
       // S3のバケットに写真をPOST
       await fetch(url, {
         method: "PUT",
@@ -85,7 +85,7 @@ export default defineComponent({
     const upload = async () => {
       await accessS3();
       // mongodbに保管
-      axios.post("http://localhost:3000/news", {
+      axios.post("https://vast-everglades-32808.herokuapp.com/news", {
         date: new Date(),
         title: state.value.titleValue,
         detail: state.value.detailValue,
