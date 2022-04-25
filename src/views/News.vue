@@ -41,7 +41,6 @@ export default defineComponent({
       const id = Number(route.params.id);
       store.commit("filterNews", id);
       state.value.displayNews = store.getters.getOneNews;
-      console.log(state.value.displayNews);
     };
     onBeforeMount(() => {
       getNews();

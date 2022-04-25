@@ -26,6 +26,7 @@ import Button from "@/components/Atoms/Button.vue";
 import Form from "@/components/Atoms/Form.vue";
 import { defineComponent, reactive, ref } from "vue";
 import axios from "axios";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   components: { Form, Button },
@@ -37,6 +38,7 @@ export default defineComponent({
     imageFile: {},
   },
   setup(props) {
+    const router = useRouter();
     props = reactive(props);
     const propsValue = {
       medium: "medium",
@@ -88,18 +90,19 @@ export default defineComponent({
       await accessS3();
       // mongodbに保管
       if (props.category === "新商品（ドリンク）") {
-        axios.post("http://localhost:3000/food", {
+        await axios.post("http://localhost:3000/drink", {
           name: state.value.nameValue,
           price: state.value.priceValue,
           image: state.value.imageUrl,
         });
       } else if (props.category === "新商品（フード）") {
-        axios.post("http://localhost:3000/food", {
+        await axios.post("http://localhost:3000/food", {
           name: state.value.nameValue,
           price: state.value.priceValue,
           image: state.value.imageUrl,
         });
       }
+      router.push("/Complete");
     };
 
     return {

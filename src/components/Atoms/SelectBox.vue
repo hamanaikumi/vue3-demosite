@@ -1,17 +1,11 @@
 <template>
   <div class="select">
-    <div class="select-content">
-      <select :disabled="disabled" @change="handleChange" :class="classes">
-        <option disabled value="" selected>{{ value }}</option>
-        <option
-          v-for="option of options"
-          :key="option.name"
-          :value="option.name"
-        >
-          {{ option.name }}
-        </option>
-      </select>
-    </div>
+    <select :disabled="disabled" @change="handleChange" :class="classes">
+      <option disabled value="" selected>{{ value }}</option>
+      <option v-for="option of options" :key="option.name" :value="option.name">
+        {{ option.name }}
+      </option>
+    </select>
   </div>
 </template>
 
@@ -70,19 +64,15 @@ select {
 option {
   text-align: center;
 }
+
 .select {
   display: flex;
-  position: relative;
-
+  margin: 0 auto;
   &-medium {
-    width: 120px;
+    width: 180px;
   }
   &-large {
-    width: 100%px;
-  }
-  &-content {
-    display: flex;
-    text-align: left;
+    width: 100%;
   }
 }
 </style>

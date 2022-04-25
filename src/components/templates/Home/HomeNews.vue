@@ -38,7 +38,8 @@ export default defineComponent({
     });
     const getNews = async () => {
       await store.dispatch("getNews");
-      state.value.newsArray = store.getters.getAllNews;
+      // 最新が先頭に来るように並び替え
+      state.value.newsArray = store.getters.getTopNews;
     };
     onBeforeMount(() => {
       getNews();

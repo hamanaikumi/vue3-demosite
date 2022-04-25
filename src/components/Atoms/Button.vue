@@ -13,7 +13,6 @@ export default defineComponent({
     primary: {
       type: Boolean,
       default: true,
-      required: true,
     },
     backgroundColor: { type: String },
   },

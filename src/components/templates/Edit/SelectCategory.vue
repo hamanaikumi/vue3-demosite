@@ -1,10 +1,9 @@
 <template>
-  <div class="edit-category">
+  <div class="edit-category__wrapper">
     <title-text :text="props.text" />
-    <select-box
+    <SelectBox
       :options="props.categoryOptions"
       :value="props.categoryValue"
-      :size="props.size"
       @onChange="emitChange"
     />
   </div>
@@ -19,8 +18,6 @@ export default defineComponent({
   setup(_, context) {
     const props = ref({
       text: "Edit",
-      size: "large",
-
       categoryValue: "カテゴリーを選択",
       categoryOptions: [
         { name: "新商品（フード）" },
@@ -41,6 +38,8 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .edit-category {
-  margin-bottom: 24px;
+  &__wrapper {
+    margin-bottom: 24px;
+  }
 }
 </style>

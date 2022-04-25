@@ -1,39 +1,49 @@
 <template>
   <title-text :text="props.text" />
-  <table>
-    <tr class="recruit-form__container">
-      <th class="recruit-form__title">
-        <p>{{ props.name }}</p>
-      </th>
-      <td class="recruit-form__content"><Form :size="props.large" /></td>
-    </tr>
-    <tr class="recruit-form__container">
-      <th class="recruit-form__title">
-        <p class="recruit-form__content">{{ props.furigana }}</p>
-      </th>
-      <td><Form :size="props.large" /></td>
-    </tr>
-    <tr class="recruit-form__container">
-      <th class="recruit-form__title">
-        <p class="recruit-form__content">{{ props.phone }}</p>
-      </th>
-      <td><Form :size="props.large" /></td>
-    </tr>
-    <tr class="recruit-form__container">
-      <th class="recruit-form__title">
-        <p class="recruit-form__content">{{ props.email }}</p>
-      </th>
-      <td><Form :size="props.large" /></td>
-    </tr>
-    <tr class="recruit-form__container">
-      <th class="recruit-form__title">
-        <p class="recruit-form__content">{{ props.gender }}</p>
-      </th>
-      <td>
-        <SelectBox :options="props.genderOptions" :value="props.genderValue" />
-      </td>
-    </tr>
-  </table>
+  <div class="recruit-form__container">
+    <div class="recruit-form__title">
+      <p>{{ props.name }}</p>
+    </div>
+    <div class="recruit-form__content">
+      <Form :size="props.large" />
+    </div>
+  </div>
+  <div class="recruit-form__container">
+    <div class="recruit-form__title">
+      <p>{{ props.furigana }}</p>
+    </div>
+    <div class="recruit-form__content">
+      <Form :size="props.large" />
+    </div>
+  </div>
+  <div class="recruit-form__container">
+    <div class="recruit-form__title">
+      <p>{{ props.phone }}</p>
+    </div>
+    <div class="recruit-form__content">
+      <Form :size="props.large" />
+    </div>
+  </div>
+  <div class="recruit-form__container">
+    <div class="recruit-form__title">
+      <p>{{ props.email }}</p>
+    </div>
+    <div class="recruit-form__content">
+      <Form :size="props.large" />
+    </div>
+  </div>
+  <div class="recruit-form__container">
+    <div class="recruit-form__title">
+      <p>{{ props.gender }}</p>
+    </div>
+    <div class="recruit-form__content">
+      <SelectBox
+        :size="props.large"
+        :options="props.genderOptions"
+        :value="props.genderValue"
+      />
+    </div>
+  </div>
   <div class="recruit-form__button">
     <Button :label="props.submit" />
   </div>
@@ -79,16 +89,28 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-table {
-  border-spacing: 20px;
-}
 .recruit-form {
-  &__title {
-    p {
-      font-size: 0.875rem;
-      width: 150px;
-      font-weight: bold;
+  &__container {
+    width: 50%;
+    display: flex;
+    margin-bottom: 12px;
+    @include sp {
+      width: 100%;
+      flex-direction: column;
     }
+  }
+  &__title {
+    width: 30%;
+    p {
+      @include defaultText;
+    }
+    @include sp {
+      width: 100%;
+      margin-left: 20%;
+    }
+  }
+  &__content {
+    width: 70%;
   }
   &__button {
     display: flex;

@@ -10,9 +10,11 @@
         <div class="menu-drink__image">
           <img :src="drink.image" alt="ドリンク写真" />
         </div>
-        <p>{{ drink.name }}</p>
-        <span>{{ drink.price }}円</span>
-        <span>（税込{{ drink.includeTaxPrice }}円）</span>
+        <div class="menu-drink__text">
+          <p>{{ drink.name }}</p>
+          <span>{{ drink.price }}円</span>
+          <span>（税込{{ drink.includeTaxPrice }}円）</span>
+        </div>
       </div>
     </div>
   </div>
@@ -63,14 +65,12 @@ export default defineComponent({
     span,
     p {
       @include defaultText;
-      line-height: 200%;
     }
   }
   &__image {
     position: relative;
     width: 100%;
     height: 100%;
-
     // hover時に画像サイズを固定するため
     overflow: hidden;
     &::before {
@@ -82,7 +82,6 @@ export default defineComponent({
 
     p {
       @include defaultText;
-      line-height: 200%;
     }
     img {
       position: absolute;
@@ -101,6 +100,9 @@ export default defineComponent({
         transform: scale(1.05);
       }
     }
+  }
+  &__text {
+    margin: 8px;
   }
 
   @include sp {

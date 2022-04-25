@@ -1,26 +1,26 @@
 <template>
   <div class="edit">
     <Breadcrmb />
-    <div class="edit-wrapper">
-      <SelectCategory @onChange="setValue" />
-      <AddImage @emitImageFile="setImageFile" />
-      <div
-        v-show="
-          state.selectedCategory === state.food ||
-          state.selectedCategory === state.drink
-        "
-      >
-        <EditFood
-          :category="state.selectedCategory"
-          :imageFile="state.imageFile"
-        />
-      </div>
-      <div v-show="state.selectedCategory === state.news">
-        <EditNews :imageFile="state.imageFile" />
-      </div>
-      <div v-show="state.selectedCategory === state.shop">
-        <EditShop :imageFile="state.imageFile" />
-      </div>
+
+    <SelectCategory @onChange="setValue" />
+
+    <AddImage @emitImageFile="setImageFile" />
+    <div
+      v-show="
+        state.selectedCategory === state.food ||
+        state.selectedCategory === state.drink
+      "
+    >
+      <EditFood
+        :category="state.selectedCategory"
+        :imageFile="state.imageFile"
+      />
+    </div>
+    <div v-show="state.selectedCategory === state.news">
+      <EditNews :imageFile="state.imageFile" />
+    </div>
+    <div v-show="state.selectedCategory === state.shop">
+      <EditShop :imageFile="state.imageFile" />
     </div>
   </div>
 </template>
@@ -63,7 +63,6 @@ export default defineComponent({
 
     const setImageFile = (file: any) => {
       state.value.imageFile = file;
-      console.log("set");
     };
     return { setValue, setImageFile, state };
   },

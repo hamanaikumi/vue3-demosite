@@ -12,6 +12,7 @@ export default createStore({
     food: new Array<Food>(),
     shop: new Array<Shop>(),
     news: new Array<News>(),
+    topNews: new Array<News>(),
     filteredNews: {} as News,
   },
   mutations: {
@@ -65,6 +66,8 @@ export default createStore({
     setNews(state, newsArray) {
       // 初期化
       state.news = [];
+      state.topNews = [];
+
       for (const obj of newsArray) {
         const newDate = new Date(obj.date);
         const year = newDate.getFullYear();
@@ -80,26 +83,51 @@ export default createStore({
           image: obj.image,
         });
       }
+      // 最新のニュース3つを格納する
+      const reverseArray = newsArray.reverse();
+      for (let i = 0; i < 3; i++) {
+        const newDate = new Date(reverseArray[i].date);
+        const year = newDate.getFullYear();
+        // 1ヶ月調整
+        const month = newDate.getMonth() + 1;
+        const date = newDate.getDate();
+        state.topNews.push({
+          id: reverseArray[i].id,
+          date: `${year}/${month}/${date}`,
+          title: reverseArray[i].title,
+          detail: reverseArray[i].detail,
+          image: reverseArray[i].image,
+        });
+      }
     },
+
     filterNews(state, id: number) {
       state.filteredNews = state.news.filter((news: News) => news.id == id)[0];
     },
   },
   actions: {
     async getDrink(context) {
-      const res = await axios.get("http://localhost:3000/drink");
+      const res = await axios.get(
+        "https://vast-everglades-32808.herokuapp.com/drink"
+      );
       context.commit("setDrink", res.data);
     },
     async getFood(context) {
-      const res = await axios.get("http://localhost:3000/food");
+      const res = await axios.get(
+        "https://vast-everglades-32808.herokuapp.com/food"
+      );
       context.commit("setFood", res.data);
     },
     async getShop(context) {
-      const res = await axios.get("http://localhost:3000/shop");
+      const res = await axios.get(
+        "https://vast-everglades-32808.herokuapp.com/shop"
+      );
       context.commit("setShop", res.data);
     },
     async getNews(context) {
-      const res = await axios.get("http://localhost:3000/news");
+      const res = await axios.get(
+        "https://vast-everglades-32808.herokuapp.com/news"
+      );
       context.commit("setNews", res.data);
     },
   },
@@ -116,6 +144,9 @@ export default createStore({
     },
     getAllNews(state: any) {
       return state.news;
+    },
+    getTopNews(state: any) {
+      return state.topNews;
     },
     getOneNews(state: any) {
       return state.filteredNews;

@@ -10,9 +10,11 @@
         <div class="menu-food__image">
           <img :src="food.image" alt="フード写真" />
         </div>
-        <p>{{ food.name }}</p>
-        <span>{{ food.price }}円</span>
-        <span>（税込{{ food.includeTaxPrice }}円）</span>
+        <div class="menu-food__text">
+          <p>{{ food.name }}</p>
+          <span>{{ food.price }}円</span>
+          <span>（税込{{ food.includeTaxPrice }}円）</span>
+        </div>
       </div>
     </div>
   </div>
@@ -54,6 +56,7 @@ export default defineComponent({
   &__wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
     width: 100%;
   }
   &__content {
@@ -63,7 +66,6 @@ export default defineComponent({
     span,
     p {
       @include defaultText;
-      line-height: 200%;
     }
   }
   &__image {
@@ -80,7 +82,6 @@ export default defineComponent({
     }
     p {
       @include defaultText;
-      line-height: 200%;
     }
     img {
       position: absolute;
@@ -99,6 +100,10 @@ export default defineComponent({
         transform: scale(1.05);
       }
     }
+  }
+
+  &__text {
+    margin: 8px;
   }
 
   @include sp {

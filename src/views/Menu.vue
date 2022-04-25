@@ -21,7 +21,7 @@ import Food from "@/components/Templates/Menu/Food.vue";
 import Breadcrmb from "@/components/Templates/Breadcrmb.vue";
 
 export default defineComponent({
-  name: "menu",
+  name: "Menu",
   components: { Special, Drink, Food, Breadcrmb },
 
   setup() {

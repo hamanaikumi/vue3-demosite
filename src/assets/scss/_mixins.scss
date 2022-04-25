@@ -7,12 +7,12 @@
   font-size: $fSize;
   font-weight: $weight;
   text-shadow: -1px 4px 2px rgba(0, 0, 0, 0.2);
-  color: $black;
+  color: $dark-gray;
 }
 @mixin menuText($fSize: 1.25rem, $weight: bold) {
   font-size: $fSize;
   font-weight: $weight;
-  color: $black;
+  color: $dark-gray;
 }
 
 $black: black;

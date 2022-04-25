@@ -4,7 +4,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Footer",
@@ -12,7 +12,7 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .footer {
-  @include defaultText;
+  @include defaultText();
   height: 120px;
   display: flex;
   justify-content: center;

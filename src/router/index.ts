@@ -5,6 +5,7 @@ import Shop from "../views/Shop.vue";
 import Recruit from "../views/Recruit.vue";
 import Edit from "../views/Edit.vue";
 import News from "../views/News.vue";
+import Complete from "../views/Complete.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -41,6 +42,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/News/:id",
     name: "News",
     component: News,
+  },
+  {
+    path: "/Complete",
+    name: "Complete",
+    component: Complete,
   },
 ];
 
