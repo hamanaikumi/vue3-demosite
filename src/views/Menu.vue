@@ -79,11 +79,9 @@ export default defineComponent({
 .menu {
   &-component {
     opacity: 0;
-    // transform: translateY(100px);
     transition: opacity 1s ease;
   }
   .show {
-    // transform: translateY(0);
     opacity: 1;
     transition: opacity 1s ease;
     transition-delay: 500ms;

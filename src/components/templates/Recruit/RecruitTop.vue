@@ -7,9 +7,7 @@
       alt="コンセプト写真"
     />
     <div class="recruit-top__text">
-      <p>
-        Cafe Sampleでは現在スタッフを募集しています。 ご応募お待ちしてます。
-      </p>
+      <p>Cafe Sampleでは現在スタッフを募集しています。ご応募お待ちしてます。</p>
 
       <p>■応募資格 18歳以上</p>
       <p>■勤務内容 ホール、レジ、キッチン補助</p>
@@ -68,18 +66,11 @@ export default defineComponent({
 
   @include sp {
     &__content {
-      display: flex;
       flex-direction: column;
     }
 
     &__image {
       max-width: 100%;
-    }
-    &__text {
-      padding: 20px;
-      p {
-        @include defaultText;
-      }
     }
   }
 }

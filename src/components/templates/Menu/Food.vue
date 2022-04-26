@@ -60,7 +60,7 @@ export default defineComponent({
     width: 100%;
   }
   &__content {
-    padding: 4px;
+    margin-bottom: 24px;
     text-align: center;
     width: 23%;
     span,
@@ -108,7 +108,6 @@ export default defineComponent({
 
   @include sp {
     &__wrapper {
-      display: flex;
       flex-direction: column;
     }
     &__content {

@@ -59,7 +59,7 @@ export default defineComponent({
     width: 100%;
   }
   &__content {
-    padding: 4px;
+    margin-bottom: 24px;
     text-align: center;
     width: 23%;
     span,
@@ -79,7 +79,6 @@ export default defineComponent({
       display: block;
       padding-top: 100%;
     }
-
     p {
       @include defaultText;
     }
@@ -93,7 +92,6 @@ export default defineComponent({
       height: 100%;
       object-fit: cover;
     }
-
     &:hover {
       img {
         transition: all 0.5s ease;
@@ -107,7 +105,6 @@ export default defineComponent({
 
   @include sp {
     &__wrapper {
-      display: flex;
       flex-direction: column;
     }
     &__content {

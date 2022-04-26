@@ -42,7 +42,6 @@ export default defineComponent({
     p {
       @include defaultText;
       padding: 20px;
-      line-height: 200%;
     }
   }
   &__image {
@@ -53,13 +52,7 @@ export default defineComponent({
 
   @include sp {
     &__content {
-      display: flex;
       flex-direction: column;
-      p {
-        padding: 20px;
-        @include defaultText;
-        line-height: 200%;
-      }
     }
 
     &__image {

@@ -88,7 +88,6 @@ export default defineComponent({
     p,
     span {
       @include defaultText;
-      line-height: 200%;
     }
     span {
       margin-right: 4px;
@@ -97,31 +96,14 @@ export default defineComponent({
 
   @include sp {
     &__content {
-      display: flex;
       flex-direction: column;
       width: 80%;
     }
     &__image {
       width: 100%;
-      // hover時に画像サイズを固定するため
-      overflow: hidden;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        &:hover {
-          transition: all 0.5s ease;
-          transform: scale(1.05);
-        }
-      }
     }
     &__description {
       width: 100%;
-      padding: 12px;
-      p {
-        @include defaultText;
-        line-height: 200%;
-      }
     }
   }
 }
