@@ -86,7 +86,7 @@ export default defineComponent({
     background: $light-gray;
     border: none;
     color: $white;
-    margin-bottom: 12px;
+    margin-bottom: 24px;
     &:hover {
       background: $dark-gray;
     }

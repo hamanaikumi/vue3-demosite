@@ -142,7 +142,7 @@ export default defineComponent({
   &__button {
     display: flex;
     justify-content: center;
-    margin: 18px 0;
+    margin: 48px 0;
   }
 }
 </style>
