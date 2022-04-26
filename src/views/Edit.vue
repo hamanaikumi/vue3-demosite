@@ -1,7 +1,7 @@
 <template>
   <div class="edit">
     <Breadcrmb />
-
+    <SignIn />
     <SelectCategory @onChange="setValue" />
 
     <AddImage @emitImageFile="setImageFile" />
@@ -33,6 +33,7 @@ import EditNews from "@/components/Templates/Edit/EditNews.vue";
 import AddImage from "@/components/Templates/Edit/AddImage.vue";
 import EditShop from "@/components/Templates/Edit/EditShop.vue";
 import Breadcrmb from "@/components/Templates/Breadcrmb.vue";
+import SignIn from "@/components/Templates/Edit/SignIn.vue";
 
 export default defineComponent({
   components: {
@@ -42,6 +43,7 @@ export default defineComponent({
     AddImage,
     EditShop,
     Breadcrmb,
+    SignIn,
   },
   name: "Edit",
 

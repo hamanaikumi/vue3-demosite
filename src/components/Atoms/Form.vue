@@ -6,6 +6,7 @@
         :placeholder="InputPlaceholder"
         :value="inputValue"
         @input="emitInput"
+        :type="type"
       />
     </div>
   </div>
@@ -39,6 +40,10 @@ export default defineComponent({
       required: false,
       default: "",
     },
+    type: {
+      type: String,
+      required: false,
+    },
   },
 
   setup(props, context) {
@@ -57,6 +62,7 @@ export default defineComponent({
         [`input-${props.size || "medium"}`]: true,
       })),
       inputValue: computed(() => props.value),
+
       emitInput,
     };
   },
