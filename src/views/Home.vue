@@ -87,13 +87,13 @@ export default defineComponent({
   &-component {
     opacity: 0;
     // transform: translateY(100px);
-    transition: opacity 0.5s ease;
+    transition: opacity 1s ease;
   }
   .show {
     // transform: translateY(0);
     opacity: 1;
-    transition: opacity 0.5s ease;
-    transition-delay: 20ms;
+    transition: opacity 1s ease;
+    transition-delay: 500ms;
   }
 }
 </style>

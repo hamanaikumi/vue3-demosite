@@ -53,12 +53,14 @@ export default defineComponent({
 <style lang="scss" scoped>
 select {
   appearance: none;
-  padding: 8px 20px;
+  padding: 2px 20px;
   border: 2px solid $light-gray;
   border-radius: 20px;
   &:focus {
     outline: none;
   }
+  background-color: $white;
+  @include defaultText;
 }
 
 option {

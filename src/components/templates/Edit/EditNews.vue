@@ -2,22 +2,22 @@
   <div class="edit-news">
     <div class="edit-news__form">
       <div class="edit-news__title">
-        <p>{{ propsValue.name }}</p>
+        <p>{{ state.name }}</p>
       </div>
       <div class="edit-news__content">
-        <Form :size="propsValue.large" @onInput="setTitle" />
+        <Form :size="state.large" @onInput="setTitle" />
       </div>
     </div>
     <div class="edit-news__form">
       <div class="edit-news__title">
-        <p>{{ propsValue.detail }}</p>
+        <p>{{ state.detail }}</p>
       </div>
       <div class="edit-news__content">
         <TextArea :rows="6" @onInput="setDetail" />
       </div>
     </div>
     <div class="edit-news__button">
-      <Button :label="propsValue.submit" @emitClick="upload" />
+      <Button :label="state.submit" @emitClick="upload" />
     </div>
   </div>
 </template>
@@ -36,15 +36,15 @@ export default defineComponent({
   },
   setup(props) {
     props = reactive(props);
-    const propsValue = {
+
+    const state = ref({
+      // 子コンポーネントに渡す値
       medium: "medium",
       small: "small",
       large: "large",
       name: "タイトル",
       detail: "詳細",
       submit: "送信",
-    };
-    const state = ref({
       // アップロード用記事タイトル
       titleValue: "",
       // アップロード用記事詳細
@@ -94,7 +94,6 @@ export default defineComponent({
     };
 
     return {
-      propsValue,
       state,
       accessS3,
       upload,

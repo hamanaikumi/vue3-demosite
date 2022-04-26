@@ -77,7 +77,7 @@ export default createStore({
 
         state.news.push({
           id: obj.id,
-          date: `${year}/${month}/${date}`,
+          date: `${year}.${month}.${date}`,
           title: obj.title,
           detail: obj.detail,
           image: obj.image,
@@ -93,7 +93,7 @@ export default createStore({
         const date = newDate.getDate();
         state.topNews.push({
           id: reverseArray[i].id,
-          date: `${year}/${month}/${date}`,
+          date: `${year}.${month}.${date}`,
           title: reverseArray[i].title,
           detail: reverseArray[i].detail,
           image: reverseArray[i].image,

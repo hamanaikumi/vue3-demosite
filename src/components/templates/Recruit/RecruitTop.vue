@@ -6,12 +6,26 @@
       src="@/assets/images/staff.jpeg"
       alt="コンセプト写真"
     />
-    <div>
+    <div class="recruit-top__text">
       <p>
-        社員の着実なステップアップをかなえる研修制度や、一人ひとりに合った働き方を応援するサポート体制。
-        社員がやりがいをもって働くことのできる環境づくりを目指しています。
-        あなたの夢を、私たちと一緒に実現していきませんか。
+        Cafe Sampleでは現在スタッフを募集しています。 ご応募お待ちしてます。
       </p>
+
+      <p>■応募資格 18歳以上</p>
+      <p>■勤務内容 ホール、レジ、キッチン補助</p>
+      <p>■勤務時間</p>
+      <p>
+        ①10:30〜15:00 ②17:30〜21:00 ※①のみ②のみでもOK <br />
+        ※土日祝入れる方 ※週2日〜3日程度勤務可能な方
+      </p>
+      <p>■勤務日 1ヶ月ごとのシフト希望制</p>
+      <p>■待遇 時給1000円 交通費支給なし エプロン貸与</p>
+      <p>■選考方法 面接</p>
+      <p>
+        ■応募方法 お電話にて面接日時を決定させて頂きます。
+        面接時は履歴書をご持参ください。
+      </p>
+      <p>※お電話は15時以降にお願い致します。</p>
     </div>
   </div>
 </template>
@@ -37,11 +51,6 @@ export default defineComponent({
 .recruit-top {
   &__content {
     display: flex;
-    p {
-      @include defaultText;
-      padding: 20px;
-      line-height: 200%;
-    }
   }
 
   &__image {
@@ -50,19 +59,27 @@ export default defineComponent({
     object-fit: cover;
   }
 
+  &__text {
+    padding: 20px;
+    p {
+      @include defaultText;
+    }
+  }
+
   @include sp {
     &__content {
       display: flex;
       flex-direction: column;
-      p {
-        padding: 20px;
-        @include defaultText;
-        line-height: 200%;
-      }
     }
 
     &__image {
       max-width: 100%;
+    }
+    &__text {
+      padding: 20px;
+      p {
+        @include defaultText;
+      }
     }
   }
 }

@@ -2,22 +2,22 @@
   <div class="edit-food">
     <div class="edit-food__form">
       <div class="edit-food__title">
-        <p>{{ propsValue.name }}</p>
+        <p>{{ state.name }}</p>
       </div>
       <div class="edit-food__content">
-        <Form :size="propsValue.large" @onInput="setName" />
+        <Form :size="state.large" @onInput="setName" />
       </div>
     </div>
     <div class="edit-food__form">
       <div class="edit-food__title">
-        <p>{{ propsValue.price }}</p>
+        <p>{{ state.price }}</p>
       </div>
       <div class="edit-food__content">
-        <Form :size="propsValue.large" @onInput="setPrice" />
+        <Form :size="state.large" @onInput="setPrice" />
       </div>
     </div>
     <div class="edit-food__button">
-      <Button :label="propsValue.submit" @emitClick="upload" />
+      <Button :label="state.submit" @emitClick="upload" />
     </div>
   </div>
 </template>
@@ -40,15 +40,15 @@ export default defineComponent({
   setup(props) {
     const router = useRouter();
     props = reactive(props);
-    const propsValue = {
+
+    const state = ref({
+      // 子コンポーネントに渡す渡す値
       medium: "medium",
       small: "small",
       large: "large",
       name: "商品名",
       price: "値段（税抜）",
       submit: "送信",
-    };
-    const state = ref({
       // アップロード用商品名
       nameValue: "",
       // アップロード用値段
@@ -106,7 +106,6 @@ export default defineComponent({
     };
 
     return {
-      propsValue,
       state,
       accessS3,
       upload,

@@ -2,63 +2,63 @@
   <div class="edit-shop">
     <div class="edit-shop__form">
       <div class="edit-shop__title">
-        <p>{{ propsValue.name }}</p>
+        <p>{{ state.name }}</p>
       </div>
       <div class="edit-shop__content">
-        <Form :size="propsValue.large" @onInput="setName" />
+        <Form :size="state.large" @onInput="setName" />
       </div>
     </div>
     <div class="edit-shop__form">
       <div class="edit-shop__title">
-        <p>{{ propsValue.postCode }}</p>
+        <p>{{ state.postCode }}</p>
       </div>
       <div class="edit-shop__content">
-        <Form :size="propsValue.large" @onInput="setPostCode" />
+        <Form :size="state.large" @onInput="setPostCode" />
       </div>
     </div>
     <div class="edit-shop__form">
       <div class="edit-shop__title">
-        <p>{{ propsValue.address }}</p>
+        <p>{{ state.address }}</p>
       </div>
       <div class="edit-shop__content">
-        <Form :size="propsValue.large" @onInput="setAddress" />
+        <Form :size="state.large" @onInput="setAddress" />
       </div>
     </div>
     <div class="edit-shop__form">
       <div class="edit-shop__title">
-        <p>{{ propsValue.holiday }}</p>
+        <p>{{ state.holiday }}</p>
       </div>
       <div class="edit-shop__content">
-        <Form :size="propsValue.large" @onInput="setHoliday" />
+        <Form :size="state.large" @onInput="setHoliday" />
       </div>
     </div>
     <div class="edit-shop__form">
       <div class="edit-shop__title">
-        <p>{{ propsValue.tel }}</p>
+        <p>{{ state.tel }}</p>
       </div>
       <div class="edit-shop__content">
-        <Form :size="propsValue.large" @onInput="setTel" />
+        <Form :size="state.large" @onInput="setTel" />
       </div>
     </div>
     <div class="edit-shop__form">
       <div class="edit-shop__title">
-        <p>{{ propsValue.open }}</p>
+        <p>{{ state.open }}</p>
       </div>
       <div class="edit-shop__content">
-        <Form :size="propsValue.large" @onInput="setOpen" />
+        <Form :size="state.large" @onInput="setOpen" />
       </div>
     </div>
     <div class="edit-shop__form">
       <div class="edit-shop__title">
-        <p>{{ propsValue.seats }}</p>
+        <p>{{ state.seats }}</p>
       </div>
       <div class="edit-shop__content">
-        <Form :size="propsValue.large" @onInput="setSeats" />
+        <Form :size="state.large" @onInput="setSeats" />
       </div>
     </div>
     <!-- button -->
     <div class="edit-shop__button">
-      <Button :label="propsValue.submit" @emitClick="upload" />
+      <Button :label="state.submit" @emitClick="upload" />
     </div>
   </div>
 </template>
@@ -79,7 +79,9 @@ export default defineComponent({
   },
   setup(props) {
     props = reactive(props);
-    const propsValue = {
+
+    const state = ref({
+      // 子コンポーネントに渡す値
       medium: "medium",
       small: "small",
       large: "large",
@@ -91,8 +93,6 @@ export default defineComponent({
       open: "営業時間",
       seats: "客席数",
       submit: "送信",
-    };
-    const state = ref({
       // アップロード用店舗名
       nameValue: "",
       // アップロード用郵便番号
@@ -171,7 +171,6 @@ export default defineComponent({
     };
 
     return {
-      propsValue,
       state,
       accessS3,
       upload,
