@@ -1,30 +1,25 @@
 <template>
-  <div class="home">
-    <div class="home-image">
-      <SlideImage />
+  <div class="shop">
+    <breadcrmb />
+    <div class="shop-concept" ref="componentRef1">
+      <ShopConcept />
     </div>
-    <div class="home-component" ref="componentRef1">
-      <HomeConcept />
-    </div>
-    <div class="home-component" ref="componentRef2">
-      <HomeNews />
-    </div>
-    <div class="home-component" ref="componentRef3">
-      <HomeShop />
+    <div class="shop-component" ref="componentRef2">
+      <ShopDetail />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import SlideImage from "@/components/Templates/Home/SlideImage.vue";
-import HomeConcept from "@/components/Templates/Home/HomeConcept.vue";
-import HomeNews from "@/components/Templates/Home/HomeNews.vue";
-import HomeShop from "@/components/Templates/Home/HomeShop.vue";
 import { defineComponent, onMounted, ref } from "vue";
 
+import Breadcrmb from "@/components/Templates/Breadcrmb.vue";
+import ShopConcept from "@/components/Templates/Shop/ShopConcept.vue";
+import ShopDetail from "@/components/Templates/Shop/ShopDetail.vue";
+
 export default defineComponent({
-  name: "Home",
-  components: { HomeConcept, HomeNews, HomeShop, SlideImage },
+  name: "Shop",
+  components: { Breadcrmb, ShopConcept, ShopDetail },
 
   setup() {
     const state = ref({
@@ -34,20 +29,15 @@ export default defineComponent({
 
     const componentRef1 = ref();
     const componentRef2 = ref();
-    const componentRef3 = ref();
 
     onMounted(() => {
       // 型から undefined をなくす
       if (!componentRef1.value) return;
       if (!componentRef2.value) return;
-      if (!componentRef3.value) return;
 
-      state.value.refArray.push(
-        componentRef1.value,
-        componentRef2.value,
-        componentRef3.value
-      );
+      state.value.refArray.push(componentRef1.value, componentRef2.value);
     });
+
     /**
      * HTMLテンプレートの位置とスクロール位置を照らし合わせて、表示非表示を切り替える.
      */
@@ -76,17 +66,12 @@ export default defineComponent({
       checkBoxes,
       componentRef1,
       componentRef2,
-      componentRef3,
     };
   },
 });
 </script>
 <style lang="scss" scoped>
-.home {
-  &-image {
-    height: 45rem;
-  }
-
+.shop {
   &-component {
     opacity: 0;
     // transform: translateY(100px);

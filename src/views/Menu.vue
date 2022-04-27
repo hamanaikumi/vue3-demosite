@@ -1,30 +1,28 @@
 <template>
-  <div class="home">
-    <div class="home-image">
-      <SlideImage />
+  <div class="menu">
+    <breadcrmb />
+    <div class="menu-spacial" ref="componentRef1">
+      <Special />
     </div>
-    <div class="home-component" ref="componentRef1">
-      <HomeConcept />
+    <div class="menu-component" ref="componentRef2">
+      <Drink />
     </div>
-    <div class="home-component" ref="componentRef2">
-      <HomeNews />
-    </div>
-    <div class="home-component" ref="componentRef3">
-      <HomeShop />
+    <div class="menu-component" ref="componentRef3">
+      <Food />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import SlideImage from "@/components/Templates/Home/SlideImage.vue";
-import HomeConcept from "@/components/Templates/Home/HomeConcept.vue";
-import HomeNews from "@/components/Templates/Home/HomeNews.vue";
-import HomeShop from "@/components/Templates/Home/HomeShop.vue";
 import { defineComponent, onMounted, ref } from "vue";
+import Special from "@/components/Templates/Menu/Special.vue";
+import Drink from "@/components/Templates/Menu/Drink.vue";
+import Food from "@/components/Templates/Menu/Food.vue";
+import Breadcrmb from "@/components/Templates/Breadcrmb.vue";
 
 export default defineComponent({
-  name: "Home",
-  components: { HomeConcept, HomeNews, HomeShop, SlideImage },
+  name: "Menu",
+  components: { Special, Drink, Food, Breadcrmb },
 
   setup() {
     const state = ref({
@@ -48,6 +46,7 @@ export default defineComponent({
         componentRef3.value
       );
     });
+
     /**
      * HTMLテンプレートの位置とスクロール位置を照らし合わせて、表示非表示を切り替える.
      */
@@ -82,18 +81,12 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.home {
-  &-image {
-    height: 45rem;
-  }
-
+.menu {
   &-component {
     opacity: 0;
-    // transform: translateY(100px);
     transition: opacity 1s ease;
   }
   .show {
-    // transform: translateY(0);
     opacity: 1;
     transition: opacity 1s ease;
     transition-delay: 500ms;
