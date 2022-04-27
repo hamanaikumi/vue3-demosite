@@ -20,6 +20,6 @@ export default defineComponent({
 .title {
   @include titleText;
   text-align: center;
-  padding: 48px;
+  padding: 56px;
 }
 </style>
