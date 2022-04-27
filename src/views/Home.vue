@@ -12,7 +12,6 @@
     <div class="home-component" ref="componentRef3">
       <HomeShop />
     </div>
-    <thumbnail-image />
   </div>
 </template>
 
@@ -22,11 +21,10 @@ import HomeConcept from "@/components/Templates/Home/HomeConcept.vue";
 import HomeNews from "@/components/Templates/Home/HomeNews.vue";
 import HomeShop from "@/components/Templates/Home/HomeShop.vue";
 import { defineComponent, onMounted, ref } from "vue";
-import ThumbnailImage from "@/components/Atoms/ThumbnailImage.vue";
 
 export default defineComponent({
   name: "Home",
-  components: { HomeConcept, HomeNews, HomeShop, SlideImage, ThumbnailImage },
+  components: { HomeConcept, HomeNews, HomeShop, SlideImage },
 
   setup() {
     const state = ref({
