@@ -1,6 +1,6 @@
 <template>
   <div class="shop-detail">
-    <title-text :text="props.text" />
+    <title-text :text="propsValue.text" />
     <div
       class="shop-detail__content"
       v-for="shop of state.shopArray"
@@ -31,6 +31,7 @@
 </template>
 <script lang="ts">
 import TitleText from "@/components/Atoms/TitleText.vue";
+import Shop from "@/models/shop";
 import { defineComponent, onBeforeMount, ref } from "vue";
 import { useStore } from "vuex";
 
@@ -39,21 +40,29 @@ export default defineComponent({
   name: "ShopDetail",
   setup() {
     const store = useStore();
-    const props = {
+    const propsValue = {
+      // タイトルのテキスト
       text: "Shop",
     };
     const state = ref({
-      shopArray: [],
+      // ショップ一覧
+      shopArray: Array<Shop>(),
     });
+
+    /**
+     * 店舗情報一覧を取得する.
+     */
     const getShop = async () => {
       await store.dispatch("getShop");
       state.value.shopArray = store.getters.getAllShop;
     };
+
     onBeforeMount(() => {
       getShop();
     });
+
     return {
-      props,
+      propsValue,
       state,
       getShop,
     };

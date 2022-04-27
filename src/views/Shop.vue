@@ -23,6 +23,7 @@ export default defineComponent({
 
   setup() {
     const state = ref({
+      // refで参照するHTMLテンプレートの配列
       refArray: Array<Element>(),
     });
 
@@ -37,6 +38,9 @@ export default defineComponent({
       state.value.refArray.push(componentRef1.value, componentRef2.value);
     });
 
+    /**
+     * HTMLテンプレートの位置とスクロール位置を照らし合わせて、表示非表示を切り替える.
+     */
     const checkBoxes = () => {
       // 現在表示されているページの縦の長さを取得
       // 要素はそれよりも狭い範囲で計算したいので、いくらかで割る

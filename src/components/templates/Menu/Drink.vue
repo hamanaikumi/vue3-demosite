@@ -1,6 +1,6 @@
 <template>
   <div class="menu-drink">
-    <title-text :text="props.text" />
+    <title-text :text="propsValue.text" />
     <div class="menu-drink__wrapper">
       <div
         class="menu-drink__content"
@@ -30,21 +30,29 @@ export default defineComponent({
   name: "Drink",
   setup() {
     const store = useStore();
-    const props = {
+    const propsValue = {
+      // タイトルのテキスト
       text: "Drink",
     };
     const state = ref({
+      // ドリンクメニュー
       drinkMenu: Array<Drink>(),
     });
+
+    /**
+     * ドリンクメニューを取得する.
+     */
     const getDrinkMenu = async () => {
       await store.dispatch("getDrink");
       state.value.drinkMenu = store.getters.getAllDrink;
     };
+
     onBeforeMount(() => {
       getDrinkMenu();
     });
+
     return {
-      props,
+      propsValue,
       state,
       getDrinkMenu,
     };

@@ -21,7 +21,9 @@ export default defineComponent({
   },
 
   setup() {
+    // スクロール量
     let scrollY = ref(0);
+    // 表示非表示の切り替え
     let visible = ref(false);
     /**
      * スクロールに合わせて、ボタンの表示非表示を切り替える.

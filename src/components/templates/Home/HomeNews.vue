@@ -1,6 +1,6 @@
 <template>
   <div class="home-news">
-    <title-text :text="props.text" />
+    <title-text :text="propsValue.text" />
     <div class="home-news__wrapper">
       <div
         class="home-news__content"
@@ -31,22 +31,30 @@ export default defineComponent({
   name: "TopNews",
   setup() {
     const store = useStore();
-    const props = {
+    const propsValue = {
+      // タイトルのテキスト
       text: "News",
     };
     const state = ref({
+      // ニュース
       newsArray: Array<News>(),
     });
+
+    /**
+     * ニュース(最新3件)を取得する.
+     */
     const getNews = async () => {
       await store.dispatch("getNews");
       // 最新が先頭に来るように並び替え
       state.value.newsArray = store.getters.getTopNews;
     };
+
     onBeforeMount(() => {
       getNews();
     });
+
     return {
-      props,
+      propsValue,
       state,
       getNews,
     };

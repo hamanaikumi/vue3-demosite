@@ -27,14 +27,11 @@ export default defineComponent({
         return ["small", "medium", "large"].indexOf(value) !== -1;
       },
     },
-
-    // placeholder
     placeholder: {
       type: String || Number,
       required: false,
       default: "",
     },
-    // value
     value: {
       type: String || Number,
       required: false,

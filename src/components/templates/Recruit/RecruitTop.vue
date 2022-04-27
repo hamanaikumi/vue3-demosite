@@ -1,5 +1,5 @@
 <template>
-  <title-text :text="props.text" />
+  <title-text :text="propsValue.text" />
   <div class="recruit-top__content">
     <img
       class="recruit-top__image"
@@ -36,11 +36,12 @@ export default defineComponent({
   components: { TitleText },
   name: "RecruitTop",
   setup() {
-    const props = {
+    const propsValue = {
+      // タイトルのテキスト
       text: "Recruit",
     };
     return {
-      props,
+      propsValue,
     };
   },
 });

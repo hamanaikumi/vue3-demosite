@@ -110,25 +110,52 @@ export default defineComponent({
       // アップロード用画像URL
       imageUrl: "",
     });
-
+    /**
+     * 店舗名を取得する.
+     * @param inputValue 入力した値
+     */
     const setName = (inputValue: string) => {
       state.value.nameValue = inputValue;
     };
+    /**
+     * 郵便番号を取得する.
+     * @param inputValue 入力した値
+     */
     const setPostCode = (inputValue: string) => {
       state.value.postCodeValue = inputValue;
     };
+    /**
+     * 住所を取得する.
+     * @param inputValue 入力した値
+     */
     const setAddress = (inputValue: string) => {
       state.value.addressValue = inputValue;
     };
+    /**
+     * 定休日を取得する.
+     * @param inputValue 入力した値
+     */
     const setHoliday = (inputValue: string) => {
       state.value.holidayValue = inputValue;
     };
+    /**
+     * 電話番号を取得する.
+     * @param inputValue 入力した値
+     */
     const setTel = (inputValue: string) => {
       state.value.telValue = inputValue;
     };
+    /**
+     * 営業時間を取得する.
+     * @param inputValue 入力した値
+     */
     const setOpen = (inputValue: string) => {
       state.value.openValue = inputValue;
     };
+    /**
+     * 客席数を取得する.
+     * @param inputValue 入力した値
+     */
     const setSeats = (inputValue: string) => {
       state.value.seatsValue = inputValue;
     };

@@ -1,6 +1,6 @@
 <template>
   <div class="home-shop">
-    <title-text :text="props.text" />
+    <title-text :text="propsValue.text" />
     <div class="home-shop__wrapper">
       <div
         class="home-shop__content"
@@ -28,21 +28,30 @@ export default defineComponent({
   name: "TopShop",
   setup() {
     const store = useStore();
-    const props = {
+    const propsValue = {
+      // タイトルのテキスト
       text: "Shops",
     };
+
     const state = ref({
+      // 店舗情報
       shopArray: Array<Shop>(),
     });
+
+    /**
+     * 店舗情報を取得する.
+     */
     const getShop = async () => {
       await store.dispatch("getShop");
       state.value.shopArray = store.getters.getAllShop;
     };
+
     onBeforeMount(() => {
       getShop();
     });
+
     return {
-      props,
+      propsValue,
       state,
       getShop,
     };

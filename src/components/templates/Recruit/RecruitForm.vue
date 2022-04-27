@@ -60,17 +60,22 @@ export default defineComponent({
   name: "RecruitForm",
   setup() {
     const props = {
+      // タイトルのテキスト
       text: "Form",
+      // フォームのサイズ
       medium: "medium",
       small: "small",
       large: "large",
+      // フォームのタイトル
       name: "氏名",
       furigana: "ふりがな",
       phone: "電話番号",
       email: "メールアドレス",
       submit: "送信",
       gender: "性別",
+      // 性別選択の初期値
       genderValue: "性別を選択",
+      // 性別選択の選択肢
       genderOptions: [
         {
           name: "男",

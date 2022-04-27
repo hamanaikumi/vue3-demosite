@@ -1,7 +1,11 @@
 <template>
   <div class="header-modal">
     <div class="header-modal__container">
-      <div class="header-modal__content" v-for="(menu, i) of props" :key="i">
+      <div
+        class="header-modal__content"
+        v-for="(menu, i) of propsValue"
+        :key="i"
+      >
         <menu-text :link="menu.link" :text="menu.text" />
       </div>
     </div>
@@ -15,7 +19,8 @@ export default defineComponent({
   components: { MenuText },
   name: "Modal",
   setup() {
-    const props = [
+    // リンク一覧
+    const propsValue = [
       {
         link: "/Menu",
         text: "Menu",
@@ -33,7 +38,7 @@ export default defineComponent({
         text: "Edit",
       },
     ];
-    return { props };
+    return { propsValue };
   },
 });
 </script>

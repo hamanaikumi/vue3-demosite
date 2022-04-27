@@ -1,5 +1,5 @@
 <template>
-  <title-text :text="props.text" />
+  <title-text :text="propsValue.text" />
   <div class="news-content">
     <div class="news-image">
       <img :src="state.displayNews.image" alt="コンセプト写真" />
@@ -31,22 +31,30 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const route = useRoute();
-    const props = {
+    const propsValue = {
+      // タイトルのテキスト
       text: "News",
     };
     const state = ref({
+      // ニュース
       displayNews: {} as NewsType,
     });
+
+    /**
+     * ストアからIDの一致するニュースを取得する.
+     */
     const getNews = async () => {
       const id = Number(route.params.id);
       store.commit("filterNews", id);
       state.value.displayNews = store.getters.getOneNews;
     };
+
     onBeforeMount(() => {
       getNews();
     });
+
     return {
-      props,
+      propsValue,
       state,
       getNews,
     };

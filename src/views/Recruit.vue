@@ -22,9 +22,11 @@ export default defineComponent({
 
   setup() {
     const state = ref({
+      // フォームのサイズ
       medium: "medium",
       small: "small",
       large: "large",
+      // フォームのタイトル
       name: "氏名",
       furigana: "ふりがな",
       phone: "電話番号",

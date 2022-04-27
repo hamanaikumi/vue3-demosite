@@ -1,28 +1,32 @@
 <template>
   <div class="edit-signin">
-    <title-text :text="state.text" />
+    <title-text :text="propsValue.text" />
 
     <div class="edit-signin__form">
       <div class="edit-signin__title">
-        <p>{{ state.userId }}</p>
+        <p>{{ propsValue.userId }}</p>
       </div>
       <div class="edit-signin__content">
-        <Form :size="state.large" @onInput="setUserId" />
+        <Form :size="propsValue.large" @onInput="setUserId" />
       </div>
     </div>
     <div class="edit-signin__form">
       <div class="edit-signin__title">
-        <p>{{ state.password }}</p>
+        <p>{{ propsValue.password }}</p>
       </div>
       <div class="edit-signin__content">
-        <Form :size="state.large" @onInput="setPassword" :type="state.type" />
+        <Form
+          :size="propsValue.large"
+          @onInput="setPassword"
+          :type="propsValue.type"
+        />
       </div>
     </div>
     <div class="edit-signin__error">
       <p>{{ state.errorMassage }}</p>
     </div>
     <div class="edit-signin__button">
-      <Button :label="state.login" @emitClick="signIn" />
+      <Button :label="propsValue.login" @emitClick="signIn" />
     </div>
   </div>
 </template>
@@ -42,16 +46,22 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
-    const state = ref({
-      // 子コンポーネントに渡す値
+    const propsValue = ref({
+      // タイトルのテキスト
       text: "SignIn",
+      // フォームのサイズ
       medium: "medium",
       small: "small",
       large: "large",
+      // フォームのタイトル
       userId: "管理者ID",
       password: "パスワード",
+      // inputのtype指定
       type: "password",
+      // ボタンのテキスト
       login: "ログイン",
+    });
+    const state = ref({
       // ログイン失敗時のメッセージ
       errorMassage: "",
       // アップロード用記事タイトル
@@ -60,15 +70,24 @@ export default defineComponent({
       passwordValue: "",
     });
 
+    /**
+     * 管理者IDを取得する.
+     * @param inputValue 入力した値
+     */
     const setUserId = (inputValue: string) => {
       state.value.userIdValue = inputValue;
     };
+
+    /**
+     * パスワードを取得する.
+     * @param inputValue 入力した値
+     */
     const setPassword = (inputValue: string) => {
       state.value.passwordValue = inputValue;
     };
 
     /**
-     * 入力した情報をmongoDBに保管する.
+     * ログインをして成功したらストアのログイン状態を切り替える.失敗したらエラーメッセージ表示.
      */
     const signIn = async () => {
       // mongodbに保管
@@ -88,6 +107,7 @@ export default defineComponent({
     };
 
     return {
+      propsValue,
       state,
       signIn,
       setUserId,

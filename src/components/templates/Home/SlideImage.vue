@@ -16,8 +16,10 @@ import { defineComponent, onMounted, ref } from "vue";
 export default defineComponent({
   setup() {
     const state = ref({
+      // 表示されている画像のインデックス
       index: 0,
     });
+
     onMounted(() => {
       const images = document.getElementsByClassName("slideshow");
 

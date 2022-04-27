@@ -53,9 +53,18 @@ export default defineComponent({
       imageUrl: "",
     });
 
+    /**
+     * タイトルを取得する.
+     * @param inputValue 入力した値
+     */
     const setTitle = (inputValue: string) => {
       state.value.titleValue = inputValue;
     };
+
+    /**
+     * 詳細を取得する.
+     * @param inputValue 入力した値
+     */
     const setDetail = (inputValue: string) => {
       state.value.detailValue = inputValue;
     };

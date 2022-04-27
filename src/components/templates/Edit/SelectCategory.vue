@@ -26,6 +26,10 @@ export default defineComponent({
         { name: "店舗" },
       ],
     });
+    /**
+     * 選択された値を親コンポーネントに渡す.
+     * @param selectedValue 選択された値
+     */
     const emitChange = (selectedValue: string) => {
       context.emit("onChange", selectedValue);
     };

@@ -42,7 +42,7 @@ export default defineComponent({
     props = reactive(props);
 
     const state = ref({
-      // 子コンポーネントに渡す渡す値
+      // 子コンポーネントに渡す値
       medium: "medium",
       small: "small",
       large: "large",
@@ -57,9 +57,18 @@ export default defineComponent({
       imageUrl: "",
     });
 
+    /**
+     * 商品名を取得する.
+     * @param inputValue 入力した値
+     */
     const setName = (inputValue: string) => {
       state.value.nameValue = inputValue;
     };
+
+    /**
+     * 値段を取得する.
+     * @param inputValue 入力した値
+     */
     const setPrice = (inputValue: string) => {
       state.value.priceValue = inputValue;
     };
@@ -102,6 +111,7 @@ export default defineComponent({
           image: state.value.imageUrl,
         });
       }
+      // 完了画面に遷移する
       router.push("/Complete");
     };
 

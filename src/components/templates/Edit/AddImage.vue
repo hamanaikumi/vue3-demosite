@@ -34,7 +34,7 @@ export default defineComponent({
     });
 
     /**
-     * 新しい画像画像に入れ替える.
+     * 画像を添付して表示させる.
      * @param e - 添付ファイル
      */
     const fileSelected = async (e: any) => {

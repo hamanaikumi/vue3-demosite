@@ -26,12 +26,14 @@ export default defineComponent({
 
   setup() {
     const state = ref({
+      // refで参照するHTMLテンプレートの配列
       refArray: Array<Element>(),
     });
 
     const componentRef1 = ref();
     const componentRef2 = ref();
     const componentRef3 = ref();
+
     onMounted(() => {
       // 型から undefined をなくす
       if (!componentRef1.value) return;
@@ -45,6 +47,9 @@ export default defineComponent({
       );
     });
 
+    /**
+     * HTMLテンプレートの位置とスクロール位置を照らし合わせて、表示非表示を切り替える.
+     */
     const checkBoxes = () => {
       // 現在表示されているページの縦の長さを取得
       // 要素はそれよりも狭い範囲で計算したいので、いくらかで割る

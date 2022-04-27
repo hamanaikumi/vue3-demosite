@@ -16,8 +16,12 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     const propsValue = {
+      // ボタンのテキスト
       edit: "編集に戻る",
     };
+    /**
+     * 編集画面に戻る.
+     */
     const backToEdit = () => {
       router.push("/Edit");
     };

@@ -62,27 +62,38 @@ export default defineComponent({
     const state = ref({
       // 選択されたカテゴリー
       selectedCategory: "",
-      // カテゴリー
+      // カテゴリー一覧
       food: "新商品（フード）",
       drink: "新商品（ドリンク）",
       news: "ニュース",
       shop: "店舗",
       // 添付された画像ファイル
       imageFile: {},
+      // ボタンのテキスト
       logout: "ログアウト",
     });
+    /**
+     * 選択された値を格納する.
+     * @param selectedValue 選択されたカテゴリー
+     */
     const setValue = (selectedValue: string) => {
       state.value.selectedCategory = selectedValue;
     };
-
+    /**
+     * 添付された画像ファイルを格納する.
+     */
     const setImageFile = (file: any) => {
       state.value.imageFile = file;
     };
-
+    /**
+     * ログアウトしてストアのログイン状態を切り替える.
+     */
     const logout = () => {
       store.commit("setSignInFlag");
     };
-
+    /**
+     * ストアのログイン状態を取得する.
+     */
     const flag = computed(() => {
       return store.getters.getSignInFlag;
     });

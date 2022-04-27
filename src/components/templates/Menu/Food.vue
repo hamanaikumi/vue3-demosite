@@ -1,6 +1,6 @@
 <template>
   <div class="menu-food">
-    <title-text :text="props.text" />
+    <title-text :text="propsValue.text" />
     <div class="menu-food__wrapper">
       <div
         class="menu-food__content"
@@ -30,21 +30,29 @@ export default defineComponent({
   name: "Food",
   setup() {
     const store = useStore();
-    const props = {
+    const propsValue = {
+      // タイトルのテキスト
       text: "Food",
     };
     const state = ref({
+      // フードメニュー
       foodMenu: Array<Food>(),
     });
+
+    /**
+     * フードメニューを取得する.
+     */
     const getFoodMenu = async () => {
       await store.dispatch("getFood");
       state.value.foodMenu = store.getters.getAllFood;
     };
+
     onBeforeMount(() => {
       getFoodMenu();
     });
+
     return {
-      props,
+      propsValue,
       state,
       getFoodMenu,
     };

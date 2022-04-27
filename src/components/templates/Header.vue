@@ -18,7 +18,7 @@
       </div>
     </router-link>
     <div class="header-menu__tab">
-      <div v-for="(menu, i) of props" :key="i">
+      <div v-for="(menu, i) of propsValue" :key="i">
         <MenuText :link="menu.link" :text="menu.text" />
       </div>
       <div class="header-icon">
@@ -73,9 +73,11 @@ export default defineComponent({
   components: { Modal, MenuText },
   setup() {
     const state = ref({
+      // モーダルの開閉判定
       isActive: false,
     });
-    const props = [
+    // リンク一覧
+    const propsValue = [
       {
         link: "/Menu",
         text: "Menu",
@@ -100,7 +102,7 @@ export default defineComponent({
       state.value.isActive = !state.value.isActive;
     };
 
-    return { state, props, menuSwitch };
+    return { state, propsValue, menuSwitch };
   },
 });
 </script>

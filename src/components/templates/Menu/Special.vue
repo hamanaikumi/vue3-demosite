@@ -1,5 +1,5 @@
 <template>
-  <title-text :text="props.text" />
+  <title-text :text="propsValue.text" />
   <div class="menu-special__content">
     <img
       class="menu-special__image"
@@ -22,11 +22,12 @@ export default defineComponent({
   components: { TitleText },
   name: "special",
   setup() {
-    const props = {
+    const propsValue = {
+      // タイトルのテキスト
       text: "Special",
     };
     return {
-      props,
+      propsValue,
     };
   },
 });

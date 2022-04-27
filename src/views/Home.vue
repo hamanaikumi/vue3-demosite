@@ -12,6 +12,7 @@
     <div class="home-component" ref="componentRef3">
       <HomeShop />
     </div>
+    <thumbnail-image />
   </div>
 </template>
 
@@ -21,20 +22,22 @@ import HomeConcept from "@/components/Templates/Home/HomeConcept.vue";
 import HomeNews from "@/components/Templates/Home/HomeNews.vue";
 import HomeShop from "@/components/Templates/Home/HomeShop.vue";
 import { defineComponent, onMounted, ref } from "vue";
+import ThumbnailImage from "@/components/Atoms/ThumbnailImage.vue";
 
 export default defineComponent({
   name: "Home",
-  components: { HomeConcept, HomeNews, HomeShop, SlideImage },
+  components: { HomeConcept, HomeNews, HomeShop, SlideImage, ThumbnailImage },
 
   setup() {
     const state = ref({
+      // refで参照するHTMLテンプレートの配列
       refArray: Array<Element>(),
-      appearance: Array<boolean>(),
     });
 
     const componentRef1 = ref();
     const componentRef2 = ref();
     const componentRef3 = ref();
+
     onMounted(() => {
       // 型から undefined をなくす
       if (!componentRef1.value) return;
@@ -47,7 +50,9 @@ export default defineComponent({
         componentRef3.value
       );
     });
-
+    /**
+     * HTMLテンプレートの位置とスクロール位置を照らし合わせて、表示非表示を切り替える.
+     */
     const checkBoxes = () => {
       // 現在表示されているページの縦の長さを取得
       // 要素はそれよりも狭い範囲で計算したいので、いくらかで割る

@@ -1,6 +1,6 @@
 <template>
   <div class="home-concept">
-    <title-text :text="props.text" />
+    <title-text :text="propsValue.text" />
     <div class="home-concept__first">
       <div class="home-concept__image">
         <ClipImage />
@@ -54,11 +54,12 @@ export default defineComponent({
   },
   name: "Concept",
   setup() {
-    const props = {
+    const propsValue = {
+      // タイトルのテキスト
       text: "Concept",
     };
     return {
-      props,
+      propsValue,
     };
   },
 });
