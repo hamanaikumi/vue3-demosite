@@ -14,6 +14,7 @@ export default createStore({
     news: new Array<News>(),
     topNews: new Array<News>(),
     filteredNews: {} as News,
+    signInFlag: false,
   },
   mutations: {
     setDrink(state, drinkArray) {
@@ -104,6 +105,14 @@ export default createStore({
     filterNews(state, id: number) {
       state.filteredNews = state.news.filter((news: News) => news.id == id)[0];
     },
+
+    setSignInFlag(state) {
+      if (state.signInFlag) {
+        state.signInFlag = false;
+      } else {
+        state.signInFlag = true;
+      }
+    },
   },
   actions: {
     async getDrink(context) {
@@ -150,6 +159,9 @@ export default createStore({
     },
     getOneNews(state: any) {
       return state.filteredNews;
+    },
+    getSignInFlag(state: any) {
+      return state.signInFlag;
     },
   },
   plugins: [createPersistedState()],

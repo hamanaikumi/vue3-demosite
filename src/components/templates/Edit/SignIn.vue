@@ -18,18 +18,21 @@
         <Form :size="state.large" @onInput="setPassword" :type="state.type" />
       </div>
     </div>
-
+    <div class="edit-signin__error">
+      <p>{{ state.errorMassage }}</p>
+    </div>
     <div class="edit-signin__button">
-      <Button :label="state.submit" @emitClick="signIn" />
+      <Button :label="state.login" @emitClick="signIn" />
     </div>
   </div>
 </template>
 <script lang="ts">
 import Button from "@/components/Atoms/Button.vue";
 import Form from "@/components/Atoms/Form.vue";
-import { defineComponent, reactive, ref } from "vue";
+import { defineComponent, ref } from "vue";
 import axios from "axios";
 import TitleText from "@/components/Atoms/TitleText.vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   components: { Form, Button, TitleText },
@@ -38,6 +41,7 @@ export default defineComponent({
     imageFile: {},
   },
   setup() {
+    const store = useStore();
     const state = ref({
       // 子コンポーネントに渡す値
       text: "SignIn",
@@ -47,7 +51,9 @@ export default defineComponent({
       userId: "管理者ID",
       password: "パスワード",
       type: "password",
-      submit: "送信",
+      login: "ログイン",
+      // ログイン失敗時のメッセージ
+      errorMassage: "",
       // アップロード用記事タイトル
       userIdValue: "",
       // アップロード用記事詳細
@@ -74,9 +80,10 @@ export default defineComponent({
         }
       );
       if (res.data.status === "success") {
-        console.log("ログイン！");
+        store.commit("setSignInFlag");
+        state.value.errorMassage = "";
       } else if (res.data.status === "no user") {
-        console.log("ログインできない");
+        state.value.errorMassage = "管理者IDまたはパスワードが間違っています";
       }
     };
 
@@ -112,6 +119,13 @@ export default defineComponent({
   }
   &__content {
     width: 80%;
+  }
+  &__error {
+    height: 1rem;
+    text-align: center;
+    p {
+      @include defaultText;
+    }
   }
   &__button {
     display: flex;

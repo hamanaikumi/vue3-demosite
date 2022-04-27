@@ -24,6 +24,7 @@
 import TitleText from "@/components/Atoms/TitleText.vue";
 import { defineComponent, onBeforeMount, ref } from "vue";
 import { useStore } from "vuex";
+import News from "@/models/news";
 
 export default defineComponent({
   components: { TitleText },
@@ -34,7 +35,7 @@ export default defineComponent({
       text: "News",
     };
     const state = ref({
-      newsArray: [],
+      newsArray: Array<News>(),
     });
     const getNews = async () => {
       await store.dispatch("getNews");
@@ -106,7 +107,7 @@ export default defineComponent({
   &__text {
     overflow: hidden;
     width: 100%;
-
+    margin: 8px;
     p {
       overflow: hidden;
       text-overflow: ellipsis;

@@ -23,6 +23,7 @@
 import TitleText from "@/components/Atoms/TitleText.vue";
 import { defineComponent, onBeforeMount, ref } from "vue";
 import { useStore } from "vuex";
+import Drink from "@/models/drink";
 
 export default defineComponent({
   components: { TitleText },
@@ -33,7 +34,7 @@ export default defineComponent({
       text: "Drink",
     };
     const state = ref({
-      drinkMenu: [],
+      drinkMenu: Array<Drink>(),
     });
     const getDrinkMenu = async () => {
       await store.dispatch("getDrink");

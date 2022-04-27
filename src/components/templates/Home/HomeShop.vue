@@ -21,6 +21,7 @@
 import TitleText from "@/components/Atoms/TitleText.vue";
 import { defineComponent, onBeforeMount, ref } from "vue";
 import { useStore } from "vuex";
+import Shop from "@/models/shop";
 
 export default defineComponent({
   components: { TitleText },
@@ -31,7 +32,7 @@ export default defineComponent({
       text: "Shops",
     };
     const state = ref({
-      shopArray: [],
+      shopArray: Array<Shop>(),
     });
     const getShop = async () => {
       await store.dispatch("getShop");
