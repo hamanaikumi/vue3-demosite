@@ -11,17 +11,34 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+import { computed, defineComponent, onMounted, reactive, ref } from "vue";
 
 import Breadcrmb from "@/components/Templates/Breadcrmb.vue";
 import ShopConcept from "@/components/Templates/Shop/ShopConcept.vue";
 import ShopDetail from "@/components/Templates/Shop/ShopDetail.vue";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   name: "Shop",
   components: { Breadcrmb, ShopConcept, ShopDetail },
 
   setup() {
+    // metaデータ
+    const siteData = reactive({
+      title: `Sample Cafe || 店舗情報`,
+      description: `何気ない毎日の中で、心安らぐひと時を。Sample Cafe はお客様ひとりひとりに寄り添う、心地よい空間とお食事を提供する憩いの場です。 ともだちと語らうランチ、1人でゆっくり過ごすアフタヌーン。 少し特別でささやかな幸せを感じられるあなただけの時間をお過ごしください。`,
+    });
+    useHead({
+      // Can be static or computed
+      title: computed(() => siteData.title),
+      meta: [
+        {
+          name: `description`,
+          content: computed(() => siteData.description),
+        },
+      ],
+    });
+
     const state = ref({
       // refで参照するHTMLテンプレートの配列
       refArray: Array<Element>(),
