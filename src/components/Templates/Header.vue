@@ -111,7 +111,10 @@ export default defineComponent({
   height: 120px;
   display: flex;
   justify-content: space-between;
-
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: $white;
   &-logo {
     display: flex;
     h1 {
