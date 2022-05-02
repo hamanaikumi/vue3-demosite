@@ -67,6 +67,7 @@ import Button from "@/components/Atoms/Button.vue";
 import Form from "@/components/Atoms/Form.vue";
 import { defineComponent, reactive, ref } from "vue";
 import axios from "axios";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   components: { Form, Button },
@@ -78,6 +79,7 @@ export default defineComponent({
     imageFile: {},
   },
   setup(props) {
+    const router = useRouter();
     props = reactive(props);
 
     const state = ref({
@@ -195,6 +197,9 @@ export default defineComponent({
         seats: state.value.seatsValue,
         image: state.value.imageUrl,
       });
+
+      // 完了画面に遷移する
+      router.push("/Complete");
     };
 
     return {
@@ -224,12 +229,11 @@ export default defineComponent({
     }
   }
   &__title {
-    width: 20%;
+    width: 25%;
     p {
       @include defaultText;
     }
     @include sp {
-      width: 100%;
       margin-left: 15%;
     }
   }

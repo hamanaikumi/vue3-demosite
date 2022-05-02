@@ -38,10 +38,10 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .button {
-  padding: 8px;
+  padding: 8px 32px;
   cursor: pointer;
   border-radius: 20px;
-  width: 100px;
+  // width: 100px;
   height: 40px;
 }
 .button-primary {

@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vueuse/head": "^0.7.6",
     "axios": "^0.26.1",
     "browser-image-compression": "^2.0.0",
     "core-js": "^3.6.5",

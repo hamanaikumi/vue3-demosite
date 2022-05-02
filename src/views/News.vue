@@ -20,15 +20,30 @@
 
 <script lang="ts">
 import TitleText from "@/components/Atoms/TitleText.vue";
-import { defineComponent, onBeforeMount, ref } from "vue";
+import { computed, defineComponent, onBeforeMount, reactive, ref } from "vue";
 import { useStore } from "vuex";
 import NewsType from "@/models/news";
 import { useRoute } from "vue-router";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   components: { TitleText },
   name: "News",
   setup() {
+    // metaデータ
+    const siteData = reactive({
+      title: `Sample Cafe || ニュース`,
+    });
+    useHead({
+      // Can be static or computed
+      title: computed(() => siteData.title),
+      meta: [
+        {
+          name: `description`,
+        },
+      ],
+    });
+
     const store = useStore();
     const route = useRoute();
     const propsValue = {

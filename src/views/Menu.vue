@@ -14,17 +14,34 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+import { computed, defineComponent, onMounted, reactive, ref } from "vue";
 import Special from "@/components/Templates/Menu/Special.vue";
 import Drink from "@/components/Templates/Menu/Drink.vue";
 import Food from "@/components/Templates/Menu/Food.vue";
 import Breadcrmb from "@/components/Templates/Breadcrmb.vue";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   name: "Menu",
   components: { Special, Drink, Food, Breadcrmb },
 
   setup() {
+    // metaデータ
+    const siteData = reactive({
+      title: `Sample Cafe || メニュー`,
+      description: `看板商品の「フルーツいっぱいのリコッタパンケーキ」をリニューアルし、従来の軽い食感やふんわり香るバターの香り、優しい甘みはそのままに、濃厚なリコッタチーズからミネラルが豊富で低脂肪・低カロリーのバターミルクに置き換えました。 体に優しく沢山食べても罪悪感のない生地にブラッシュアップしました。`,
+    });
+    useHead({
+      // Can be static or computed
+      title: computed(() => siteData.title),
+      meta: [
+        {
+          name: `description`,
+          content: computed(() => siteData.description),
+        },
+      ],
+    });
+
     const state = ref({
       // refで参照するHTMLテンプレートの配列
       refArray: Array<Element>(),

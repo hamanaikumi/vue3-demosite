@@ -124,12 +124,11 @@ export default defineComponent({
     }
   }
   &__title {
-    width: 20%;
+    width: 25%;
     p {
       @include defaultText;
     }
     @include sp {
-      width: 100%;
       margin-left: 15%;
     }
   }

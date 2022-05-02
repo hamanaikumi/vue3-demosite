@@ -7,6 +7,16 @@
         v-for="food of state.foodMenu"
         :key="food.id"
       >
+        <div class="menu-food__option" v-show="flag">
+          <MeatBallMenu
+            :deleteData="{
+              id: food.id,
+              name: food.name,
+              category: 'フード',
+              image: food.image,
+            }"
+          />
+        </div>
         <div class="menu-food__image">
           <img :src="food.image" alt="フード写真" />
         </div>
@@ -21,12 +31,13 @@
 </template>
 <script lang="ts">
 import TitleText from "@/components/Atoms/TitleText.vue";
-import { defineComponent, onBeforeMount, ref } from "vue";
+import { computed, defineComponent, onBeforeMount, ref } from "vue";
 import { useStore } from "vuex";
 import Food from "@/models/food";
+import MeatBallMenu from "@/components/Atoms/MeatBallMenu.vue";
 
 export default defineComponent({
-  components: { TitleText },
+  components: { TitleText, MeatBallMenu },
   name: "Food",
   setup() {
     const store = useStore();
@@ -51,10 +62,18 @@ export default defineComponent({
       getFoodMenu();
     });
 
+    /**
+     * ストアのログイン状態を取得する.
+     */
+    const flag = computed(() => {
+      return store.getters.getSignInFlag;
+    });
+
     return {
       propsValue,
       state,
       getFoodMenu,
+      flag,
     };
   },
 });
@@ -72,10 +91,17 @@ export default defineComponent({
     margin-bottom: 24px;
     text-align: center;
     width: 23%;
+    position: relative;
     span,
     p {
       @include defaultText;
     }
+  }
+  &__option {
+    position: absolute;
+    top: 2.5%;
+    right: 5%;
+    z-index: 1;
   }
   &__image {
     position: relative;

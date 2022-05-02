@@ -6,6 +6,7 @@ import Recruit from "../views/Recruit.vue";
 import Edit from "../views/Edit.vue";
 import News from "../views/News.vue";
 import Complete from "../views/Complete.vue";
+import DeleteComplete from "../views/DeleteComplete.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -47,6 +48,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/Complete",
     name: "Complete",
     component: Complete,
+  },
+  {
+    path: "/DeleteComplete",
+    name: "DeleteComplete",
+    component: DeleteComplete,
   },
 ];
 

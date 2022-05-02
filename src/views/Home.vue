@@ -20,13 +20,30 @@ import SlideImage from "@/components/Templates/Home/SlideImage.vue";
 import HomeConcept from "@/components/Templates/Home/HomeConcept.vue";
 import HomeNews from "@/components/Templates/Home/HomeNews.vue";
 import HomeShop from "@/components/Templates/Home/HomeShop.vue";
-import { defineComponent, onMounted, ref } from "vue";
+import { computed, defineComponent, onMounted, reactive, ref } from "vue";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   name: "Home",
   components: { HomeConcept, HomeNews, HomeShop, SlideImage },
 
   setup() {
+    // metaデータ
+    const siteData = reactive({
+      title: `Sample Cafe || ホーム`,
+      description: `デートや友人同士の御来店はもちろん 年配のご夫婦から小さなお子様のいるファミリーまで、皆様に愛されるパンケーキを目指してたくさんの幸せを込めて焼き上げます。`,
+    });
+    useHead({
+      // Can be static or computed
+      title: computed(() => siteData.title),
+      meta: [
+        {
+          name: `description`,
+          content: computed(() => siteData.description),
+        },
+      ],
+    });
+
     const state = ref({
       // refで参照するHTMLテンプレートの配列
       refArray: Array<Element>(),
@@ -86,7 +103,6 @@ export default defineComponent({
   &-image {
     height: 45rem;
   }
-
   &-component {
     opacity: 0;
     // transform: translateY(100px);

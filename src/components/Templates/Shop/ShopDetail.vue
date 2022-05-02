@@ -8,6 +8,16 @@
     >
       <div class="shop-detail__image">
         <img :src="shop.image" alt="ショップ写真" />
+        <div class="shop-detail__option" v-show="flag">
+          <MeatBallMenu
+            :deleteData="{
+              id: shop.id,
+              name: shop.name,
+              category: '店舗',
+              image: shop.image,
+            }"
+          />
+        </div>
       </div>
       <div class="shop-detail__description">
         <p>{{ shop.name }}</p>
@@ -30,13 +40,14 @@
   </div>
 </template>
 <script lang="ts">
+import MeatBallMenu from "@/components/Atoms/MeatBallMenu.vue";
 import TitleText from "@/components/Atoms/TitleText.vue";
 import Shop from "@/models/shop";
-import { defineComponent, onBeforeMount, ref } from "vue";
+import { computed, defineComponent, onBeforeMount, ref } from "vue";
 import { useStore } from "vuex";
 
 export default defineComponent({
-  components: { TitleText },
+  components: { TitleText, MeatBallMenu },
   name: "ShopDetail",
   setup() {
     const store = useStore();
@@ -61,10 +72,18 @@ export default defineComponent({
       getShop();
     });
 
+    /**
+     * ストアのログイン状態を取得する.
+     */
+    const flag = computed(() => {
+      return store.getters.getSignInFlag;
+    });
+
     return {
       propsValue,
       state,
       getShop,
+      flag,
     };
   },
 });
@@ -79,6 +98,7 @@ export default defineComponent({
   }
   &__image {
     width: 50%;
+    position: relative;
     // hover時に画像サイズを固定するため
     overflow: hidden;
     img {
@@ -90,6 +110,12 @@ export default defineComponent({
         transform: scale(1.05);
       }
     }
+  }
+  &__option {
+    position: absolute;
+    top: 2.5%;
+    right: 2.5%;
+    z-index: 1;
   }
   &__description {
     width: 50%;

@@ -110,7 +110,6 @@ export default defineComponent({
       @include defaultText;
     }
     @include sp {
-      width: 100%;
       margin-left: 20%;
     }
   }

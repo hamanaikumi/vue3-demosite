@@ -57,9 +57,12 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 img {
-  width: 100%;
+  width: 960px;
   height: 720px;
-  object-fit: cover;
+  @include sp {
+    width: 100%;
+    object-fit: cover;
+  }
 }
 .fadein {
   opacity: 1;

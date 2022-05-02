@@ -22,6 +22,15 @@ export default createStore({
     filteredNews: {} as News,
     // ログイン状態判定
     signInFlag: false,
+    // モダール表示判定
+    modalFlag: false,
+    // 削除するデータ
+    deleteData: {
+      id: Number,
+      category: String,
+      name: String,
+      image: String,
+    },
   },
   mutations: {
     /**
@@ -148,6 +157,27 @@ export default createStore({
         state.signInFlag = true;
       }
     },
+
+    /**
+     * モーダルが表示されている場合は非表示に、モーダルが表示されていない場合は表示に切り替える.
+     * @param state ステート
+     */
+    changeModalFlag(state) {
+      if (state.modalFlag) {
+        state.modalFlag = false;
+      } else {
+        state.modalFlag = true;
+      }
+    },
+
+    /**
+     * 削除するデータをストアに格納する.
+     * @param state ステート
+     * @param deleteData 削除するデータのオブジェクト
+     */
+    setDeleteData(state, deleteData) {
+      state.deleteData = deleteData;
+    },
   },
   actions: {
     /**
@@ -248,6 +278,22 @@ export default createStore({
      */
     getSignInFlag(state: any) {
       return state.signInFlag;
+    },
+    /**
+     * モーダルの表示状態を返す.
+     * @param state ステート
+     * @returns モーダルの状態
+     */
+    getModalFlag(state: any) {
+      return state.modalFlag;
+    },
+    /**
+     * 削除するデータを返す.
+     * @param state ステート
+     * @returns 削除するデータ
+     */
+    getDeleteData(state: any) {
+      return state.deleteData;
     },
   },
   plugins: [createPersistedState()],
