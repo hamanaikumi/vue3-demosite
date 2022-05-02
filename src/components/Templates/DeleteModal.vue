@@ -42,27 +42,33 @@ export default defineComponent({
     });
 
     /**
-     *
+     * 選択したデータを削除する.
      */
     const deleteData = async () => {
       setModalFlag();
       const id: number = showDeleteData.value.id;
       const image: string = showDeleteData.value.image;
       if (showDeleteData.value.category === "ドリンク") {
-        console.log(showDeleteData.value.category);
         await axios.delete(
-          //   "https://vast-everglades-32808.herokuapp.com/drink",
-          "http://localhost:3000/drink",
+          "https://vast-everglades-32808.herokuapp.com/drink",
           {
             data: { id: id },
           }
         );
-        // S3のバケットから写真を削除
-        await axios.delete("http://localhost:3000/s3Url", {
-          data: { image: image },
+      } else if (showDeleteData.value.category === "フード") {
+        await axios.delete("https://vast-everglades-32808.herokuapp.com/food", {
+          data: { id: id },
+        });
+      } else if (showDeleteData.value.category === "店舗") {
+        await axios.delete("https://vast-everglades-32808.herokuapp.com/shop", {
+          data: { id: id },
         });
       }
-
+      // S3のバケットから写真を削除
+      await axios.delete("https://vast-everglades-32808.herokuapp.com/s3Url", {
+        data: { image: image },
+      });
+      // 画面遷移
       router.push("/DeleteComplete");
     };
 
@@ -111,6 +117,9 @@ export default defineComponent({
   }
 
   &-content {
+    p {
+      @include defaultText;
+    }
     &__button {
       display: flex;
       justify-content: center;
