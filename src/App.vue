@@ -5,6 +5,7 @@
   <transition>
     <ScrollButton v-if="visible" />
   </transition>
+  <DeleteModal />
 </template>
 
 <script lang="ts">
@@ -12,12 +13,14 @@ import { defineComponent, ref } from "vue";
 import Header from "@/components/Templates/Header.vue";
 import Footer from "./components/Templates/Footer.vue";
 import ScrollButton from "./components/Atoms/ScrollButton.vue";
+import DeleteModal from "./components/Templates/DeleteModal.vue";
 
 export default defineComponent({
   components: {
     Header,
     Footer,
     ScrollButton,
+    DeleteModal,
   },
 
   setup() {
@@ -36,7 +39,6 @@ export default defineComponent({
         visible.value = !visible.value;
       }
     };
-
     window.addEventListener("scroll", handleScroll);
 
     return {
@@ -51,6 +53,7 @@ export default defineComponent({
 <style lang="scss">
 #app {
   font-family: "Poppins", sans-serif;
+  max-width: 960px;
   // 表示される文字がなめらかになる
   // -webkit-font-smoothing: antialiased;
   // -webkit-にantialiasedと指定した時のみgrayscaleを指定すると、ブラウザ間での見え方の差が小さくすむ

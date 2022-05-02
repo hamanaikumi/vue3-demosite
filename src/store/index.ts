@@ -22,6 +22,8 @@ export default createStore({
     filteredNews: {} as News,
     // ログイン状態判定
     signInFlag: false,
+    // モダール表示判定
+    modalFlag: false,
   },
   mutations: {
     /**
@@ -148,6 +150,18 @@ export default createStore({
         state.signInFlag = true;
       }
     },
+
+    /**
+     * モーダルが表示されている場合は非表示に、モーダルが表示されていない場合は表示に切り替える.
+     * @param state ステート
+     */
+    changeModalFlag(state) {
+      if (state.modalFlag) {
+        state.modalFlag = false;
+      } else {
+        state.modalFlag = true;
+      }
+    },
   },
   actions: {
     /**
@@ -248,6 +262,14 @@ export default createStore({
      */
     getSignInFlag(state: any) {
       return state.signInFlag;
+    },
+    /**
+     * もーだつの表示状態を返す.
+     * @param state ステート
+     * @returns モーダルの状態
+     */
+    getModalFlag(state: any) {
+      return state.modalFlag;
     },
   },
   plugins: [createPersistedState()],

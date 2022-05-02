@@ -7,6 +7,9 @@
         v-for="drink of state.drinkMenu"
         :key="drink.id"
       >
+        <div class="menu-drink__option">
+          <meat-ball-menu />
+        </div>
         <div class="menu-drink__image">
           <img :src="drink.image" alt="ドリンク写真" />
         </div>
@@ -24,9 +27,10 @@ import TitleText from "@/components/Atoms/TitleText.vue";
 import { defineComponent, onBeforeMount, ref } from "vue";
 import { useStore } from "vuex";
 import Drink from "@/models/drink";
+import MeatBallMenu from "@/components/Atoms/MeatBallMenu.vue";
 
 export default defineComponent({
-  components: { TitleText },
+  components: { TitleText, MeatBallMenu },
   name: "Drink",
   setup() {
     const store = useStore();
@@ -71,10 +75,17 @@ export default defineComponent({
     margin-bottom: 24px;
     text-align: center;
     width: 23%;
+    position: relative;
     span,
     p {
       @include defaultText;
     }
+  }
+  &__option {
+    position: absolute;
+    top: 0%;
+    right: 5%;
+    z-index: 1;
   }
   &__image {
     position: relative;
