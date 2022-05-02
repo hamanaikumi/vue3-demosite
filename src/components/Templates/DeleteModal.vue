@@ -98,6 +98,9 @@ export default defineComponent({
   height: 50%;
   background-color: $white;
   z-index: 4;
+  // 中身を中央よせ
+  display: flex;
+  margin: 0 auto;
   // 装飾
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
@@ -108,15 +111,10 @@ export default defineComponent({
   }
 
   &-content {
-    line-height: 200%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
     &__button {
       display: flex;
       justify-content: center;
-      margin: 8px 0;
+      margin-top: 16px;
     }
   }
 }

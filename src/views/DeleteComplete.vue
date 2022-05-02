@@ -17,13 +17,13 @@ export default defineComponent({
     const router = useRouter();
     const propsValue = {
       // ボタンのテキスト
-      edit: "トップに戻る",
+      edit: "前の画面に戻る",
     };
     /**
      * 編集画面に戻る.
      */
     const backToTop = () => {
-      router.push("/");
+      router.go(-1);
     };
     return { propsValue, backToTop };
   },
