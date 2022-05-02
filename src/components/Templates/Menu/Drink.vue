@@ -8,7 +8,14 @@
         :key="drink.id"
       >
         <div class="menu-drink__option">
-          <meat-ball-menu />
+          <MeatBallMenu
+            :deleteData="{
+              id: drink.id,
+              name: drink.name,
+              category: 'ドリンク',
+              image: drink.image,
+            }"
+          />
         </div>
         <div class="menu-drink__image">
           <img :src="drink.image" alt="ドリンク写真" />
@@ -83,7 +90,7 @@ export default defineComponent({
   }
   &__option {
     position: absolute;
-    top: 0%;
+    top: 2.5%;
     right: 5%;
     z-index: 1;
   }

@@ -4,19 +4,27 @@
 
     <div class="card">
       <div class="card-content">
-        <p>削除しますか？</p>
-        <Button :label="state.delete" />
+        <p>データを削除しますか？</p>
+        <p>カテゴリー：{{ showDeleteData.category }}</p>
+        <p>ID：{{ showDeleteData.id }}</p>
+        <p>{{ showDeleteData.name }}</p>
+        <div class="card-content__button">
+          <Button :label="state.delete" @emitClick="deleteData" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
+import axios from "axios";
 import { computed, defineComponent, ref } from "vue";
+import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import Button from "../Atoms/Button.vue";
 
 export default defineComponent({
   setup() {
+    const router = useRouter();
     const state = ref({
       delete: "削除",
     });
@@ -28,10 +36,42 @@ export default defineComponent({
     const setModalFlag = () => {
       store.commit("changeModalFlag");
     };
+    // 削除
+    const showDeleteData = computed(() => {
+      return store.getters.getDeleteData;
+    });
+
+    /**
+     *
+     */
+    const deleteData = async () => {
+      setModalFlag();
+      const id: number = showDeleteData.value.id;
+      const image: string = showDeleteData.value.image;
+      if (showDeleteData.value.category === "ドリンク") {
+        console.log(showDeleteData.value.category);
+        await axios.delete(
+          //   "https://vast-everglades-32808.herokuapp.com/drink",
+          "http://localhost:3000/drink",
+          {
+            data: { id: id },
+          }
+        );
+        // S3のバケットから写真を削除
+        await axios.delete("http://localhost:3000/s3Url", {
+          data: { image: image },
+        });
+      }
+
+      router.push("/DeleteComplete");
+    };
+
     return {
       state,
       modalVisible,
       setModalFlag,
+      showDeleteData,
+      deleteData,
     };
   },
   components: { Button },
@@ -68,11 +108,16 @@ export default defineComponent({
   }
 
   &-content {
-    line-height: 300%;
+    line-height: 200%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
+    &__button {
+      display: flex;
+      justify-content: center;
+      margin: 8px 0;
+    }
   }
 }
 </style>

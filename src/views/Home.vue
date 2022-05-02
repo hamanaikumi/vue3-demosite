@@ -103,7 +103,6 @@ export default defineComponent({
   &-image {
     height: 45rem;
   }
-
   &-component {
     opacity: 0;
     // transform: translateY(100px);
