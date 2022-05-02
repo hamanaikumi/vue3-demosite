@@ -1,7 +1,6 @@
 <template>
   <div v-show="modalVisible">
     <div class="modal" @click="setModalFlag"></div>
-
     <div class="card">
       <div class="card-content">
         <p>データを削除しますか？</p>

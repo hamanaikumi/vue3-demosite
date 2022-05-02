@@ -61,7 +61,7 @@
     </div>
   </div>
   <transition name="slide">
-    <modal v-show="state.isActive" />
+    <Modal v-show="state.isActive" />
   </transition>
 </template>
 <script lang="ts">
@@ -111,8 +111,6 @@ export default defineComponent({
   height: 120px;
   display: flex;
   justify-content: space-between;
-  position: sticky;
-  top: 0;
   z-index: 2;
   background-color: $white;
   &-logo {
