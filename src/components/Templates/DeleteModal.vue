@@ -1,5 +1,5 @@
 <template>
-  <div v-if="modalVisible">
+  <div v-show="modalVisible">
     <div class="modal" @click="setModalFlag"></div>
 
     <div class="card">
@@ -95,19 +95,19 @@ export default defineComponent({
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
   width: 50%;
-  height: 50%;
+  height: 40%;
   background-color: $white;
   z-index: 4;
   // 中身を中央よせ
   display: flex;
   margin: 0 auto;
   // 装飾
-  border-radius: 4px;
+  border-radius: 2rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
 
   @include sp {
     width: 80%;
-    height: 25%;
+    height: 30%;
   }
 
   &-content {

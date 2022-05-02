@@ -7,7 +7,7 @@
         v-for="drink of state.drinkMenu"
         :key="drink.id"
       >
-        <div class="menu-drink__option">
+        <div class="menu-drink__option" v-show="flag">
           <MeatBallMenu
             :deleteData="{
               id: drink.id,
@@ -31,7 +31,7 @@
 </template>
 <script lang="ts">
 import TitleText from "@/components/Atoms/TitleText.vue";
-import { defineComponent, onBeforeMount, ref } from "vue";
+import { computed, defineComponent, onBeforeMount, ref } from "vue";
 import { useStore } from "vuex";
 import Drink from "@/models/drink";
 import MeatBallMenu from "@/components/Atoms/MeatBallMenu.vue";
@@ -62,10 +62,18 @@ export default defineComponent({
       getDrinkMenu();
     });
 
+    /**
+     * ストアのログイン状態を取得する.
+     */
+    const flag = computed(() => {
+      return store.getters.getSignInFlag;
+    });
+
     return {
       propsValue,
       state,
       getDrinkMenu,
+      flag,
     };
   },
 });

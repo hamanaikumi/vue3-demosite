@@ -1,10 +1,10 @@
 <template>
   <div class="edit">
     <Breadcrmb />
-    <div v-if="!flag">
+    <div v-show="!flag">
       <SignIn />
     </div>
-    <div v-if="flag">
+    <div v-show="flag">
       <SelectCategory @onChange="setValue" />
 
       <AddImage @emitImageFile="setImageFile" />
@@ -26,7 +26,7 @@
         <EditShop :imageFile="state.imageFile" />
       </div>
     </div>
-    <div class="edit-button" v-if="flag">
+    <div class="edit-button" v-show="flag">
       <Button :label="state.logout" @emitClick="logout" />
     </div>
   </div>
@@ -72,6 +72,7 @@ export default defineComponent({
       // ボタンのテキスト
       logout: "ログアウト",
     });
+
     /**
      * 選択された値を格納する.
      * @param selectedValue 選択されたカテゴリー
@@ -79,18 +80,21 @@ export default defineComponent({
     const setValue = (selectedValue: string) => {
       state.value.selectedCategory = selectedValue;
     };
+
     /**
      * 添付された画像ファイルを格納する.
      */
     const setImageFile = (file: any) => {
       state.value.imageFile = file;
     };
+
     /**
      * ログアウトしてストアのログイン状態を切り替える.
      */
     const logout = () => {
       store.commit("setSignInFlag");
     };
+
     /**
      * ストアのログイン状態を取得する.
      */

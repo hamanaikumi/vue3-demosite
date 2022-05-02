@@ -3,7 +3,7 @@
   <router-view />
   <Footer />
   <transition>
-    <ScrollButton v-if="visible" />
+    <ScrollButton v-show="visible" />
   </transition>
   <DeleteModal />
 </template>
