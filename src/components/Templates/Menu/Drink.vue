@@ -1,6 +1,6 @@
 <template>
   <div class="menu-drink">
-    <title-text :text="propsValue.text" />
+    <TitleText :text="propsValue.text" />
     <div class="menu-drink__wrapper">
       <div
         class="menu-drink__content"

@@ -1,6 +1,6 @@
 <template>
   <div class="menu">
-    <breadcrmb />
+    <Breadcrmb />
     <div class="menu-spacial" ref="componentRef1">
       <Special />
     </div>

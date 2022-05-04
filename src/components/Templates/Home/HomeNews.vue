@@ -1,6 +1,6 @@
 <template>
   <div class="home-news">
-    <title-text :text="propsValue.text" />
+    <TitleText :text="propsValue.text" />
     <div class="home-news__wrapper">
       <div
         class="home-news__content"

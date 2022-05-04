@@ -1,51 +1,51 @@
 <template>
-  <title-text :text="props.text" />
+  <TitleText :text="propsValue.text" />
   <div class="recruit-form__container">
     <div class="recruit-form__title">
-      <p>{{ props.name }}</p>
+      <p>{{ propsValue.name }}</p>
     </div>
     <div class="recruit-form__content">
-      <Form :size="props.large" />
+      <Form :size="propsValue.large" />
     </div>
   </div>
   <div class="recruit-form__container">
     <div class="recruit-form__title">
-      <p>{{ props.furigana }}</p>
+      <p>{{ propsValue.furigana }}</p>
     </div>
     <div class="recruit-form__content">
-      <Form :size="props.large" />
+      <Form :size="propsValue.large" />
     </div>
   </div>
   <div class="recruit-form__container">
     <div class="recruit-form__title">
-      <p>{{ props.phone }}</p>
+      <p>{{ propsValue.phone }}</p>
     </div>
     <div class="recruit-form__content">
-      <Form :size="props.large" />
+      <Form :size="propsValue.large" />
     </div>
   </div>
   <div class="recruit-form__container">
     <div class="recruit-form__title">
-      <p>{{ props.email }}</p>
+      <p>{{ propsValue.email }}</p>
     </div>
     <div class="recruit-form__content">
-      <Form :size="props.large" />
+      <Form :size="propsValue.large" />
     </div>
   </div>
   <div class="recruit-form__container">
     <div class="recruit-form__title">
-      <p>{{ props.gender }}</p>
+      <p>{{ propsValue.gender }}</p>
     </div>
     <div class="recruit-form__content">
       <SelectBox
-        :size="props.large"
-        :options="props.genderOptions"
-        :value="props.genderValue"
+        :size="propsValue.large"
+        :options="propsValue.genderOptions"
+        :value="propsValue.genderValue"
       />
     </div>
   </div>
   <div class="recruit-form__button">
-    <Button :label="props.submit" />
+    <Button :label="propsValue.submit" />
   </div>
 </template>
 <script lang="ts">
@@ -59,7 +59,7 @@ export default defineComponent({
   components: { TitleText, Form, Button, SelectBox },
   name: "RecruitForm",
   setup() {
-    const props = {
+    const propsValue = {
       // タイトルのテキスト
       text: "Form",
       // フォームのサイズ
@@ -87,7 +87,7 @@ export default defineComponent({
     };
 
     return {
-      props,
+      propsValue,
     };
   },
 });

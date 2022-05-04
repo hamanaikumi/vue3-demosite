@@ -1,5 +1,5 @@
 <template>
-  <title-text :text="propsValue.text" />
+  <TitleText :text="propsValue.text" />
   <div class="recruit-top__content">
     <img
       class="recruit-top__image"

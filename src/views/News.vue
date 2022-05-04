@@ -1,5 +1,5 @@
 <template>
-  <title-text :text="propsValue.text" />
+  <TitleText :text="propsValue.text" />
   <div class="news-content">
     <div class="news-image">
       <img :src="state.displayNews.image" alt="コンセプト写真" />

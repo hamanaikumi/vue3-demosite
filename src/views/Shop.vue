@@ -1,6 +1,6 @@
 <template>
   <div class="shop">
-    <breadcrmb />
+    <Breadcrmb />
     <div class="shop-concept" ref="componentRef1">
       <ShopConcept />
     </div>

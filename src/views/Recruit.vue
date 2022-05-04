@@ -1,6 +1,6 @@
 <template>
   <div class="recruit">
-    <breadcrmb />
+    <Breadcrmb />
     <div class="recruit-top">
       <RecruitTop />
     </div>

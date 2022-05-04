@@ -1,5 +1,5 @@
 <template>
-  <title-text :text="propsValue.text" />
+  <TitleText :text="propsValue.text" />
   <div class="shop-concept__content">
     <img
       class="shop-concept__image"

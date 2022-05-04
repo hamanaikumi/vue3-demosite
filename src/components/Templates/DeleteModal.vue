@@ -23,19 +23,31 @@ import Button from "../Atoms/Button.vue";
 
 export default defineComponent({
   setup() {
+    const store = useStore();
     const router = useRouter();
+
     const state = ref({
+      // ボタンのテキスト
       delete: "削除",
     });
-    // モーダル
-    const store = useStore();
+
+    /**
+     * ストアから取得したモーダルの表示状態を返す.
+     */
     const modalVisible = computed(() => {
       return store.getters.getModalFlag;
     });
+
+    /**
+     * ストアのモーダルの表示状態を切り替える.
+     */
     const setModalFlag = () => {
       store.commit("changeModalFlag");
     };
-    // 削除
+
+    /**
+     * 削除するデータを返す.
+     */
     const showDeleteData = computed(() => {
       return store.getters.getDeleteData;
     });
@@ -67,7 +79,7 @@ export default defineComponent({
       await axios.delete("https://vast-everglades-32808.herokuapp.com/s3Url", {
         data: { image: image },
       });
-      // 画面遷移
+      // 完了画面に画面遷移する
       router.push("/DeleteComplete");
     };
 

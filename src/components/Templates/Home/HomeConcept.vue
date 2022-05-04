@@ -1,6 +1,6 @@
 <template>
   <div class="home-concept">
-    <title-text :text="propsValue.text" />
+    <TitleText :text="propsValue.text" />
     <div class="home-concept__first">
       <div class="home-concept__image">
         <ClipImage />

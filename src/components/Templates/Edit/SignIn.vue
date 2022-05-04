@@ -1,7 +1,6 @@
 <template>
   <div class="edit-signin">
-    <title-text :text="propsValue.text" />
-
+    <TitleText :text="propsValue.text" />
     <div class="edit-signin__form">
       <div class="edit-signin__title">
         <p>{{ propsValue.userId }}</p>
