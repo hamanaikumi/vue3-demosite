@@ -41,8 +41,8 @@ export default defineComponent({
   padding: 8px 32px;
   cursor: pointer;
   border-radius: 20px;
-  // width: 100px;
   height: 40px;
+  @include defaultText;
 }
 .button-primary {
   background: $light-gray;
