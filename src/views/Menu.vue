@@ -4,11 +4,11 @@
     <div class="menu-spacial" ref="componentRef1">
       <Special />
     </div>
-    <div class="menu-component" ref="componentRef2">
-      <Drink />
+    <div class="menu-component drink" ref="componentRef2">
+      <Drink :fade="state.drinkFade" />
     </div>
-    <div class="menu-component" ref="componentRef3">
-      <Food />
+    <div class="menu-component food" ref="componentRef3">
+      <Food :fade="state.foodFade" />
     </div>
   </div>
 </template>
@@ -45,6 +45,8 @@ export default defineComponent({
     const state = ref({
       // refで参照するHTMLテンプレートの配列
       refArray: Array<Element>(),
+      drinkFade: false,
+      foodFade: false,
     });
 
     const componentRef1 = ref();
@@ -78,9 +80,16 @@ export default defineComponent({
 
         if (refTop < triggerBottom) {
           ref.classList.add("show");
-        } else {
-          ref.classList.remove("show");
+          if (ref.classList.contains("drink")) {
+            state.value.drinkFade = true;
+          } else if (ref.classList.contains("food")) {
+            state.value.foodFade = true;
+          }
         }
+        // 非表示
+        // else {
+        //   ref.classList.remove("show");
+        // }
       });
     };
 

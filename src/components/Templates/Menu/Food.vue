@@ -2,30 +2,34 @@
   <div class="menu-food">
     <TitleText :text="propsValue.text" />
     <div class="menu-food__wrapper">
-      <div
-        class="menu-food__content"
-        v-for="food of state.foodMenu"
-        :key="food.id"
-      >
-        <div class="menu-food__option" v-show="flag">
-          <MeatBallMenu
-            :deleteData="{
-              id: food.id,
-              name: food.name,
-              category: 'フード',
-              image: food.image,
-            }"
-          />
+      <transition-group name="fade">
+        <div
+          class="menu-food__content"
+          v-for="(food, index) of state.foodMenu"
+          :key="food.id"
+          v-show="fade"
+          :class="'fade-' + index"
+        >
+          <div class="menu-food__option" v-show="flag">
+            <MeatBallMenu
+              :deleteData="{
+                id: food.id,
+                name: food.name,
+                category: 'フード',
+                image: food.image,
+              }"
+            />
+          </div>
+          <div class="menu-food__image">
+            <img :src="food.image" alt="フード写真" />
+          </div>
+          <div class="menu-food__text">
+            <p>{{ food.name }}</p>
+            <span>{{ food.price }}円</span>
+            <span>（税込{{ food.includeTaxPrice }}円）</span>
+          </div>
         </div>
-        <div class="menu-food__image">
-          <img :src="food.image" alt="フード写真" />
-        </div>
-        <div class="menu-food__text">
-          <p>{{ food.name }}</p>
-          <span>{{ food.price }}円</span>
-          <span>（税込{{ food.includeTaxPrice }}円）</span>
-        </div>
-      </div>
+      </transition-group>
     </div>
   </div>
 </template>
@@ -39,6 +43,12 @@ import MeatBallMenu from "@/components/Atoms/MeatBallMenu.vue";
 export default defineComponent({
   components: { TitleText, MeatBallMenu },
   name: "Food",
+  props: {
+    fade: {
+      type: Boolean,
+      default: false,
+    },
+  },
   setup() {
     const store = useStore();
     const propsValue = {
@@ -148,6 +158,29 @@ export default defineComponent({
     &__content {
       width: 80%;
     }
+  }
+}
+
+// 出現アニメーション
+@for $i from 1 through 20 {
+  $enter-delay: 100ms;
+  .fade-enter-active {
+    opacity: 0;
+    animation: fade-in 1s;
+
+    &.fade-#{$i} {
+      animation-delay: #{300ms * $i + $enter-delay};
+    }
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>
