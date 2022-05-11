@@ -27,6 +27,7 @@ import Form from "@/components/Atoms/Form.vue";
 import { defineComponent, reactive, ref } from "vue";
 import axios from "axios";
 import TextArea from "@/components/Atoms/TextArea.vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   components: { Form, Button, TextArea },
@@ -35,6 +36,7 @@ export default defineComponent({
     imageFile: {},
   },
   setup(props) {
+    const router = useRouter();
     props = reactive(props);
 
     const state = ref({
@@ -100,6 +102,9 @@ export default defineComponent({
         detail: state.value.detailValue,
         image: state.value.imageUrl,
       });
+
+      // 完了画面に遷移する
+      router.push("/Complete");
     };
 
     return {

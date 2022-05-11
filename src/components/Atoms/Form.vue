@@ -52,14 +52,12 @@ export default defineComponent({
       context.emit("onInput", target.value);
     };
 
-    // return
     return {
       InputPlaceholder: computed(() => props.placeholder),
       classes: computed(() => ({
         [`input-${props.size || "medium"}`]: true,
       })),
       inputValue: computed(() => props.value),
-
       emitInput,
     };
   },

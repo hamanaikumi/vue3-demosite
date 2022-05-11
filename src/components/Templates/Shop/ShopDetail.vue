@@ -1,6 +1,6 @@
 <template>
   <div class="shop-detail">
-    <title-text :text="propsValue.text" />
+    <TitleText :text="propsValue.text" />
     <div
       class="shop-detail__content"
       v-for="shop of state.shopArray"

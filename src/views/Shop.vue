@@ -1,6 +1,6 @@
 <template>
   <div class="shop">
-    <breadcrmb />
+    <Breadcrmb />
     <div class="shop-concept" ref="componentRef1">
       <ShopConcept />
     </div>
@@ -69,9 +69,11 @@ export default defineComponent({
 
         if (refTop < triggerBottom) {
           ref.classList.add("show");
-        } else {
-          ref.classList.remove("show");
         }
+        // 非表示
+        //  else {
+        //   ref.classList.remove("show");
+        // }
       });
     };
 

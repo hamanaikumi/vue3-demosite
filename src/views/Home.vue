@@ -79,9 +79,11 @@ export default defineComponent({
 
         if (refTop < triggerBottom) {
           ref.classList.add("show");
-        } else {
-          ref.classList.remove("show");
         }
+        // 非表示
+        // else {
+        //   ref.classList.remove("show");
+        // }
       });
     };
 

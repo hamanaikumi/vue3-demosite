@@ -1,31 +1,35 @@
 <template>
   <div class="menu-drink">
-    <title-text :text="propsValue.text" />
+    <TitleText :text="propsValue.text" />
     <div class="menu-drink__wrapper">
-      <div
-        class="menu-drink__content"
-        v-for="drink of state.drinkMenu"
-        :key="drink.id"
-      >
-        <div class="menu-drink__option" v-show="flag">
-          <MeatBallMenu
-            :deleteData="{
-              id: drink.id,
-              name: drink.name,
-              category: 'ドリンク',
-              image: drink.image,
-            }"
-          />
+      <transition-group name="fade">
+        <div
+          class="menu-drink__content"
+          v-for="(drink, index) of state.drinkMenu"
+          :key="drink.id"
+          v-show="fade"
+          :class="'fade-' + index"
+        >
+          <div class="menu-drink__option" v-show="flag">
+            <MeatBallMenu
+              :deleteData="{
+                id: drink.id,
+                name: drink.name,
+                category: 'ドリンク',
+                image: drink.image,
+              }"
+            />
+          </div>
+          <div class="menu-drink__image">
+            <img :src="drink.image" alt="ドリンク写真" />
+          </div>
+          <div class="menu-drink__text">
+            <p>{{ drink.name }}</p>
+            <span>{{ drink.price }}円</span>
+            <span>（税込{{ drink.includeTaxPrice }}円）</span>
+          </div>
         </div>
-        <div class="menu-drink__image">
-          <img :src="drink.image" alt="ドリンク写真" />
-        </div>
-        <div class="menu-drink__text">
-          <p>{{ drink.name }}</p>
-          <span>{{ drink.price }}円</span>
-          <span>（税込{{ drink.includeTaxPrice }}円）</span>
-        </div>
-      </div>
+      </transition-group>
     </div>
   </div>
 </template>
@@ -39,6 +43,12 @@ import MeatBallMenu from "@/components/Atoms/MeatBallMenu.vue";
 export default defineComponent({
   components: { TitleText, MeatBallMenu },
   name: "Drink",
+  props: {
+    fade: {
+      type: Boolean,
+      default: false,
+    },
+  },
   setup() {
     const store = useStore();
     const propsValue = {
@@ -145,6 +155,29 @@ export default defineComponent({
     &__content {
       width: 80%;
     }
+  }
+}
+
+// 出現アニメーション
+@for $i from 1 through 20 {
+  $enter-delay: 100ms;
+  .fade-enter-active {
+    opacity: 0;
+    animation: fade-in 1s;
+
+    &.fade-#{$i} {
+      animation-delay: #{300ms * $i + $enter-delay};
+    }
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>

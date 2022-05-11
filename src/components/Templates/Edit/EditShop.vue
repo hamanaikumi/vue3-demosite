@@ -197,7 +197,6 @@ export default defineComponent({
         seats: state.value.seatsValue,
         image: state.value.imageUrl,
       });
-
       // 完了画面に遷移する
       router.push("/Complete");
     };

@@ -6,7 +6,7 @@
         v-for="(menu, i) of propsValue"
         :key="i"
       >
-        <menu-text :link="menu.link" :text="menu.text" />
+        <MenuText :link="menu.link" :text="menu.text" />
       </div>
     </div>
   </div>

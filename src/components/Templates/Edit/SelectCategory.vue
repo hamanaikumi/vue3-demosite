@@ -1,6 +1,6 @@
 <template>
   <div class="edit-category__wrapper">
-    <title-text :text="props.text" />
+    <TitleText :text="props.text" />
     <SelectBox
       :options="props.categoryOptions"
       :value="props.categoryValue"

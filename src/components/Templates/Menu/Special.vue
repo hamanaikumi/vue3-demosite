@@ -1,5 +1,5 @@
 <template>
-  <title-text :text="propsValue.text" />
+  <TitleText :text="propsValue.text" />
   <div class="menu-special__content">
     <img
       class="menu-special__image"

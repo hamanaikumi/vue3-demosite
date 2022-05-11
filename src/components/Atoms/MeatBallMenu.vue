@@ -19,6 +19,10 @@ export default defineComponent({
   setup(props) {
     props = reactive(props);
     const store = useStore();
+
+    /**
+     * ストアのモーダルの表示状態を変更し、削除するデータをストアに格納する.
+     */
     const setModalFlag = () => {
       store.commit("changeModalFlag");
       store.commit("setDeleteData", props.deleteData);
