@@ -114,6 +114,13 @@ export default defineComponent({
     }
   }
 
+  @include tab {
+    &__image {
+      height: 200px;
+      width: 200px;
+    }
+  }
+
   @include sp {
     &__wrapper {
       display: flex;
@@ -121,6 +128,10 @@ export default defineComponent({
     }
     &__content {
       width: 80%;
+    }
+    &__image {
+      height: 300px;
+      width: 300px;
     }
   }
 }

@@ -1,8 +1,10 @@
 <template>
   <Header />
-  <router-view />
+  <transition name="load">
+    <router-view />
+  </transition>
   <Footer />
-  <transition>
+  <transition name="scroll">
     <ScrollButton v-show="visible" />
   </transition>
   <DeleteModal />
@@ -64,25 +66,44 @@ export default defineComponent({
   color: $dark-gray;
 }
 /* アクティブ時 */
-.v-leave-active,
-.v-enter-active {
+.scroll-leave-active,
+.scroll-enter-active {
+  transition: opacity 1s;
+}
+.load-leave-active,
+.load-enter-active {
   transition: opacity 1s;
 }
 /* Enterの設定 */
-.v-enter {
+.scroll-enter {
   opacity: 0;
 }
-.v-enter-from {
+.scroll-enter-from {
   opacity: 0;
 }
-.v-enter-to {
+.scroll-enter-to {
+  opacity: 1;
+}
+.load-enter {
+  opacity: 0;
+}
+.load-enter-from {
+  opacity: 0;
+}
+.load-enter-to {
   opacity: 1;
 }
 /* Leaveの設定 */
-.v-leave {
+.scroll-leave {
   opacity: 1;
 }
-.v-leave-to {
+.scroll-leave-to {
+  opacity: 0;
+}
+.load-leave {
+  opacity: 1;
+}
+.load-leave-to {
   opacity: 0;
 }
 </style>
