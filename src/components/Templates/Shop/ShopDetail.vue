@@ -93,6 +93,7 @@ export default defineComponent({
 .shop-detail {
   &__content {
     display: flex;
+    box-sizing: border-box;
     padding: 12px;
     width: 100%;
   }

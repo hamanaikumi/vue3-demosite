@@ -66,7 +66,7 @@ export default defineComponent({
     }
   }
 
-  @include sp {
+  @include tab {
     &__content {
       flex-direction: column;
     }

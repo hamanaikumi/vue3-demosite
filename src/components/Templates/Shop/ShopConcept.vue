@@ -51,7 +51,7 @@ export default defineComponent({
     object-fit: cover;
   }
 
-  @include sp {
+  @include tab {
     &__content {
       flex-direction: column;
     }
