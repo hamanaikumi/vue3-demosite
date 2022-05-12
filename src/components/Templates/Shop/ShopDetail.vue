@@ -43,7 +43,7 @@
 import MeatBallMenu from "@/components/Atoms/MeatBallMenu.vue";
 import TitleText from "@/components/Atoms/TitleText.vue";
 import Shop from "@/models/shop";
-import { computed, defineComponent, onBeforeMount, ref } from "vue";
+import { computed, defineComponent, onBeforeMount, onMounted, ref } from "vue";
 import { useStore } from "vuex";
 
 export default defineComponent({
