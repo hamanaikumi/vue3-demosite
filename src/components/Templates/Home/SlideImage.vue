@@ -59,7 +59,7 @@ export default defineComponent({
 img {
   width: 960px;
   height: 720px;
-  @include sp {
+  @include tab {
     width: 100%;
     object-fit: cover;
   }
