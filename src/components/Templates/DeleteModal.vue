@@ -1,7 +1,7 @@
 <template>
   <div v-show="modalVisible">
     <div class="modal" @click="setModalFlag"></div>
-    <div class="card">
+    <div class="card card-open">
       <div class="card-content">
         <p>データを削除しますか？</p>
         <p>カテゴリー：{{ showDeleteData.category }}</p>
@@ -135,6 +135,22 @@ export default defineComponent({
       display: flex;
       justify-content: center;
       margin-top: 16px;
+    }
+  }
+
+  &-open {
+    animation-name: fadeInAnime;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+  }
+  @keyframes fadeInAnime {
+    0% {
+      transform: translateY(-50%) translateX(-50%) scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-50%) translateX(-50%) scale(1);
     }
   }
 }
