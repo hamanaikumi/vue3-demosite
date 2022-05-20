@@ -1,0 +1,43 @@
+@mixin keyframes($animation-name) {
+  @keyframes #{($animation-name)} {
+    @content;
+  }
+}
+
+@mixin animation($animation-name, $duration, $fill-mode, $delay) {
+  animation: $animation-name;
+  animation-duration: $duration;
+  animation-fill-mode: $fill-mode;
+  animation-delay: $delay;
+}
+
+@include keyframes(image-show) {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  51% {
+    opacity: 1;
+    transform: scale(1.8);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@include keyframes(cover-slide) {
+  0% {
+    left: 0;
+    right: 100%;
+  }
+  50% {
+    left: 0;
+    right: 0;
+  }
+  100% {
+    left: 100%;
+    right: 0;
+  }
+}

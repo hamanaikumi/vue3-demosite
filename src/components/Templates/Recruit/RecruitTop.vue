@@ -1,11 +1,13 @@
 <template>
   <TitleText :text="propsValue.text" />
   <div class="recruit-top__content">
-    <img
-      class="recruit-top__image"
-      src="@/assets/images/staff.jpeg"
-      alt="コンセプト写真"
-    />
+    <div class="recruit-top__image">
+      <img
+        class="image-show"
+        src="@/assets/images/staff.jpeg"
+        alt="コンセプト写真"
+      />
+    </div>
     <div class="recruit-top__text">
       <p>Sample Cafeでは現在スタッフを募集しています。ご応募お待ちしてます。</p>
 
@@ -51,19 +53,51 @@ export default defineComponent({
 .recruit-top {
   &__content {
     display: flex;
+    p {
+      @include defaultText;
+      padding-left: 20px;
+    }
   }
 
   &__image {
-    max-width: 600px;
+    width: 60%;
     height: 400px;
-    object-fit: cover;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $white;
+      @include animation(
+        $animation-name: cover-slide,
+        $duration: 1.5s,
+        $fill-mode: forwards,
+        $delay: 0.2s
+      );
+    }
+
+    img {
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+      @include animation(
+        $animation-name: image-show,
+        $duration: 1.5s,
+        $fill-mode: forwards,
+        $delay: 0.2s
+      );
+    }
   }
 
   &__text {
-    padding: 20px;
-    p {
-      @include defaultText;
-    }
+    width: 40%;
   }
 
   @include tab {
@@ -72,7 +106,10 @@ export default defineComponent({
     }
 
     &__image {
-      max-width: 100%;
+      width: 100%;
+    }
+    &__text {
+      width: 100%;
     }
   }
 }
